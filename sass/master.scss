@@ -18,7 +18,7 @@ body {
 	background-color:black;
 }
 
-#main-navbar {
+.main-navbar {
 	// Cancel .container padding
 	margin-left:-15px;
 	margin-right:-15px;
@@ -29,13 +29,18 @@ body {
 	}
 }
 
+.content-container {
+	min-height:100px;
+	background-color:black;
+}
+
 // JavaScript CSS
 
-#step1Div {}
+.step1Div {}
 
-#step2Div {}
+.step2Div {}
 
-#step3Div {}
+.step3Div {}
 
 .currStep {
 	background-color:darken($primaryColor,2.5);
