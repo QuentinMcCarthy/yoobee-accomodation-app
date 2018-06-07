@@ -11,9 +11,12 @@ body {
   .main-navbar .row {
     min-height: 75px; }
 
+.main-content {
+  min-height: 575px;
+  height: 55vh; }
+
 .content-container {
-  min-height: 100px;
-  background-color: black; }
+  width: 90%; }
 
 .currStep {
   background-color: #f29d00; }

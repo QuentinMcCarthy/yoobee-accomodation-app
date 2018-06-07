@@ -6,6 +6,10 @@ $primaryColor:#ffa500;
 // Navbar
 $navbarMinHeight:75px;
 
+// Main Content
+$mainContentMinHeight:575px;
+$mainContentHeight:55vh;
+
 // Bootstrap CSS
 
 .container {
@@ -29,9 +33,13 @@ body {
 	}
 }
 
+.main-content {
+	min-height:$mainContentMinHeight;
+	height:$mainContentHeight;
+}
+
 .content-container {
-	min-height:100px;
-	background-color:black;
+	width:90%;
 }
 
 // JavaScript CSS
