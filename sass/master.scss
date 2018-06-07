@@ -1,3 +1,21 @@
+// Variables
+
+$primaryColor:#ffa500;
+
+// Bootstrap selectors
+
+.container {
+	background-color:$primaryColor;
+}
+
+.row {}
+
+.no-gutters {}
+
+.col-sm {}
+
+// Custom selectors
+
 * {}
 
 html {}
@@ -6,9 +24,10 @@ body {
 	background-color:black;
 }
 
-.container {
-	background-color:#ffa500;
-	min-height:100px;
+#main-navbar {
+	// Cancel .container padding
+	margin-left:-15px;
+	margin-right:-15px;
 }
 
 @media (min-width:576px){}
