@@ -100,6 +100,10 @@ var app = {
 		// console.log("minPossibleStay: "+minPossibleStay);
 		// console.log("maxPossibleStay: "+maxPossibleStay);
 
+
+		$(".currStep").css("width",$(".main-navbar .col-sm div").css("width"));
+		$(".currStep").css("height",$(".main-navbar .col-sm div").css("height"));
+
 		$(".spaceNeededRangeSlider").attr("min",minPossibleSpace);
 		$(".spaceNeededRangeSlider").attr("max",maxPossibleSpace);
 		$(".spaceNeededRangeInput").attr("min",minPossibleSpace);
@@ -140,4 +144,11 @@ var app = {
 
 $(document).ready(function(){
 	app.init();
+
+	// Mapbox
+	mapboxgl.accessToken = 'pk.eyJ1IjoibWNjYXJ0aHlxIiwiYSI6ImNqaTNucHpsMzAwaGczcXF2eDJhbGxwNGwifQ.Qn-qvcjlEmkiLq4lqV435A';
+	var map = new mapboxgl.Map({
+		container: 'map',
+		style: 'mapbox://styles/mccarthyq/cji9h1jw0124i2sqitzoczzsh'
+	});
 });

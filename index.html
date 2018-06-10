@@ -12,34 +12,38 @@
 		<!-- FontAwesome -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
+		<!-- mapbox -->
+		<link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="css/master.css">
 	</head>
 	<body>
-		<div class="container step-1">
+		<div class="container">
 			<div class="main-navbar">
 				<div class="row no-gutters">
+					<div class="position-absolute currStep"></div>
 					<div class="col-sm">
-						<div class="d-flex h-100 align-items-center justify-content-center step1Div currStep">
+						<div class="d-flex h-100 align-items-center justify-content-center">
 							<h2>Step 1</h2>
 						</div>
 					</div>
 
 					<div class="col-sm">
-						<div class="d-flex h-100 align-items-center justify-content-center step2Div">
+						<div class="d-flex h-100 align-items-center justify-content-center">
 							<h2>Step 2<h2>
 						</div>
 					</div>
 
 					<div class="col-sm">
-						<div class="d-flex h-100 align-items-center justify-content-center step3Div">
+						<div class="d-flex h-100 align-items-center justify-content-center">
 							<h2>Step 3<h2>
-						</div> <!-- step3Div end -->
+						</div>
 					</div> <!-- .col-sm end -->
 				</div> <!-- .row end -->
-			</div> <!-- #main-navbar end -->
+			</div> <!-- .main-navbar end -->
 
-			<div class="main-content py-3">
+			<div class="main-content py-3 step-1">
 				<div class="container h-100 border border-dark content-container">
 					<div class="row h-100">
 						<div class="col-2"></div>
@@ -75,9 +79,30 @@
 						</div>
 					</div> <!-- .row end -->
 				</div> <!-- .container end -->
-			</div> <!-- .main-content end -->
-		</div> <!-- .container end -->
+			</div> <!-- .step-1 end -->
 
+			<div class="main-content py-3 step-2">
+				<div class="container h-100 border border-dark content-container">
+					<div class="row h-100">
+						<div class="col-2">
+							<div class="d-flex w-100 h-100 justify-content-center align-items-center">
+								<i class="fas fa-chevron-left fa-5x"></i>
+							</div>
+						</div>
+
+						<div class="col">
+							<div id='map' style='width: 400px; height: 300px;'></div>
+						</div>
+
+						<div class="col-2">
+							<div class="d-flex w-100 h-100 justify-content-center align-items-center">
+								<i class="fas fa-chevron-right fa-5x"></i>
+							</div>
+						</div>
+					</div> <!-- .row end -->
+				</div> <!-- .container end -->
+			</div> <!-- .step-2 end -->
+		</div> <!-- .container end -->
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -85,13 +110,10 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-		<!-- ReactJS -->
-		<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+		<!-- mapbox -->
+		<script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
 
 		<!-- Custom JS -->
 		<script src="js/js.js"></script>
 	</body>
 </html>
-
-<!-- https://reactjs.org/ -->
