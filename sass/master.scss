@@ -44,11 +44,22 @@ body {
 
 // JavaScript CSS
 
+.step-1 {}
+
 .step1Div {}
 
 .step2Div {}
 
 .step3Div {}
+
+.spaceNeededRangeInput {}
+.spaceNeededRangeSlider {
+	width:72%;
+}
+
+.stayingFrom {}
+
+.detailSubmit {}
 
 .currStep {
 	background-color:darken($primaryColor,2.5);

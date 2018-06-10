@@ -18,6 +18,9 @@ body {
 .content-container {
   width: 90%; }
 
+.spaceNeededRangeSlider {
+  width: 72%; }
+
 .currStep {
   background-color: #f29d00; }
 

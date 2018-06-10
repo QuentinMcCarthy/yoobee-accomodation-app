@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="css/master.css">
 	</head>
 	<body>
-		<div class="container">
+		<div class="container step-1">
 			<div class="main-navbar">
 				<div class="row no-gutters">
 					<div class="col-sm">
@@ -33,7 +33,7 @@
 
 					<div class="col-sm">
 						<div class="d-flex h-100 align-items-center justify-content-center step3Div">
-							<h2>Step 2<h2>
+							<h2>Step 3<h2>
 						</div> <!-- step3Div end -->
 					</div> <!-- .col-sm end -->
 				</div> <!-- .row end -->
@@ -42,20 +42,40 @@
 			<div class="main-content py-3">
 				<div class="container h-100 border border-dark content-container">
 					<div class="row h-100">
-						<div class="col-2">
+						<div class="col-2"></div>
 
-						</div>
 						<div class="col">
+							<div class="d-flex w-100 h-100 justify-content-center align-items-center">
+								<form class="w-75">
+									<div class="form-group">
+										<label class="d-block" for="spaceNeeded">How many:</label>
+										<input class="form-control w-25 d-inline-block spaceNeededRangeInput" type="number" name="spaceNeededRangeInput" value="1" required>
+										<input class="form-control-range d-inline-block spaceNeededRangeSlider" type="range" name="spaceNeeded" value="1" required>
+									</div>
 
+									<div class="form-group">
+										<label for="stayingFrom">Staying from:</label>
+										<input class="form-control stayingFrom" type="date" name="stayingFrom" value="0001-01-01" required>
+									</div>
+
+									<div class="form-group">
+										<label for="stayingTill">Staying till:</label>
+										<input class="form-control" type="date" name="stayingTill" value="" required>
+									</div>
+
+									<button type="submit" class="btn btn-primary float-right detailSubmit">Continue</button>
+								</form>
+							</div>
 						</div>
+
 						<div class="col-2">
 							<div class="d-flex w-100 h-100 justify-content-center align-items-center">
 								<i class="fas fa-chevron-right fa-5x"></i>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
+					</div> <!-- .row end -->
+				</div> <!-- .container end -->
+			</div> <!-- .main-content end -->
 		</div> <!-- .container end -->
 
 		<!-- jQuery -->
@@ -65,10 +85,13 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
+		<!-- ReactJS -->
+		<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
 		<!-- Custom JS -->
 		<script src="js/js.js"></script>
 	</body>
 </html>
 
-<!-- https://angular.io/guide/quickstart -->
 <!-- https://reactjs.org/ -->
