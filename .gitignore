@@ -1,5 +1,7 @@
 #Blacklist
 node_modules/
+assets/
+img/
 .DS_Store
 gulpfile.js
 package.json

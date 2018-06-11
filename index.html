@@ -14,6 +14,7 @@
 
 		<!-- mapbox -->
 		<link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
 
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="css/master.css">
@@ -91,7 +92,15 @@
 						</div>
 
 						<div class="col">
-							<div id='map' style='width: 400px; height: 300px;'></div>
+							<div class="sidebar w-25 h-75 float-left">
+								<div id="listings" class="listings">
+									
+								</div>
+							</div>
+							<div id='map' class="w-75 h-75 float-left">Map</div>
+							<div class="w-100 h-25">
+
+							</div>
 						</div>
 
 						<div class="col-2">
@@ -103,6 +112,8 @@
 				</div> <!-- .container end -->
 			</div> <!-- .step-2 end -->
 		</div> <!-- .container end -->
+
+
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -112,6 +123,7 @@
 
 		<!-- mapbox -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
 
 		<!-- Custom JS -->
 		<script src="js/js.js"></script>
