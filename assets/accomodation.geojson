@@ -1,0 +1,245 @@
+{
+	"type":"FeatureCollection",
+    "features":[
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    174.779937,
+                    -41.280329
+                ]
+            },
+            "properties":{
+                "phoneFormatted":"(04) 473-8482",
+                "phone":"044738482",
+                "address":"1 Bunny St, Pipitea",
+                "city":"Wellington",
+                "country":"New Zealand",
+                "crossStreet":"undefined",
+                "postalCode":"6011"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    174.778785,
+                    -41.280794
+                ]
+            },
+            "properties":{
+                "phoneFormatted":"(04) 499-8686",
+                "phone":"044998686",
+                "address":"76 Featherson St, Pipitea",
+                "city":"Wellington",
+                "country":"New Zealand",
+                "crossStreet":"undefined",
+                "postalCode":"6011"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    174.781430,
+                    -41.276015
+                ]
+            },
+            "properties":{
+                "phoneFormatted":"(04) 333-0007",
+                "phone":"043330007",
+                "address":"61-63 Thorndon Quay, Pipitea",
+                "city":"Wellington",
+                "country":"New Zealand",
+                "crossStreet":"undefined",
+                "postalCode":"6011"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    174.775207,
+                    -41.285813
+                ]
+            },
+            "properties":{
+                "phoneFormatted":"(04) 499-9911",
+                "phone":"044999911",
+                "address":"2-6 Gilmer Terrace",
+                "city":"Wellington",
+                "country":"New Zealand",
+                "crossStreet":"undefined",
+                "postalCode":"6011"
+            }
+        },
+        {
+
+
+
+
+
+/* All JSON data below this broken part is unfinished. */
+/* Do not forget to reconnect these parts! */
+
+
+
+
+
+
+
+
+
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    -77.002583742142,
+                    38.887041080933
+                ]
+            },
+            "properties":{
+                "phoneFormatted":"(04) 000-0000",
+                "phone":"040000000",
+                "address":"",
+                "city":"Wellington",
+                "country":"New Zealand",
+                "crossStreet":"undefined",
+                "postalCode":"6011"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    -76.933492720127,
+                    38.99225245786
+                ]
+            },
+            "properties":{
+                "address":"",
+                "city":"Wellington",
+                "country":"New Zealand",
+                "postalCode":"6011",
+                "state":"N/A"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    -77.097083330154,
+                    38.980979
+                ]
+            },
+            "properties":{
+                "phoneFormatted":"(04) 000-0000",
+                "phone":"040000000",
+                "address":"",
+                "cc":"US",
+                "city":"Wellington",
+                "country":"New Zealand",
+                "postalCode":"6011"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    -77.359425054188,
+                    38.958058116661
+                ]
+            },
+            "properties":{
+                "phoneFormatted":"(04) 000-0000",
+                "phone":"040000000",
+                "address":"",
+                "city":"Wellington",
+                "country":"New Zealand",
+                "crossStreet":"undefined",
+                "postalCode":"6011"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    -77.10853099823,
+                    38.880100922392
+                ]
+            },
+            "properties":{
+                "phoneFormatted":"(04) 000-0000",
+                "phone":"040000000",
+                "address":"",
+                "city":"Wellington",
+                "country":"New Zealand",
+                "crossStreet":"undefined",
+                "postalCode":"6011"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    -75.28784,
+                    40.008008
+                ]
+            },
+            "properties":{
+                "phoneFormatted":"(04) 000-0000",
+                "phone":"040000000",
+                "address":"",
+                "city":"Wellington",
+                "country":"New Zealand",
+                "postalCode":"6011"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    -75.20121216774,
+                    39.954030175164
+                ]
+            },
+            "properties":{
+                "phoneFormatted":"(04) 000-0000",
+                "phone":"040000000",
+                "address":"",
+                "city":"Wellington",
+                "country":"New Zealand",
+                "postalCode":"6011"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    -77.043959498405,
+                    38.903883387232
+                ]
+            },
+            "properties":{
+                "phoneFormatted":"(04) 000-0000",
+                "phone":"040000000",
+                "address":"",
+                "city":"Wellington",
+                "country":"New Zealand",
+                "crossStreet":"undefined",
+                "postalCode":"6011"
+            }
+        }
+    ]
+}

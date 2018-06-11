@@ -162,24 +162,45 @@ $(document).ready(function(){
 		trackUserLocation:true
 	}));
 
+
 	// geojson data for locations
-	$.getJSON("assets/sweetgreen.geojson", function(data){
+	$.getJSON("assets/accomodation.geojson", function(data){
 		var locations = data;
 
 		map.on("load",function(e){
 			// Add the data to your map as a layer
-			map.addLayer({
-				id:"locations",
-				type:"symbol",
-				// Add a GeoJSON source containing place coordinates and information.
-				source:{
-					type:"geojson",
-					data:locations
-				},
-				layout:{
-					"icon-image":"restaurant-15",
-					"icon-allow-overlap":true
-				}
+			map.addSource("places", {
+				type:"geojson",
+				data:locations
+			})
+
+			locations.features.forEach(function(marker){
+				// Create a div element for the marker
+				var el = document.createElement("div");
+				// Add a class called "marker" to each div
+				el.className = "marker";
+				// By default the image for your custom marker will be anchored
+				// by its center. Adjust the positoon accordingly
+				// Create the custom markers, set their position and add to map
+				new mapboxgl.Marker(el, {offset:[0,-23]})
+					.setLngLat(marker.geometry.coordinates)
+					.addTo(map);
+
+				$(el).on("click",function(e){
+					var activeItem = $(".active");
+					// 1. Fly to the point
+					flyToStore(marker);
+					// 2. Close all other popups and display popup for clicked store
+					createPopUp(marker);
+					// 3. Highlight listin in sidebar (and remove highlight for all other listings)
+					e.stopPropagation();
+					if(activeItem[0]){
+						$(activeItem[0]).removeClass("active");
+					}
+
+					// var listing = $("#listing-"+i);
+					// $(listing).addClass("active");
+				})
 			});
 
 			buildLocationList(locations);
