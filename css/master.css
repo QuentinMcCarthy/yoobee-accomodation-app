@@ -34,6 +34,7 @@ body {
 .currStep {
   background-color: #f29d00; }
 
+/* Mapbox */
 .marker {
   border: none;
   cursor: pointer;

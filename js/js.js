@@ -41,7 +41,7 @@ var accomodation = {
 			}
 		}
 	]
-}
+};
 
 var app = {
 	spaceNeeded:undefined,
@@ -114,7 +114,7 @@ var app = {
 		});
 		$(".spaceNeededRangeInput").on("input",function(){
 			$(".spaceNeededRangeSlider").val($(this).val());
-		})
+		});
 
 		var currDate = new Date();
 		var year = currDate.getFullYear();
@@ -140,7 +140,7 @@ var app = {
 
 		});
 	}
-}
+};
 
 $(document).ready(function(){
 	app.init();
@@ -172,7 +172,7 @@ $(document).ready(function(){
 			map.addSource("places", {
 				type:"geojson",
 				data:locations
-			})
+			});
 
 			locations.features.forEach(function(marker){
 				// Create a div element for the marker
@@ -200,7 +200,7 @@ $(document).ready(function(){
 
 					// var listing = $("#listing-"+i);
 					// $(listing).addClass("active");
-				})
+				});
 			});
 
 			buildLocationList(locations);
@@ -256,7 +256,7 @@ $(document).ready(function(){
 
 		var popup = new mapboxgl.Popup({closeOnClick:false})
 			.setLngLat(currentFeature.geometry.coordinates)
-			.setHTML("<h3>Sweetgreen</h3>"+"<h4>"+currentFeature.properties.address+"</h4>")
+			.setHTML("<h3>"+currentFeature.properties.name+"</h3>"+"<h4>"+currentFeature.properties.address+"</h4>")
 			.addTo(map);
 	}
 });
