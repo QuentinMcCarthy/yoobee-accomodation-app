@@ -217,25 +217,23 @@ $(document).ready(function(){
 			// Select the listing container in the HTML and append a div
 			// with the class "item" for each store
 			var listings = $("#listings");
-			var listing = $("<div>", {"className":"item","id":"listing-"+i})
-				.append($("<a>", {"href":"#","className":"title","dataPosition":i,})
-					.html(prop.address)
-					.on("click",function(e){
-						// Update the currentFeature to the store associated with the clicked link
-						var clickedListing = data.features[$(this).attr("dataPosition")];
-						// 1. Fly to the point associated with the clicked link
-						flyToStore(clickedListing);
-						// 2. Close all other popups and display popup for clicked store
-						createPopUp(clickedListing);
-						// 3. Highlight listing in sidebar (and remove highlight for all other listings)
-						var activeItem = $(".active");
-						if(activeItem[0]){
-							$(activeItem[0]).removeClass("active");
-						}
-						$(this.parentNode).addClass("active");
-					})
-				)
-				.append($("<div>").html(prop.city+" &middot; "+prop.phoneFormatted))
+			var listing = $("<a>", {"class":"dropdown-item","href":"#","id":"listing-"+i,"dataPosition":i})
+				.html(prop.name)
+				.on("click",function(){
+					// Update the currentFeature to the store associated with the clicked link
+					var clickedListing = data.features[$(this).attr("dataPosition")];
+					// 1. Fly to the point associated with the clicked link
+					flyToStore(clickedListing);
+					// 2. Close all other popups and display popup for clicked store
+					createPopUp(clickedListing);
+					// 3. Highlight listing in sidebar (and remove highlight for all other listings)
+					// var activeItem = $(".active");
+					// if(activeItem[0]){
+						// $(activeItem[0]).removeClass("active");
+					// }
+					// $(this).addClass("active");
+				})
+				// .append($("<div>").html(prop.city+" &middot; "+prop.phoneFormatted))
 				.appendTo(listings);
 		}
 	}
@@ -254,9 +252,9 @@ $(document).ready(function(){
 			popUps[0].remove();
 		}
 
-		var popup = new mapboxgl.Popup({closeOnClick:false})
+		var popup = new mapboxgl.Popup({closeOnClick:true})
 			.setLngLat(currentFeature.geometry.coordinates)
-			.setHTML("<h3>"+currentFeature.properties.name+"</h3>"+"<h4>"+currentFeature.properties.address+"</h4>")
+			.setHTML("<h5>"+currentFeature.properties.name+"</h5>"+"<h6>"+currentFeature.properties.address+"</h6>")
 			.addTo(map);
 	}
 });
