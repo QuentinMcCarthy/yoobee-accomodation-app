@@ -35,6 +35,9 @@ body {
   background-color: #f29d00; }
 
 /* Mapbox */
+#map {
+  z-index: 1; }
+
 .marker {
   border: none;
   cursor: pointer;

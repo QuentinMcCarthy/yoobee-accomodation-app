@@ -71,6 +71,9 @@ body {
 
 /* Mapbox */
 
+#map {
+	z-index:1;
+}
 .marker {
 	border:none;
 	cursor:pointer;
@@ -82,6 +85,9 @@ body {
 .mapboxgl-popup {
 	padding-bottom:50px;
 }
+
+#listings {}
+#locationInfo {}
 
 
 @media (min-width:576px){}
