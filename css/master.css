@@ -41,9 +41,9 @@ body {
 .marker {
   border: none;
   cursor: pointer;
-  height: 56px;
-  width: 56px;
-  background-image: url("../img/marker.png");
+  height: 50px;
+  width: 34px;
+  background-image: url("../img/marker_accomodation.svg");
   background-color: rgba(0, 0, 0, 0); }
 
 .mapboxgl-popup {

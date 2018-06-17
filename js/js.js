@@ -74,8 +74,8 @@ var app = {
 		var map = new mapboxgl.Map({
 			container:"map", // container id
 			style:"mapbox://styles/mccarthyq/cji9h1jw0124i2sqitzoczzsh",
-			center:[171.285471,-41.090805], // starting position
-			zoom:4 // starting zoom
+			center:[174.777623,-41.289632], // starting position
+			zoom:12 // starting zoom
 		});
 
 		// Add geolocate control to the map.
@@ -91,15 +91,7 @@ var app = {
 		$.getJSON("assets/accomodation.geojson", function(data){
 			var locations = data;
 
-			var nameArray = app.sortData(locations.features);
-
-			nameArray.forEach(function(currentValue,index){
-				console.log(currentValue);
-
-				for(var i = 0; i < locations.length; i++){
-					
-				}
-			});
+			locations.features = app.sortData(locations.features);
 
 			map.on("load",function(e){
 				// Add the data to your map as a layer
@@ -209,7 +201,18 @@ var app = {
 
 		nameArray.sort();
 
-		return nameArray;
+		var sortedArray = [];
+
+		nameArray.forEach(function(currentValue,index){
+			for(var i = 0; i < data.length; i++){
+				if(currentValue == data[i].properties.name){
+					sortedArray.push(data[i]);
+					continue;
+				}
+			}
+		});
+
+		return sortedArray;
 	}
 };
 
