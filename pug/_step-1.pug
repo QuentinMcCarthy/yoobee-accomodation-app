@@ -1,0 +1,33 @@
+div(class="main-content py-3 step-1")
+	div(class="container h-100 border border-dark content-container")
+		div(class="row h-100")
+			div(class="col-2")
+
+			div(class="col")
+				div(class="d-flex w-100 h-100 justify-content-center align-items-center")
+					form(class="w-75")
+						div(class="form-group")
+							label(class="d-block", for="spaceNeeded")
+								| How many:
+							
+							input(class="form-control w-25 d-inline-block spaceNeededRangeInput", type="number", name="spaceNeededRangeInput", value="1", required)
+							input(class="form-control-range d-inline-block spaceNeededRangeSlider", type="range", name="spaceNeeded", value="1", required)
+
+						div(class="form-group")
+							label(for="stayingFrom")
+								| Staying from:
+								
+							input(class="form-control stayingFrom", type="date", name="stayingFrom", value="0001-01-01", required)
+
+						div(class="form-group")
+							label(for="stayingTill")
+								| Staying till:
+							
+							input(class="form-control", type="date", name="stayingTill", value="", required)
+
+						button(type="submit", class="btn btn-primary float-right detailSubmit")
+							| Continue
+
+			div(class="col-2")
+				div(class="d-flex w-100 h-100 justify-content-center align-items-center")
+					i(class="fas fa-chevron-right fa-5x")
