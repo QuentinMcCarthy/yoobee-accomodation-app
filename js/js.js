@@ -165,7 +165,25 @@ var app = {
 
 						$(locationInfo).html("");
 
-						var listingData = $("<h5>").text(prop.name).appendTo(locationInfo);
+						$("<h3>").text(prop.name).appendTo(locationInfo);
+
+						switch(prop.type){
+							case "hotel":
+								console.log(app.dataConfig.types[0].type);
+								$("<div>").html(app.dataConfig.types[0].properties.costNightly).appendTo(locationInfo);
+								break;
+							case "hostel":
+								console.log(app.dataConfig.types[1].type);
+								break
+							case "motel":
+								console.log(app.dataConfig.types[2].type);
+								break
+							case "house":
+								console.log(app.dataConfig.types[3].type);
+								break
+							default:
+
+						};
 					})
 					// .append($("<div>").html(prop.city+" &middot; "+prop.phoneFormatted))
 					.appendTo(listings);
