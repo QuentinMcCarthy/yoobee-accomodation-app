@@ -90,6 +90,12 @@ var app = {
 					if((days >= minPossibleStay) && (days <= maxPossibleStay)){
 						app.formResults.desiredDays = days;
 					}
+					else{
+						$(".stayingFrom").parent().css("border","2px solid red");
+						$(".stayingTill").parent().css("border","2px solid red").append(
+							$("<span>").text("Days must be between "+minPossibleStay+" and "+maxPossibleStay).css("color","darkred")
+						);
+					}
 				}
 				else{
 					if(!(stayingFrom)){
@@ -98,6 +104,33 @@ var app = {
 					if(!(stayingTill)){
 						$(".stayingTill").parent().css("border","2px solid red");
 					}
+				}
+
+				var desiredSpace = app.formResults.desiredSpace;
+				var desiredDays = app.formResults.desiredDays;
+
+				if((desiredSpace) && (desiredDays)){
+					$(".step-1").addClass("d-none");
+					$(".step-2").removeClass("d-none");
+
+
+					var currStep = $(".currStep");
+					var initialLeft = parseInt($(currStep).css("left"));
+
+					var transition = setInterval(function(){
+						var currStepLeft = parseInt($(currStep).css("left"));
+						var adjWidth = parseInt($(".main-navbar .col-sm div").css("width"));
+
+						var desiredLeft = (initialLeft + adjWidth)
+
+						if(currStepLeft < desiredLeft){
+							$(currStep).css("left",currStepLeft+2+"px");
+						}
+						else{
+							$(currStep).css("left",desiredLeft);
+							clearInterval(transition);
+						}
+					}, 1)
 				}
 			});
 		});
@@ -250,6 +283,9 @@ var app = {
 				.setHTML("<h5>"+currentFeature.properties.name+"</h5>"+"<h6>"+currentFeature.properties.address+"</h6>")
 				.addTo(map);
 		}
+
+		$(".step-2").addClass("d-none");
+		$(".step-3").addClass("d-none");
 	},
 	sortData:function(data){
 		var nameArray = [];
