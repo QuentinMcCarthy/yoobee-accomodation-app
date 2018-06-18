@@ -8,11 +8,13 @@ var app = {
 		$.getJSON("assets/dataConfig.json", function(data){
 			app.dataConfig = data;
 
+			// Values here are manually set but may not be correct
 			var minPossibleSpace = app.dataConfig.types[0].properties.minSpace;
-			var maxPossibleSpace = app.dataConfig.types[0].properties.maxSpace;
+			var maxPossibleSpace = app.dataConfig.types[1].properties.maxSpace;
 			var minPossibleStay = app.dataConfig.types[0].properties.minStay;
-			var maxPossibleStay = app.dataConfig.types[0].properties.maxStay;
+			var maxPossibleStay = app.dataConfig.types[3].properties.maxStay;
 
+			// For loop ensures the variables above are correct
 			for(var i = 0; i < app.dataConfig.types.length; i++){
 				var currMinSpace = app.dataConfig.types[i].properties.minSpace;
 				var currMaxSpace = app.dataConfig.types[i].properties.maxSpace;
@@ -36,11 +38,13 @@ var app = {
 				}
 			}
 
+			// Set the form's min and max values for validation
 			$(".spaceNeededRangeSlider").attr("min",minPossibleSpace);
 			$(".spaceNeededRangeSlider").attr("max",maxPossibleSpace);
 			$(".spaceNeededRangeInput").attr("min",minPossibleSpace);
 			$(".spaceNeededRangeInput").attr("max",maxPossibleSpace);
 
+			// The slider and the input should always have the same value
 			$(".spaceNeededRangeSlider").on("input",function(){
 				$(".spaceNeededRangeInput").val($(this).val());
 			});
@@ -48,6 +52,7 @@ var app = {
 				$(".spaceNeededRangeSlider").val($(this).val());
 			});
 
+			// As a default; the initial date is the current date
 			var currDate = new Date();
 			var year = currDate.getFullYear();
 			var month = currDate.getMonth() + 1;
@@ -81,7 +86,9 @@ var app = {
 					);
 				}
 
+				// If the values are defined
 				if((stayingFrom) && (stayingTill)){
+					// The values must be converted back into Date objects to get the days
 					var fromDays = (new Date(stayingFrom)).getDate();
 					var tillDays = (new Date(stayingTill)).getDate();
 
@@ -109,11 +116,13 @@ var app = {
 				var desiredSpace = app.formResults.desiredSpace;
 				var desiredDays = app.formResults.desiredDays;
 
+				// Validation; the step shouldn't change if either of these values is undefined
 				if((desiredSpace) && (desiredDays)){
+					// Switch the steps. Bootstrap display class used.
 					$(".step-1").addClass("d-none");
 					$(".step-2").removeClass("d-none");
 
-
+					// Animation for the navbar.
 					var currStep = $(".currStep");
 					var initialLeft = parseInt($(currStep).css("left"));
 
@@ -137,8 +146,6 @@ var app = {
 
 		$(".currStep").css("width",$(".main-navbar .col-sm div").css("width"));
 		$(".currStep").css("height",$(".main-navbar .col-sm div").css("height"));
-
-		$(".step-1").show()
 
 		// Mapbox
 		mapboxgl.accessToken = 'pk.eyJ1IjoibWNjYXJ0aHlxIiwiYSI6ImNqaTNucHpsMzAwaGczcXF2eDJhbGxwNGwifQ.Qn-qvcjlEmkiLq4lqV435A';
@@ -284,6 +291,11 @@ var app = {
 				.addTo(map);
 		}
 
+
+		// All steps are visible initially to allow proper loading of elements
+		// such as mapbox
+		// If the steps were hidden initially, certain elements would not style
+		// Themselves properly.
 		$(".step-2").addClass("d-none");
 		$(".step-3").addClass("d-none");
 	},
