@@ -5,25 +5,28 @@ div(class="main-content py-3 step-1")
 
 			div(class="col")
 				div(class="d-flex w-100 h-100 justify-content-center align-items-center")
-					form(class="w-75")
+					form(class="w-75" method="POST" action="index.html")
 						div(class="form-group")
-							label(class="d-block", for="spaceNeeded")
-								| How many:
+							label(class="d-block font-weight-bold", for="spaceNeeded")
+								h4
+									| How many:
 							
-							input(class="form-control w-25 d-inline-block spaceNeededRangeInput", type="number", name="spaceNeededRangeInput", value="1", required)
-							input(class="form-control-range d-inline-block spaceNeededRangeSlider", type="range", name="spaceNeeded", value="1", required)
+							input(class="form-control w-25 d-inline-block spaceNeededRangeInput", type="number", name="spaceNeededRangeInput", value="1")
+							input(class="form-control-range d-inline-block spaceNeededRangeSlider", type="range", name="spaceNeeded", value="1")
 
 						div(class="form-group")
-							label(for="stayingFrom")
-								| Staying from:
+							label(class="font-weight-bold" for="stayingFrom")
+								h4
+									| Staying from:
 								
-							input(class="form-control stayingFrom", type="date", name="stayingFrom", value="0001-01-01", required)
+							input(class="form-control stayingFrom", type="date", name="stayingFrom", value="0001-01-01" required)
 
 						div(class="form-group")
-							label(for="stayingTill")
-								| Staying till:
+							label(class="font-weight-bold" for="stayingTill")
+								h4
+									| Staying till:
 							
-							input(class="form-control", type="date", name="stayingTill", value="", required)
+							input(class="form-control stayingTill", type="date", name="stayingTill", value="")
 
 						button(type="submit", class="btn btn-primary float-right detailSubmit")
 							| Continue

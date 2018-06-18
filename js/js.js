@@ -1,5 +1,6 @@
 var app = {
 	dataConfig:{},
+	formResults:{},
 	spaceNeeded:undefined,
 	stayingFrom:undefined,
 	stayingTill:undefined,
@@ -39,35 +40,72 @@ var app = {
 			$(".spaceNeededRangeSlider").attr("max",maxPossibleSpace);
 			$(".spaceNeededRangeInput").attr("min",minPossibleSpace);
 			$(".spaceNeededRangeInput").attr("max",maxPossibleSpace);
-		});
 
+			$(".spaceNeededRangeSlider").on("input",function(){
+				$(".spaceNeededRangeInput").val($(this).val());
+			});
+			$(".spaceNeededRangeInput").on("input",function(){
+				$(".spaceNeededRangeSlider").val($(this).val());
+			});
+
+			var currDate = new Date();
+			var year = currDate.getFullYear();
+			var month = currDate.getMonth() + 1;
+			var day = currDate.getDate();
+
+			if(month < 10){
+				month = "0"+month;
+			}
+
+			if(day < 10){
+				day = "0"+day;
+			}
+
+			$(".stayingFrom").val(year+"-"+month+"-"+day);
+
+			$(".detailSubmit").click(function(e){
+				// Prevent page reload
+				e.preventDefault();
+
+				var spaceNeeded = parseInt($(".spaceNeededRangeInput").val());
+				var stayingFrom = $(".stayingFrom").val();
+				var stayingTill = $(".stayingTill").val();
+
+				if((spaceNeeded >= minPossibleSpace) && (spaceNeeded <= maxPossibleSpace)){
+					app.formResults.desiredSpace = spaceNeeded;
+				}
+				else{
+					$(".spaceNeededRangeInput").parent().css("border","2px solid red");
+					$("label[for='spaceNeeded']").append(
+						$("<span>").text("Must be between "+minPossibleSpace+" and "+maxPossibleSpace).css("color","darkred")
+					);
+				}
+
+				if((stayingFrom) && (stayingTill)){
+					var fromDays = (new Date(stayingFrom)).getDate();
+					var tillDays = (new Date(stayingTill)).getDate();
+
+					var days = (tillDays - fromDays);
+
+					if((days >= minPossibleStay) && (days <= maxPossibleStay)){
+						app.formResults.desiredDays = days;
+					}
+				}
+				else{
+					if(!(stayingFrom)){
+						$(".stayingFrom").parent().css("border","2px solid red");
+					}
+					if(!(stayingTill)){
+						$(".stayingTill").parent().css("border","2px solid red");
+					}
+				}
+			});
+		});
 
 		$(".currStep").css("width",$(".main-navbar .col-sm div").css("width"));
 		$(".currStep").css("height",$(".main-navbar .col-sm div").css("height"));
 
-		$(".spaceNeededRangeSlider").on("input",function(){
-			$(".spaceNeededRangeInput").val($(this).val());
-		});
-		$(".spaceNeededRangeInput").on("input",function(){
-			$(".spaceNeededRangeSlider").val($(this).val());
-		});
-
-		var currDate = new Date();
-		var year = currDate.getFullYear();
-		var month = currDate.getMonth() + 1;
-		var day = currDate.getDate();
-
-		if(month < 10){
-			month = "0"+month;
-		}
-
-		if(day < 10){
-			day = "0"+day;
-		}
-
-		$(".stayingFrom").val(year+"-"+month+"-"+day);
-
-		$(".detailSubmit").click(function(){});
+		$(".step-1").show()
 
 		// Mapbox
 		mapboxgl.accessToken = 'pk.eyJ1IjoibWNjYXJ0aHlxIiwiYSI6ImNqaTNucHpsMzAwaGczcXF2eDJhbGxwNGwifQ.Qn-qvcjlEmkiLq4lqV435A';
@@ -169,17 +207,20 @@ var app = {
 
 						switch(prop.type){
 							case "hotel":
-								console.log(app.dataConfig.types[0].type);
-								$("<div>").html(app.dataConfig.types[0].properties.costNightly).appendTo(locationInfo);
+								$("<div>").text("Nightly Cost: $"+app.dataConfig.types[0].properties.costNightly).appendTo(locationInfo);
+
 								break;
 							case "hostel":
-								console.log(app.dataConfig.types[1].type);
+								$("<div>").text("Nightly Cost: $"+app.dataConfig.types[1].properties.costNightly).appendTo(locationInfo);
+
 								break
 							case "motel":
-								console.log(app.dataConfig.types[2].type);
+								$("<div>").text("Nightly Cost: $"+app.dataConfig.types[2].properties.costNightly).appendTo(locationInfo);
+
 								break
 							case "house":
-								console.log(app.dataConfig.types[3].type);
+								$("<div>").text("Nightly Cost: $"+app.dataConfig.types[3].properties.costNightly).appendTo(locationInfo);
+
 								break
 							default:
 
