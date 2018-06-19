@@ -1,9 +1,7 @@
 var app = {
 	dataConfig:{},
 	formResults:{},
-	spaceNeeded:undefined,
-	stayingFrom:undefined,
-	stayingTill:undefined,
+	map:null,
 	init:function(){
 		$.getJSON("assets/dataConfig.json", function(data){
 			app.dataConfig = data;
@@ -147,7 +145,23 @@ var app = {
 		$(".currStep").css("width",$(".main-navbar .col-sm div").css("width"));
 		$(".currStep").css("height",$(".main-navbar .col-sm div").css("height"));
 
-		// Mapbox
+		app.initMapbox();
+
+		// All steps are visible initially to allow proper loading of elements such as mapbox
+		// If the steps were hidden initially, certain elements would not style themselves properly.
+		$(".step-2").addClass("d-none");
+		$(".step-3").addClass("d-none");
+
+		// This code is just for development purposes and should be removed later on
+		console.log("Development");
+		$(".step-1").addClass("d-none");
+		$(".step-2").removeClass("d-none");
+		$(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))))+"px");
+		app.formResults.desiredSpace = 5;
+		app.formResults.desiredDays = 5;
+	},
+	initMapbox:function(){
+		// Mapbox functions for initial setup of mapbox
 		mapboxgl.accessToken = 'pk.eyJ1IjoibWNjYXJ0aHlxIiwiYSI6ImNqaTNucHpsMzAwaGczcXF2eDJhbGxwNGwifQ.Qn-qvcjlEmkiLq4lqV435A';
 		var map = new mapboxgl.Map({
 			container:"map", // container id
@@ -156,6 +170,9 @@ var app = {
 			zoom:12 // starting zoom
 		});
 
+		// Keep track of the map as a variable in the app for use later on
+		app.map = map;
+
 		// Add geolocate control to the map.
 		map.addControl(new mapboxgl.GeolocateControl({
 			positionOptions:{
@@ -163,7 +180,6 @@ var app = {
 			},
 			trackUserLocation:true
 		}));
-
 
 		// geojson data for locations
 		$.getJSON("assets/accomodation.geojson", function(data){
@@ -290,18 +306,11 @@ var app = {
 				.setHTML("<h5>"+currentFeature.properties.name+"</h5>"+"<h6>"+currentFeature.properties.address+"</h6>")
 				.addTo(map);
 		}
-
-
-		// All steps are visible initially to allow proper loading of elements
-		// such as mapbox
-		// If the steps were hidden initially, certain elements would not style
-		// Themselves properly.
-		$(".step-2").addClass("d-none");
-		$(".step-3").addClass("d-none");
 	},
 	sortData:function(data){
 		var nameArray = [];
 
+		// Push the names of all the places into an array to sort alphabetically
 		for(var i = 0; i < data.length; i++){
 			nameArray.push(data[i].properties.name);
 		}
@@ -310,10 +319,14 @@ var app = {
 
 		var sortedArray = [];
 
+		// Compare the sorted names against the values in the data; then sort the data based on the names by
+		// pushing them into another array in order.
 		nameArray.forEach(function(currentValue,index){
 			for(var i = 0; i < data.length; i++){
 				if(currentValue == data[i].properties.name){
 					sortedArray.push(data[i]);
+
+					// continue from the start after finding the name and pushing the data
 					continue;
 				}
 			}
