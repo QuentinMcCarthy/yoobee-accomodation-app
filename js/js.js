@@ -376,6 +376,7 @@ var app = {
 			$(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))))+"px");
 			app.formResults.desiredSpace = 5;
 			app.formResults.desiredDays = 5;
+			app.mapbox.map.on("load",function(){app.mapbox.createMarkers(false,true,false,false)});
 		});
 
 		$(".currStep").css("width",$(".main-navbar .col-sm div").css("width"));

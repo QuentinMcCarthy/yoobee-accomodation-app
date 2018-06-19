@@ -28,6 +28,11 @@ body {
 .currStep {
   background-color: #f29d00; }
 
+.formResults {
+  top: 5px;
+  left: 5px;
+  width: 105%; }
+
 /* Mapbox */
 #map {
   z-index: 1; }

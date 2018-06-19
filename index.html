@@ -43,7 +43,7 @@
                 <form class="w-75" method="POST" action="index.html">
                   <div class="form-group">
                     <label class="d-block font-weight-bold" for="spaceNeeded">
-                      <h4>How many:</h4>
+                      <h4>How many people:</h4>
                     </label>
                     <input class="form-control w-25 d-inline-block spaceNeededRangeInput" type="number" name="spaceNeededRangeInput" value="1"/>
                     <input class="form-control-range d-inline-block spaceNeededRangeSlider" type="range" name="spaceNeeded" value="1"/>
@@ -75,6 +75,10 @@
           <div class="row h-100">
             <div class="col-2">
               <div class="d-flex w-100 h-100 justify-content-center align-items-center"><i class="fas fa-chevron-left fa-5x"></i></div>
+              <div class="position-absolute h-25 formResults">
+                <div class="desiredSpace">How many people:</div>
+                <div class="desiredDays">Length of Stay:</div>
+              </div>
             </div>
             <div class="col">
               <div class="w-100 h-75" id="map"></div>

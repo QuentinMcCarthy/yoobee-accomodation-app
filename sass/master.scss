@@ -67,6 +67,12 @@ body {
 	background-color:darken($primaryColor,2.5);
 }
 
+.formResults {
+	top:5px;
+	left:5px;
+	width:105%;
+}
+
 /* Mapbox */
 
 #map {
