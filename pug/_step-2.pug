@@ -7,10 +7,16 @@ div(class="main-content py-3 step-2")
 						
 				div(class="position-absolute h-25 formResults")
 					div(class="desiredSpace")
-						| How many people:
+						h6
+							| How many people:
+						span(class="desiredSpaceVal")
+							| 0
 						
-					div(class="desiredDays")
-						| Length of Stay:
+					div(class="desiredDays mt-2")
+						h6
+							| Length of Stay:
+						span(class="desiredDaysVal")
+							| 0
 
 			div(class="col")
 				div(id='map', class="w-100 h-75")
@@ -21,7 +27,7 @@ div(class="main-content py-3 step-2")
 
 					div(class="dropdown-menu", id="listings", aria-labelledby="accomodationMenu")
 						
-				div(id="locationInfo", class="w-100")
+				div(id="locationInfo", class="row no-gutters w-100")
 
 			div(class="col-2")
 				div(class="d-flex w-100 h-100 justify-content-center align-items-center")

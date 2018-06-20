@@ -105,29 +105,81 @@ var app = {
 						// }
 						// $(this).addClass("active");
 
-						var prop = data.features[$(this).attr("dataPosition")].properties;
+						var thisIndex = $(this).attr("dataPosition");
 
-						var locationInfo = $("#locationInfo");
+						var prop = data.features[thisIndex].properties;
 
-						$(locationInfo).html("");
+						$("#locationInfo").html("").append(
+							$("<div>")
+								.addClass("col-9")
+								.append($("<h4>").text(prop.name))
+								.append(
+									$("<span>").html("<strong>Ph#:</strong> "+prop.phoneFormatted)
+								)
+						).append(
+							$("<div>")
+								.addClass("d-flex col align-items-end justify-content-end")
+								.append(
+									$("<button>")
+										.attr("type","submit")
+										.attr("data-submit",thisIndex)
+										.addClass("btn btn-primary mapSubmit")
+										.text("Confirm")
+										.on("click",function(e){
+											// Prevent the default event from firing
+											e.preventDefault();
 
-						$("<h3>").text(prop.name).appendTo(locationInfo);
+											app.formResults.desiredLocation = data.features[$(this).attr("data-submit")];
+
+											// Switch the steps. Bootstrap display class used.
+											$(".step-2").addClass("d-none");
+											$(".step-3").removeClass("d-none");
+
+											// Animation for the navbar.
+											var currStep = $(".currStep");
+											var initialLeft = parseInt($(currStep).css("left"));
+
+											var transition = setInterval(function(){
+												var currStepLeft = parseInt($(currStep).css("left"));
+												var adjWidth = parseInt($(".main-navbar .col-sm div").css("width"));
+
+												var desiredLeft = (initialLeft + adjWidth)
+
+												if(currStepLeft < desiredLeft){
+													$(currStep).css("left",currStepLeft+2+"px");
+												}
+												else{
+													$(currStep).css("left",desiredLeft);
+													clearInterval(transition);
+												}
+											}, 1)
+										})
+								)
+						);
 
 						switch(prop.type){
 							case "hotel":
-								$("<div>").text("Nightly Cost: $"+app.dataConfig.types[0].properties.costNightly).appendTo(locationInfo);
+								$("<div>")
+									.html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[0].properties.costNightly)
+									.appendTo("#locationInfo div.col-9");
 
 								break;
 							case "hostel":
-								$("<div>").text("Nightly Cost: $"+app.dataConfig.types[1].properties.costNightly).appendTo(locationInfo);
+								$("<div>")
+									.html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[1].properties.costNightly)
+									.appendTo("#locationInfo div.col-9");
 
 								break
 							case "motel":
-								$("<div>").text("Nightly Cost: $"+app.dataConfig.types[2].properties.costNightly).appendTo(locationInfo);
+								$("<div>")
+									.html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[2].properties.costNightly)
+									.appendTo("#locationInfo div.col-9");
 
 								break
 							case "house":
-								$("<div>").text("Nightly Cost: $"+app.dataConfig.types[3].properties.costNightly).appendTo(locationInfo);
+								$("<div>")
+									.html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[3].properties.costNightly)
+									.appendTo("#locationInfo div.col-9");
 
 								break
 							default:
@@ -329,6 +381,9 @@ var app = {
 
 				// Validation; the step shouldn't change if either of these values is undefined
 				if((desiredSpace) && (desiredDays)){
+					$(".desiredSpaceVal").text(desiredSpace);
+					$(".desiredDaysVal").text(desiredDays+"	days");
+
 					// Switch the steps. Bootstrap display class used.
 					$(".step-1").addClass("d-none");
 					$(".step-2").removeClass("d-none");
@@ -371,12 +426,15 @@ var app = {
 
 			// This code is just for development purposes and should be removed later on
 			console.log("Dev Mode");
-			$(".step-1").addClass("d-none");
-			$(".step-2").removeClass("d-none");
-			$(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))))+"px");
 			app.formResults.desiredSpace = 5;
 			app.formResults.desiredDays = 5;
-			app.mapbox.map.on("load",function(){app.mapbox.createMarkers(false,true,false,false)});
+			app.formResults.desiredLocation = app.locationData.features[2];
+			$(".desiredSpaceVal").text(app.formResults.desiredSpace);
+			$(".desiredDaysVal").text(app.formResults.desiredDays);
+			// $(".step-1").addClass("d-none");
+			// $(".step-2").removeClass("d-none");
+			// $(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))*2))+"px");
+			// app.mapbox.map.on("load",function(){app.mapbox.createMarkers(false,true,false,false)});
 		});
 
 		$(".currStep").css("width",$(".main-navbar .col-sm div").css("width"));
