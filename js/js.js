@@ -326,43 +326,39 @@ var app = {
 				var motels = false;
 				var houses = false;
 
+				var types = app.dataConfig.types
+
 				// The expressions in these variables return a boolean value
 				// This process has been broken down just to make it easy to read and work with
-				// 0. Hotel
-				var hotelMinSpace = (desiredSpace >= app.dataConfig.types[0].properties.minSpace);
-				var hotelMaxSpace = (desiredSpace <= app.dataConfig.types[0].properties.maxSpace);
-				var hotelMinStay = (desiredDays >= app.dataConfig.types[0].properties.minStay);
-				var hotelMaxStay = (desiredDays <= app.dataConfig.types[0].properties.maxStay);
+				for(var i = 0; i < types.length; i++){
+					var minSpace = (desiredSpace >= types[i].properties.minSpace);
+					var maxSpace = (desiredSpace <= types[i].properties.maxSpace);
+					var minStay = (desiredSpace >= types[i].properties.minStay);
+					var maxStay = (desiredSpace <= types[i].properties.maxStay);
 
-				var hotelSpace = (hotelMinSpace && hotelMaxSpace);
-				var hotelStay = (hotelMinStay && hotelMaxStay);
+					switch(i){
+						case 0:
+							var hotelSpace = (minSpace && maxSpace);
+							var hotelStay = (minStay && maxStay);
 
-				// 1. Hostel
-				var hostelMinSpace = (desiredSpace >= app.dataConfig.types[1].properties.minSpace);
-				var hostelMaxSpace = (desiredSpace <= app.dataConfig.types[1].properties.maxSpace);
-				var hostelMinStay = (desiredDays >= app.dataConfig.types[1].properties.minStay);
-				var hostelMaxStay = (desiredDays <= app.dataConfig.types[1].properties.maxStay);
+							break;
+						case 1:
+							var hostelSpace = (minSpace && maxSpace);
+							var hostelStay = (minStay && maxStay);
 
-				var hostelSpace = (hostelMinSpace && hostelMaxSpace);
-				var hostelStay = (hostelMinStay && hostelMaxStay);
+							break;
+						case 2:
+							var motelSpace = (minSpace && maxSpace);
+							var motelStay = (minStay && maxStay);
 
-				// 2. Motel
-				var motelMinSpace = (desiredSpace >= app.dataConfig.types[2].properties.minSpace);
-				var motelMaxSpace = (desiredSpace <= app.dataConfig.types[2].properties.maxSpace);
-				var motelMinStay = (desiredDays >= app.dataConfig.types[2].properties.minStay);
-				var motelMaxStay = (desiredDays <= app.dataConfig.types[2].properties.maxStay);
+							break;
+						case 3:
+							var houseSpace = (minSpace && maxSpace);
+							var houseStay = (minStay && maxStay);
 
-				var motelSpace = (motelMinSpace && motelMaxSpace);
-				var motelStay = (motelMinStay && motelMaxStay);
-
-				// 3. House
-				var houseMinSpace = (desiredSpace >= app.dataConfig.types[3].properties.minSpace);
-				var houseMaxSpace = (desiredSpace <= app.dataConfig.types[3].properties.maxSpace);
-				var houseMinStay = (desiredDays >= app.dataConfig.types[3].properties.minStay);
-				var houseMaxStay = (desiredDays <= app.dataConfig.types[3].properties.maxStay);
-
-				var houseSpace = (houseMinSpace && houseMaxSpace);
-				var houseStay = (houseMinStay && houseMaxStay);
+							break;
+					};
+				}
 
 				if(hotelSpace && hotelStay){
 					hotels = true;
@@ -382,7 +378,14 @@ var app = {
 				// Validation; the step shouldn't change if either of these values is undefined
 				if((desiredSpace) && (desiredDays)){
 					$(".desiredSpaceVal").text(desiredSpace);
-					$(".desiredDaysVal").text(desiredDays+"	days");
+
+					var daysText = "days"
+
+					if(desiredDays == 1){
+						daysText = "day"
+					}
+
+					$(".desiredDaysVal").text(desiredDays+"	"+daysText);
 
 					// Switch the steps. Bootstrap display class used.
 					$(".step-1").addClass("d-none");
@@ -431,10 +434,10 @@ var app = {
 			app.formResults.desiredLocation = app.locationData.features[2];
 			$(".desiredSpaceVal").text(app.formResults.desiredSpace);
 			$(".desiredDaysVal").text(app.formResults.desiredDays);
-			// $(".step-1").addClass("d-none");
-			// $(".step-2").removeClass("d-none");
-			// $(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))*2))+"px");
-			// app.mapbox.map.on("load",function(){app.mapbox.createMarkers(false,true,false,false)});
+			$(".step-1").addClass("d-none");
+			$(".step-3").removeClass("d-none");
+			$(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))*2))+"px");
+			app.mapbox.map.on("load",function(){app.mapbox.createMarkers(false,true,false,false)});
 		});
 
 		$(".currStep").css("width",$(".main-navbar .col-sm div").css("width"));

@@ -21,6 +21,16 @@ body {
 .content-container {
   width: 90%; }
 
+.locationInfo {
+  list-style: none; }
+  .locationInfo li {
+    margin-left: 2.5rem; }
+
+.resultsInfo {
+  list-style: none; }
+  .resultsInfo li {
+    margin-left: 7rem; }
+
 /* JavaScript CSS */
 .spaceNeededRangeSlider {
   width: 72%; }
@@ -32,6 +42,36 @@ body {
   top: 5px;
   left: 5px;
   width: 105%; }
+
+.desiredAddress::before {
+  position: absolute;
+  left: -80px;
+  font-weight: 500;
+  content: "Address:"; }
+
+.desiredPhoneNum::before {
+  position: absolute;
+  left: -80px;
+  font-weight: 500;
+  content: "Ph#:"; }
+
+.desiredSpace::before {
+  position: absolute;
+  left: -152px;
+  font-weight: 500;
+  content: "How many people:"; }
+
+.desiredDays::before {
+  position: absolute;
+  left: -152px;
+  font-weight: 500;
+  content: "Length of stay:"; }
+
+.desiredCost::before {
+  position: absolute;
+  left: -152px;
+  font-weight: 500;
+  content: "Cost:"; }
 
 /* Mapbox */
 #map {

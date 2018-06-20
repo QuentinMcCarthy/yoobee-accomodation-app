@@ -10,13 +10,22 @@ $navbarMinHeight:75px;
 $mainContentMinHeight:575px;
 $mainContentHeight:55vh;
 
-/* Bootstrap CSS */
 
-#accomodationMenu {}
+// Mixins
+
+@mixin desiredContent($left){
+	position:absolute;
+	left:$left;
+	font-weight:500;
+}
+
+
+/* Bootstrap CSS */
 
 .container {
 	background-color:$primaryColor;
 }
+
 
 /* Custom CSS */
 
@@ -43,6 +52,23 @@ body {
 .content-container {
 	width:90%;
 }
+
+.locationInfo {
+	list-style:none;
+
+	li {
+		margin-left:2.5rem;
+	}
+}
+
+.resultsInfo {
+	list-style:none;
+
+	li {
+		margin-left:7rem;
+	}
+}
+
 
 /* JavaScript CSS */
 
@@ -72,6 +98,32 @@ body {
 	left:5px;
 	width:105%;
 }
+
+.desiredAddress::before {
+	@include desiredContent(-80px);
+	content:"Address:";
+}
+
+.desiredPhoneNum::before {
+	@include desiredContent(-80px);
+	content:"Ph#:";
+}
+
+.desiredSpace::before {
+	@include desiredContent(-152px);
+	content:"How many people:";
+}
+
+.desiredDays::before {
+	@include desiredContent(-152px);
+	content:"Length of stay:"
+}
+
+.desiredCost::before {
+	@include desiredContent(-152px);
+	content:"Cost:";
+}
+
 
 /* Mapbox */
 
