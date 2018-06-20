@@ -126,10 +126,27 @@ var app = {
 										.addClass("btn btn-primary mapSubmit")
 										.text("Confirm")
 										.on("click",function(e){
-											// Prevent the default event from firing
-											e.preventDefault();
-
 											app.formResults.desiredLocation = data.features[$(this).attr("data-submit")];
+
+											$(".desiredLocation").text(app.formResults.desiredLocation.properties.name);
+											$(".desiredAddress").text(app.formResults.desiredLocation.properties.address);
+											$(".desiredPhoneNum").text(app.formResults.desiredLocation.properties.phoneFormatted);
+
+											$(".desiredSpace").text(app.formResults.desiredSpace);
+											$(".desiredDays").text(app.formResults.desiredDays);
+
+											if(app.formResults.desiredLocation.properties.type == "hotel"){
+												$(".desiredCost").text("$"+app.dataConfig.types[0].properties.costNightly+" / Night")
+											}
+											if(app.formResults.desiredLocation.properties.type == "hostel"){
+												$(".desiredCost").text("$"+app.dataConfig.types[1].properties.costNightly+" / Night")
+											}
+											if(app.formResults.desiredLocation.properties.type == "motel"){
+												$(".desiredCost").text("$"+app.dataConfig.types[2].properties.costNightly+" / Night")
+											}
+											if(app.formResults.desiredLocation.properties.type == "house"){
+												$(".desiredCost").text("$"+app.dataConfig.types[3].properties.costNightly+" / Night")
+											}
 
 											// Switch the steps. Bootstrap display class used.
 											$(".step-2").addClass("d-none");
@@ -137,13 +154,12 @@ var app = {
 
 											// Animation for the navbar.
 											var currStep = $(".currStep");
-											var initialLeft = parseInt($(currStep).css("left"));
 
 											var transition = setInterval(function(){
 												var currStepLeft = parseInt($(currStep).css("left"));
 												var adjWidth = parseInt($(".main-navbar .col-sm div").css("width"));
 
-												var desiredLeft = (initialLeft + adjWidth)
+												var desiredLeft = (adjWidth * 2)
 
 												if(currStepLeft < desiredLeft){
 													$(currStep).css("left",currStepLeft+2+"px");
@@ -393,13 +409,12 @@ var app = {
 
 					// Animation for the navbar.
 					var currStep = $(".currStep");
-					var initialLeft = parseInt($(currStep).css("left"));
 
 					var transition = setInterval(function(){
 						var currStepLeft = parseInt($(currStep).css("left"));
 						var adjWidth = parseInt($(".main-navbar .col-sm div").css("width"));
 
-						var desiredLeft = (initialLeft + adjWidth)
+						var desiredLeft = (adjWidth)
 
 						if(currStepLeft < desiredLeft){
 							$(currStep).css("left",currStepLeft+2+"px");
@@ -428,20 +443,26 @@ var app = {
 			$(".step-3").addClass("d-none");
 
 			// This code is just for development purposes and should be removed later on
-			console.log("Dev Mode");
-			app.formResults.desiredSpace = 5;
-			app.formResults.desiredDays = 5;
-			app.formResults.desiredLocation = app.locationData.features[2];
-			$(".desiredSpaceVal").text(app.formResults.desiredSpace);
-			$(".desiredDaysVal").text(app.formResults.desiredDays);
-			$(".step-1").addClass("d-none");
-			$(".step-3").removeClass("d-none");
-			$(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))*2))+"px");
-			app.mapbox.map.on("load",function(){app.mapbox.createMarkers(false,true,false,false)});
+			// console.log("Dev Mode");
+			// app.formResults.desiredSpace = 5;
+			// app.formResults.desiredDays = 5;
+			// app.formResults.desiredLocation = app.locationData.features[2];
+			// $(".desiredSpaceVal").text(app.formResults.desiredSpace);
+			// $(".desiredDaysVal").text(app.formResults.desiredDays);
+			// $(".step-1").addClass("d-none");
+			// $(".step-3").removeClass("d-none");
+			// $(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))*2))+"px");
+			// app.mapbox.map.on("load",function(){app.mapbox.createMarkers(false,true,false,false)});
 		});
 
 		$(".currStep").css("width",$(".main-navbar .col-sm div").css("width"));
 		$(".currStep").css("height",$(".main-navbar .col-sm div").css("height"));
+
+		$(".finalConfirm").on("click",function(){
+			// location.reload() is the easiest way to reset the page; as other methods would require resetting
+			// the mapbox map and the process for doing so is complicated
+			location.reload();
+		})
 	},
 	sortData:function(data){
 		var nameArray = [];

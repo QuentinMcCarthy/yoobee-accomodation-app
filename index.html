@@ -15,7 +15,7 @@
   <body>
     <div class="container">
       <div class="main-navbar">
-        <div class="row no-gutters">
+        <div class="row no-gutters position-relative">
           <div class="position-absolute currStep"></div>
           <div class="col-sm">
             <div class="d-flex h-100 align-items-center justify-content-center">
@@ -76,10 +76,10 @@
             <div class="col-2">
               <div class="d-flex w-100 h-100 justify-content-center align-items-center"><i class="fas fa-chevron-left fa-5x"></i></div>
               <div class="position-absolute h-25 formResults">
-                <div class="desiredSpace">
+                <div>
                   <h6>How many people:</h6><span class="desiredSpaceVal">0</span>
                 </div>
-                <div class="desiredDays mt-2">
+                <div class="mt-2">
                   <h6>Length of Stay:</h6><span class="desiredDaysVal">0</span>
                 </div>
               </div>
@@ -118,6 +118,7 @@
                     <li class="position-relative desiredDays">0</li>
                     <li class="position-relative desiredCost">$0 / Night</li>
                   </ul>
+                  <button class="btn btn-primary float-right finalConfirm" type="submit">Confirm</button>
                 </div>
               </div>
             </div>
