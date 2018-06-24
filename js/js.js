@@ -48,9 +48,11 @@ var app = {
 				data:locations
 			});
 
-			locations.features.forEach(function(marker){
+			locations.features.forEach(function(marker,index){
 				// Create a div element for the marker
+                // Non-jQuery creation as mapbox code is not very supportive
 				var el = document.createElement("div");
+                $(el).attr("dataPosition",index);
 				// Add a class called "marker" to each div
 				el.className = "marker";
 				// By default the image for your custom marker will be anchored
@@ -74,6 +76,9 @@ var app = {
 
 					// var listing = $("#listing-"+i);
 					// $(listing).addClass("active");
+
+                    // HERE
+                    
 				});
 			});
 
@@ -302,7 +307,7 @@ var app = {
 				}
 				else{
 					$(".spaceNeededRangeInput").parent().css("border","2px solid red");
-					$("label[for='spaceNeeded']").append(
+					$("label[for='spaceNeededRangeSlider']").append(
 						$("<span>").text("Must be between "+minPossibleSpace+" and "+maxPossibleSpace).css("color","darkred")
 					);
 				}
@@ -337,62 +342,62 @@ var app = {
 				var desiredSpace = app.formResults.desiredSpace;
 				var desiredDays = app.formResults.desiredDays;
 
-				var hotels = false;
-				var hostels = false;
-				var motels = false;
-				var houses = false;
-
-				var types = app.dataConfig.types
-
-				// The expressions in these variables return a boolean value
-				// This process has been broken down just to make it easy to read and work with
-				for(var i = 0; i < types.length; i++){
-					var minSpace = (desiredSpace >= types[i].properties.minSpace);
-					var maxSpace = (desiredSpace <= types[i].properties.maxSpace);
-					var minStay = (desiredSpace >= types[i].properties.minStay);
-					var maxStay = (desiredSpace <= types[i].properties.maxStay);
-
-					switch(i){
-						case 0:
-							var hotelSpace = (minSpace && maxSpace);
-							var hotelStay = (minStay && maxStay);
-
-							break;
-						case 1:
-							var hostelSpace = (minSpace && maxSpace);
-							var hostelStay = (minStay && maxStay);
-
-							break;
-						case 2:
-							var motelSpace = (minSpace && maxSpace);
-							var motelStay = (minStay && maxStay);
-
-							break;
-						case 3:
-							var houseSpace = (minSpace && maxSpace);
-							var houseStay = (minStay && maxStay);
-
-							break;
-					};
-				}
-
-				if(hotelSpace && hotelStay){
-					hotels = true;
-				}
-				if(hostelSpace && hostelStay){
-					hostels = true;
-				}
-				if(motelSpace && motelStay){
-					motels = true;
-				}
-				if(houseSpace && houseStay){
-					houses = true;
-				}
-
-				app.mapbox.createMarkers(hotels,hostels,motels,houses)
-
 				// Validation; the step shouldn't change if either of these values is undefined
 				if((desiredSpace) && (desiredDays)){
+                    var hotels = false;
+    				var hostels = false;
+    				var motels = false;
+    				var houses = false;
+
+    				var types = app.dataConfig.types
+
+    				// The expressions in these variables return a boolean value
+    				// This process has been broken down just to make it easy to read and work with
+    				for(var i = 0; i < types.length; i++){
+    					var minSpace = (desiredSpace >= types[i].properties.minSpace);
+    					var maxSpace = (desiredSpace <= types[i].properties.maxSpace);
+    					var minStay = (desiredSpace >= types[i].properties.minStay);
+    					var maxStay = (desiredSpace <= types[i].properties.maxStay);
+
+    					switch(i){
+    						case 0:
+    							var hotelSpace = (minSpace && maxSpace);
+    							var hotelStay = (minStay && maxStay);
+
+    							break;
+    						case 1:
+    							var hostelSpace = (minSpace && maxSpace);
+    							var hostelStay = (minStay && maxStay);
+
+    							break;
+    						case 2:
+    							var motelSpace = (minSpace && maxSpace);
+    							var motelStay = (minStay && maxStay);
+
+    							break;
+    						case 3:
+    							var houseSpace = (minSpace && maxSpace);
+    							var houseStay = (minStay && maxStay);
+
+    							break;
+    					};
+    				}
+
+    				if(hotelSpace && hotelStay){
+    					hotels = true;
+    				}
+    				if(hostelSpace && hostelStay){
+    					hostels = true;
+    				}
+    				if(motelSpace && motelStay){
+    					motels = true;
+    				}
+    				if(houseSpace && houseStay){
+    					houses = true;
+    				}
+
+    				app.mapbox.createMarkers(hotels,hostels,motels,houses)
+
 					$(".desiredSpaceVal").text(desiredSpace);
 
 					var daysText = "days"
@@ -443,16 +448,16 @@ var app = {
 			$(".step-3").addClass("d-none");
 
 			// This code is just for development purposes and should be removed later on
-			// console.log("Dev Mode");
-			// app.formResults.desiredSpace = 5;
-			// app.formResults.desiredDays = 5;
+			console.log("Dev Mode");
+			app.formResults.desiredSpace = 5;
+			app.formResults.desiredDays = 5;
 			// app.formResults.desiredLocation = app.locationData.features[2];
-			// $(".desiredSpaceVal").text(app.formResults.desiredSpace);
-			// $(".desiredDaysVal").text(app.formResults.desiredDays);
-			// $(".step-1").addClass("d-none");
-			// $(".step-3").removeClass("d-none");
-			// $(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))*2))+"px");
-			// app.mapbox.map.on("load",function(){app.mapbox.createMarkers(false,true,false,false)});
+			$(".desiredSpaceVal").text(app.formResults.desiredSpace);
+			$(".desiredDaysVal").text(app.formResults.desiredDays);
+			$(".step-1").addClass("d-none");
+			$(".step-2").removeClass("d-none");
+			$(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))))+"px");
+			app.mapbox.map.on("load",function(){app.mapbox.createMarkers(false,true,false,false)});
 		});
 
 		$(".currStep").css("width",$(".main-navbar .col-sm div").css("width"));

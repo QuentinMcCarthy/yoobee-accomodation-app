@@ -5,26 +5,23 @@ div(class="main-content py-3 step-1")
 
 			div(class="col")
 				div(class="d-flex w-100 h-100 justify-content-center align-items-center")
-					form(class="w-75" method="POST" action="index.html")
+					form(class="w-75")
 						div(class="form-group")
-							label(class="d-block font-weight-bold", for="spaceNeeded")
-								h4
+							label(class="d-block h4", for="spaceNeededRangeSlider")
 									| How many people:
 							
 							input(class="form-control w-25 d-inline-block spaceNeededRangeInput", type="number", name="spaceNeededRangeInput", value="1")
-							input(class="form-control-range d-inline-block spaceNeededRangeSlider", type="range", name="spaceNeeded", value="1")
+							input(class="form-control-range d-inline-block spaceNeededRangeSlider", type="range", name="spaceNeededRangeSlider", value="1")
 
 						div(class="form-group")
-							label(class="font-weight-bold" for="stayingFrom")
-								h4
-									| Staying from:
+							label(class="h4" for="stayingFrom")
+								| Staying from:
 								
-							input(class="form-control stayingFrom", type="date", name="stayingFrom", value="0001-01-01" required)
+							input(class="form-control stayingFrom", type="date", name="stayingFrom", value="0001-01-01")
 
 						div(class="form-group")
-							label(class="font-weight-bold" for="stayingTill")
-								h4
-									| Staying till:
+							label(class="h4" for="stayingTill")
+								| Staying till:
 							
 							input(class="form-control stayingTill", type="date", name="stayingTill", value="")
 
