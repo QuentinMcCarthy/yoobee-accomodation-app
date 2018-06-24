@@ -2,6 +2,7 @@ var app = {
 	locationData:{},
 	dataConfig:{},
 	formResults:{},
+    navInitLeft:undefined,
 	mapbox:{
 		map:null,
 		initMapbox:function(){
@@ -25,6 +26,35 @@ var app = {
 				trackUserLocation:true
 			}));
 		},
+        mapSubmit:function(e){
+            app.formResults.desiredLocation = app.locationData.features[$(this).attr("data-submit")];
+
+            $(".desiredLocation").text(app.formResults.desiredLocation.properties.name);
+            $(".desiredAddress").text(app.formResults.desiredLocation.properties.address);
+            $(".desiredPhoneNum").text(app.formResults.desiredLocation.properties.phoneFormatted);
+
+            $(".desiredSpace").text(app.formResults.desiredSpace);
+            $(".desiredDays").text(app.formResults.desiredDays);
+
+            if(app.formResults.desiredLocation.properties.type == "hotel"){
+                $(".desiredCost").text("$"+app.dataConfig.types[0].properties.costNightly+" / Night")
+            }
+            if(app.formResults.desiredLocation.properties.type == "hostel"){
+                $(".desiredCost").text("$"+app.dataConfig.types[1].properties.costNightly+" / Night")
+            }
+            if(app.formResults.desiredLocation.properties.type == "motel"){
+                $(".desiredCost").text("$"+app.dataConfig.types[2].properties.costNightly+" / Night")
+            }
+            if(app.formResults.desiredLocation.properties.type == "house"){
+                $(".desiredCost").text("$"+app.dataConfig.types[3].properties.costNightly+" / Night")
+            }
+
+            // Switch the steps. Bootstrap display class used.
+            $(".step-2").addClass("d-none");
+            $(".step-3").removeClass("d-none");
+
+            app.animateNav(3);
+        },
 		createMarkers:function(hotels,hostels,motels,houses){
 			// Object to imitate geojson data structure
 			var locations = {
@@ -77,8 +107,65 @@ var app = {
 					// var listing = $("#listing-"+i);
 					// $(listing).addClass("active");
 
-                    // HERE
-                    
+                    var thisIndex;
+
+                    for(var i = 0; i < app.locationData.features.length; i++){
+                        if(app.locationData.features[i] == marker){
+                            thisIndex = i;
+                            break;
+                        }
+                    }
+
+                    var prop = marker.properties;
+
+                    $("#locationInfo").html("").append(
+                        $("<div>")
+                            .addClass("col-9")
+                            .append($("<h4>").text(prop.name))
+                            .append(
+                                $("<span>").html("<strong>Ph#:</strong> "+prop.phoneFormatted)
+                            )
+                    ).append(
+                        $("<div>")
+                            .addClass("d-flex col align-items-end justify-content-end")
+                            .append(
+                                $("<button>")
+                                    .attr("type","submit")
+                                    .attr("data-submit",thisIndex)
+                                    .addClass("btn btn-primary mapSubmit")
+                                    .text("Confirm")
+                                    .on("click",app.mapbox.mapSubmit)
+                            )
+                    );
+
+                    switch(prop.type){
+                        case "hotel":
+                            $("<div>")
+                                .html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[0].properties.costNightly)
+                                .appendTo("#locationInfo div.col-9");
+
+                            break;
+                        case "hostel":
+                            $("<div>")
+                                .html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[1].properties.costNightly)
+                                .appendTo("#locationInfo div.col-9");
+
+                            break
+                        case "motel":
+                            $("<div>")
+                                .html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[2].properties.costNightly)
+                                .appendTo("#locationInfo div.col-9");
+
+                            break
+                        case "house":
+                            $("<div>")
+                                .html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[3].properties.costNightly)
+                                .appendTo("#locationInfo div.col-9");
+
+                            break
+                        default:
+
+                    };
 				});
 			});
 
@@ -130,51 +217,7 @@ var app = {
 										.attr("data-submit",thisIndex)
 										.addClass("btn btn-primary mapSubmit")
 										.text("Confirm")
-										.on("click",function(e){
-											app.formResults.desiredLocation = data.features[$(this).attr("data-submit")];
-
-											$(".desiredLocation").text(app.formResults.desiredLocation.properties.name);
-											$(".desiredAddress").text(app.formResults.desiredLocation.properties.address);
-											$(".desiredPhoneNum").text(app.formResults.desiredLocation.properties.phoneFormatted);
-
-											$(".desiredSpace").text(app.formResults.desiredSpace);
-											$(".desiredDays").text(app.formResults.desiredDays);
-
-											if(app.formResults.desiredLocation.properties.type == "hotel"){
-												$(".desiredCost").text("$"+app.dataConfig.types[0].properties.costNightly+" / Night")
-											}
-											if(app.formResults.desiredLocation.properties.type == "hostel"){
-												$(".desiredCost").text("$"+app.dataConfig.types[1].properties.costNightly+" / Night")
-											}
-											if(app.formResults.desiredLocation.properties.type == "motel"){
-												$(".desiredCost").text("$"+app.dataConfig.types[2].properties.costNightly+" / Night")
-											}
-											if(app.formResults.desiredLocation.properties.type == "house"){
-												$(".desiredCost").text("$"+app.dataConfig.types[3].properties.costNightly+" / Night")
-											}
-
-											// Switch the steps. Bootstrap display class used.
-											$(".step-2").addClass("d-none");
-											$(".step-3").removeClass("d-none");
-
-											// Animation for the navbar.
-											var currStep = $(".currStep");
-
-											var transition = setInterval(function(){
-												var currStepLeft = parseInt($(currStep).css("left"));
-												var adjWidth = parseInt($(".main-navbar .col-sm div").css("width"));
-
-												var desiredLeft = (adjWidth * 2)
-
-												if(currStepLeft < desiredLeft){
-													$(currStep).css("left",currStepLeft+2+"px");
-												}
-												else{
-													$(currStep).css("left",desiredLeft);
-													clearInterval(transition);
-												}
-											}, 1)
-										})
+										.on("click",app.mapbox.mapSubmit)
 								)
 						);
 
@@ -412,23 +455,9 @@ var app = {
 					$(".step-1").addClass("d-none");
 					$(".step-2").removeClass("d-none");
 
-					// Animation for the navbar.
-					var currStep = $(".currStep");
+                    app.navInitLeft = parseInt($(".currStep").css("left"));
 
-					var transition = setInterval(function(){
-						var currStepLeft = parseInt($(currStep).css("left"));
-						var adjWidth = parseInt($(".main-navbar .col-sm div").css("width"));
-
-						var desiredLeft = (adjWidth)
-
-						if(currStepLeft < desiredLeft){
-							$(currStep).css("left",currStepLeft+2+"px");
-						}
-						else{
-							$(currStep).css("left",desiredLeft);
-							clearInterval(transition);
-						}
-					}, 1)
+                    app.animateNav(2)
 				}
 			});
 		});
@@ -448,16 +477,16 @@ var app = {
 			$(".step-3").addClass("d-none");
 
 			// This code is just for development purposes and should be removed later on
-			console.log("Dev Mode");
-			app.formResults.desiredSpace = 5;
-			app.formResults.desiredDays = 5;
+			// console.log("Dev Mode");
+			// app.formResults.desiredSpace = 5;
+			// app.formResults.desiredDays = 5;
 			// app.formResults.desiredLocation = app.locationData.features[2];
-			$(".desiredSpaceVal").text(app.formResults.desiredSpace);
-			$(".desiredDaysVal").text(app.formResults.desiredDays);
-			$(".step-1").addClass("d-none");
-			$(".step-2").removeClass("d-none");
-			$(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))))+"px");
-			app.mapbox.map.on("load",function(){app.mapbox.createMarkers(false,true,false,false)});
+			// $(".desiredSpaceVal").text(app.formResults.desiredSpace);
+			// $(".desiredDaysVal").text(app.formResults.desiredDays);
+			// $(".step-1").addClass("d-none");
+			// $(".step-2").removeClass("d-none");
+			// $(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))))+"px");
+			// app.mapbox.map.on("load",function(){app.mapbox.createMarkers(false,true,false,false)});
 		});
 
 		$(".currStep").css("width",$(".main-navbar .col-sm div").css("width"));
@@ -495,7 +524,30 @@ var app = {
 		});
 
 		return sortedArray;
-	}
+	},
+    animateNav:function(step){
+        if(step < 0){
+            step = 0;
+        }
+
+        // Animation for the navbar.
+        var currStep = $(".currStep");
+
+        var transition = setInterval(function(){
+            var currStepLeft = parseInt($(currStep).css("left"));
+            var adjWidth = parseInt($(".main-navbar .col-sm div").css("width"));
+
+            var desiredLeft = app.navInitLeft + (adjWidth * (step-1));
+
+            if(currStepLeft < desiredLeft){
+                $(currStep).css("left",currStepLeft+2+"px");
+            }
+            else{
+                $(currStep).css("left",desiredLeft);
+                clearInterval(transition);
+            }
+        }, 1)
+    }
 };
 
 $(document).ready(function(){
