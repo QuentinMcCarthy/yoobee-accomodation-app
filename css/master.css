@@ -1,10 +1,11 @@
-/* Bootstrap CSS */
-.container {
-  background-color: #ffa500; }
-
-/* Custom CSS */
 body {
   background-color: black; }
+
+#map {
+  z-index: 1; }
+
+.container {
+  background-color: #ffa500; }
 
 .main-navbar {
   /* Cancel .container padding */
@@ -31,7 +32,6 @@ body {
   .results-info li {
     margin-left: 7rem; }
 
-/* JavaScript CSS */
 .space-range-slider {
   width: 72%; }
 
@@ -72,10 +72,6 @@ body {
   left: -152px;
   font-weight: 500;
   content: "Cost:"; }
-
-/* Mapbox */
-#map {
-  z-index: 1; }
 
 .marker {
   border: none;

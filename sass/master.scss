@@ -19,21 +19,63 @@ $mainContentHeight:55vh;
 	font-weight:500;
 }
 
+// Selectors
+// - Bootstrap
 
-/* Bootstrap CSS */
+
+
+
+// - Custom
+
+body {
+    background-color:black;
+}
+
+
+// - JavaScript
+
+
+
+
+// - Mapbox
+
+
+
+
+// IDs
+// - Bootstrap
 
 #accomodationMenu {}
 
+
+// - Custom
+
+
+
+
+// - JavaScript
+
+#listings {}
+
+#locationInfo {}
+
+
+// - Mapbox
+
+#map {
+    z-index:1;
+}
+
+
+// Classes
+// - Bootstrap
+
 .container {
-	background-color:$primaryColor;
+    background-color:$primaryColor;
 }
 
 
-/* Custom CSS */
-
-body {
-	background-color:black;
-}
+// - Custom
 
 .main-navbar {
 	/* Cancel .container padding */
@@ -42,7 +84,7 @@ body {
 	min-height:$navbarMinHeight;
 
 	.row {
-		min-height:$navbarMinHeight
+		min-height:$navbarMinHeight;
 	}
 }
 
@@ -72,7 +114,7 @@ body {
 }
 
 
-/* JavaScript CSS */
+// - JavaScript
 
 .step-1 {}
 
@@ -133,11 +175,8 @@ body {
 .final-confirm {}
 
 
-/* Mapbox */
+// - Mapbox
 
-#map {
-	z-index:1;
-}
 .marker {
 	border:none;
 	cursor:pointer;
@@ -146,13 +185,13 @@ body {
 	background-image:url("../img/marker_accomodation.svg");
 	background-color:rgba(0,0,0,0);
 }
+
 .mapboxgl-popup {
 	padding-bottom:50px;
 }
 
-#listings {}
-#locationInfo {}
 
+// Media queries
 
 @media (min-width:576px){}
 
