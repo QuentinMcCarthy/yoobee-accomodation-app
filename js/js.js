@@ -25,6 +25,10 @@ var app = {
 				},
 				trackUserLocation:true
 			}));
+
+            $(window).resize(function(){
+                map.resize();
+            })
 		},
         mapSubmit:function(e){
             app.formResults.desiredLocation = app.locationData.features[$(this).attr("data-submit")];
@@ -163,8 +167,6 @@ var app = {
                                 .appendTo("#locationInfo div.col-9");
 
                             break
-                        default:
-
                     };
 				});
 			});
@@ -246,8 +248,6 @@ var app = {
 									.appendTo("#locationInfo div.col-9");
 
 								break
-							default:
-
 						};
 					})
 					// .append($("<div>").html(prop.city+" &middot; "+prop.phoneFormatted))
@@ -452,6 +452,8 @@ var app = {
 					// Switch the steps. Bootstrap display class used.
 					$(".step-1").addClass("d-none");
 					$(".step-2").removeClass("d-none");
+
+                    app.mapbox.map.resize();
 
                     app.navInitLeft = parseInt($(".currStep").css("left"));
 
