@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"/>
     <!-- mapbox-->
     <link href="https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css" rel="stylesheet"/>
+    <!-- Date Range Picker-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
     <!-- Custom CSS-->
     <link rel="stylesheet" href="css/master.css"/>
   </head>
@@ -43,17 +45,13 @@
               <div class="d-flex w-100 h-100 justify-content-center align-items-center">
                 <form class="w-75">
                   <div class="form-group">
-                    <label class="d-block h4" for="spaceNeededRangeSlider">How many people:</label>
-                    <input class="form-control w-25 d-inline-block spaceNeededRangeInput" type="number" name="spaceNeededRangeInput" value="1"/>
-                    <input class="form-control-range d-inline-block spaceNeededRangeSlider" type="range" name="spaceNeededRangeSlider" value="1"/>
+                    <label class="d-block h4 spaceNeededRangeLabel">How many people:</label>
+                    <input class="form-control w-25 d-inline-block spaceNeededRangeInput" type="number" value="1"/>
+                    <input class="form-control-range d-inline-block spaceNeededRangeSlider" type="range" value="1"/>
                   </div>
                   <div class="form-group">
-                    <label class="h4" for="stayingFrom">Staying from:</label>
-                    <input class="form-control stayingFrom" type="date" name="stayingFrom" value="0001-01-01"/>
-                  </div>
-                  <div class="form-group">
-                    <label class="h4" for="stayingTill">Staying till:</label>
-                    <input class="form-control stayingTill" type="date" name="stayingTill" value=""/>
+                    <label class="h4">Length of stay:</label>
+                    <input class="form-control stayingRange"/>
                   </div>
                   <button class="btn btn-primary float-right detailSubmit" type="submit">Continue</button>
                 </form>
@@ -130,6 +128,10 @@
     <!-- mapbox-->
     <script src="https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js"></script>
+    <!-- Date Range Picker-->
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <!-- Custom JS-->
     <script src="js/js.js"></script>
   </body>

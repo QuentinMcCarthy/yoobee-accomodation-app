@@ -323,37 +323,41 @@ var app = {
 
 			// As a default; the initial date is the current date
 			var currDate = new Date();
-			var year = currDate.getFullYear();
-			var month = currDate.getMonth() + 1;
-			var day = currDate.getDate();
 
-			if(month < 10){
-				month = "0"+month;
-			}
-
-			if(day < 10){
-				day = "0"+day;
-			}
-
-			$(".stayingFrom").val(year+"-"+month+"-"+day);
+            $(".stayingRange").daterangepicker({
+                drops:"up",
+                opens:"center",
+                startDate:currDate,
+                maxSpan:{
+                    days:maxPossibleStay
+                }
+            }, function(start, end, label){
+                app.formResults.stayingFrom = start.format("YYYY-MM-DD");
+                app.formResults.stayingTill = end.format("YYYY-MM-DD");
+            });
 
 			$(".detailSubmit").click(function(e){
 				// Prevent page reload
 				e.preventDefault();
 
+                $(".flagForDel").remove();
+                $(".spaceNeededRangeInput").parent().css("border","0px");
+                $(".stayingRange").parent().css("border","0px");
+
 				var spaceNeeded = parseInt($(".spaceNeededRangeInput").val());
-				var stayingFrom = $(".stayingFrom").val();
-				var stayingTill = $(".stayingTill").val();
 
 				if((spaceNeeded >= minPossibleSpace) && (spaceNeeded <= maxPossibleSpace)){
 					app.formResults.desiredSpace = spaceNeeded;
 				}
 				else{
 					$(".spaceNeededRangeInput").parent().css("border","2px solid red");
-					$("label[for='spaceNeededRangeSlider']").append(
-						$("<span>").text("Must be between "+minPossibleSpace+" and "+maxPossibleSpace).css("color","darkred")
+					$(".spaceNeededRangeInput").parent().append(
+						$("<span class='flagForDel'>").text("Must be between "+minPossibleSpace+" and "+maxPossibleSpace).css("color","darkred")
 					);
 				}
+
+                var stayingFrom = app.formResults.stayingFrom;
+                var stayingTill = app.formResults.stayingTill;
 
 				// If the values are defined
 				if((stayingFrom) && (stayingTill)){
@@ -363,23 +367,17 @@ var app = {
 
 					var days = (tillDays - fromDays);
 
-					if((days >= minPossibleStay) && (days <= maxPossibleStay)){
+                    if((days >= minPossibleStay) && (days <= maxPossibleStay)){
 						app.formResults.desiredDays = days;
 					}
 					else{
-						$(".stayingFrom").parent().css("border","2px solid red");
-						$(".stayingTill").parent().css("border","2px solid red").append(
-							$("<span>").text("Days must be between "+minPossibleStay+" and "+maxPossibleStay).css("color","darkred")
-						);
+                        $(".stayingRange").parent().css("border","2px solid red").append(
+                            $("<span class='flagForDel'>").text("Days must be between "+minPossibleStay+" and "+maxPossibleStay).css("color","darkred")
+                        );
 					}
 				}
 				else{
-					if(!(stayingFrom)){
-						$(".stayingFrom").parent().css("border","2px solid red");
-					}
-					if(!(stayingTill)){
-						$(".stayingTill").parent().css("border","2px solid red");
-					}
+                    $(".stayingRange").parent().css("border","2px solid red");
 				}
 
 				var desiredSpace = app.formResults.desiredSpace;
