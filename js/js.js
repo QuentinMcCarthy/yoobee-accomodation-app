@@ -33,24 +33,24 @@ var app = {
         mapSubmit:function(e){
             app.formResults.desiredLocation = app.locationData.features[$(this).attr("data-submit")];
 
-            $(".desiredLocation").text(app.formResults.desiredLocation.properties.name);
-            $(".desiredAddress").text(app.formResults.desiredLocation.properties.address);
-            $(".desiredPhoneNum").text(app.formResults.desiredLocation.properties.phoneFormatted);
+            $(".desired-location").text(app.formResults.desiredLocation.properties.name);
+            $(".desired-address").text(app.formResults.desiredLocation.properties.address);
+            $(".desired-phone-num").text(app.formResults.desiredLocation.properties.phoneFormatted);
 
-            $(".desiredSpace").text(app.formResults.desiredSpace);
-            $(".desiredDays").text(app.formResults.desiredDays);
+            $(".desired-space").text(app.formResults.desiredSpace);
+            $(".desired-days").text(app.formResults.desiredDays);
 
             if(app.formResults.desiredLocation.properties.type == "hotel"){
-                $(".desiredCost").text("$"+app.dataConfig.types[0].properties.costNightly+" / Night")
+                $(".desired-cost").text("$"+app.dataConfig.types[0].properties.costNightly+" / Night")
             }
             if(app.formResults.desiredLocation.properties.type == "hostel"){
-                $(".desiredCost").text("$"+app.dataConfig.types[1].properties.costNightly+" / Night")
+                $(".desired-cost").text("$"+app.dataConfig.types[1].properties.costNightly+" / Night")
             }
             if(app.formResults.desiredLocation.properties.type == "motel"){
-                $(".desiredCost").text("$"+app.dataConfig.types[2].properties.costNightly+" / Night")
+                $(".desired-cost").text("$"+app.dataConfig.types[2].properties.costNightly+" / Night")
             }
             if(app.formResults.desiredLocation.properties.type == "house"){
-                $(".desiredCost").text("$"+app.dataConfig.types[3].properties.costNightly+" / Night")
+                $(".desired-cost").text("$"+app.dataConfig.types[3].properties.costNightly+" / Night")
             }
 
             // Switch the steps. Bootstrap display class used.
@@ -308,23 +308,23 @@ var app = {
 			}
 
 			// Set the form's min and max values for validation
-			$(".spaceNeededRangeSlider").attr("min",minPossibleSpace);
-			$(".spaceNeededRangeSlider").attr("max",maxPossibleSpace);
-			$(".spaceNeededRangeInput").attr("min",minPossibleSpace);
-			$(".spaceNeededRangeInput").attr("max",maxPossibleSpace);
+			$(".space-range-slider").attr("min",minPossibleSpace);
+			$(".space-range-slider").attr("max",maxPossibleSpace);
+			$(".space-range-input").attr("min",minPossibleSpace);
+			$(".space-range-input").attr("max",maxPossibleSpace);
 
 			// The slider and the input should always have the same value
-			$(".spaceNeededRangeSlider").on("input",function(){
-				$(".spaceNeededRangeInput").val($(this).val());
+			$(".space-range-slider").on("input",function(){
+				$(".space-range-input").val($(this).val());
 			});
-			$(".spaceNeededRangeInput").on("input",function(){
-				$(".spaceNeededRangeSlider").val($(this).val());
+			$(".space-range-input").on("input",function(){
+				$(".space-range-slider").val($(this).val());
 			});
 
 			// As a default; the initial date is the current date
 			var currDate = new Date();
 
-            $(".stayingRange").daterangepicker({
+            $(".staying-range").daterangepicker({
                 drops:"up",
                 opens:"center",
                 startDate:currDate,
@@ -336,22 +336,22 @@ var app = {
                 app.formResults.stayingTill = end.format("YYYY-MM-DD");
             });
 
-			$(".detailSubmit").click(function(e){
+			$(".detail-submit").click(function(e){
 				// Prevent page reload
 				e.preventDefault();
 
                 $(".flagForDel").remove();
-                $(".spaceNeededRangeInput").parent().css("border","0px");
-                $(".stayingRange").parent().css("border","0px");
+                $(".space-range-input").parent().css("border","0px");
+                $(".staying-range").parent().css("border","0px");
 
-				var spaceNeeded = parseInt($(".spaceNeededRangeInput").val());
+				var spaceNeeded = parseInt($(".space-range-input").val());
 
 				if((spaceNeeded >= minPossibleSpace) && (spaceNeeded <= maxPossibleSpace)){
 					app.formResults.desiredSpace = spaceNeeded;
 				}
 				else{
-					$(".spaceNeededRangeInput").parent().css("border","2px solid red");
-					$(".spaceNeededRangeInput").parent().append(
+					$(".space-range-input").parent().css("border","2px solid red");
+					$(".space-range-input").parent().append(
 						$("<span class='flagForDel'>").text("Must be between "+minPossibleSpace+" and "+maxPossibleSpace).css("color","darkred")
 					);
 				}
@@ -371,13 +371,13 @@ var app = {
 						app.formResults.desiredDays = days;
 					}
 					else{
-                        $(".stayingRange").parent().css("border","2px solid red").append(
+                        $(".staying-range").parent().css("border","2px solid red").append(
                             $("<span class='flagForDel'>").text("Days must be between "+minPossibleStay+" and "+maxPossibleStay).css("color","darkred")
                         );
 					}
 				}
 				else{
-                    $(".stayingRange").parent().css("border","2px solid red");
+                    $(".staying-range").parent().css("border","2px solid red");
 				}
 
 				var desiredSpace = app.formResults.desiredSpace;
@@ -439,7 +439,7 @@ var app = {
 
     				app.mapbox.createMarkers(hotels,hostels,motels,houses)
 
-					$(".desiredSpaceVal").text(desiredSpace);
+					$(".desired-space-val").text(desiredSpace);
 
 					var daysText = "days"
 
@@ -447,7 +447,7 @@ var app = {
 						daysText = "day"
 					}
 
-					$(".desiredDaysVal").text(desiredDays+"	"+daysText);
+					$(".desired-days-val").text(desiredDays+"	"+daysText);
 
 					// Switch the steps. Bootstrap display class used.
 					$(".step-1").addClass("d-none");
@@ -455,7 +455,7 @@ var app = {
 
                     app.mapbox.map.resize();
 
-                    app.navInitLeft = parseInt($(".currStep").css("left"));
+                    app.navInitLeft = parseInt($(".curr-step").css("left"));
 
                     app.animateNav(2)
 				}
@@ -481,18 +481,18 @@ var app = {
 			// app.formResults.desiredSpace = 5;
 			// app.formResults.desiredDays = 5;
 			// app.formResults.desiredLocation = app.locationData.features[2];
-			// $(".desiredSpaceVal").text(app.formResults.desiredSpace);
-			// $(".desiredDaysVal").text(app.formResults.desiredDays);
+			// $(".desired-space-val").text(app.formResults.desiredSpace);
+			// $(".desired-days-val").text(app.formResults.desiredDays);
 			// $(".step-1").addClass("d-none");
 			// $(".step-2").removeClass("d-none");
-			// $(".currStep").css("left",((parseInt($(".currStep").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))))+"px");
+			// $(".curr-step").css("left",((parseInt($(".curr-step").css("left")))+(parseInt($(".main-navbar .col-sm div").css("width"))))+"px");
 			// app.mapbox.map.on("load",function(){app.mapbox.createMarkers(false,true,false,false)});
 		});
 
-		$(".currStep").css("width",$(".main-navbar .col-sm div").css("width"));
-		$(".currStep").css("height",$(".main-navbar .col-sm div").css("height"));
+		$(".curr-step").css("width",$(".main-navbar .col-sm div").css("width"));
+		$(".curr-step").css("height",$(".main-navbar .col-sm div").css("height"));
 
-		$(".finalConfirm").on("click",function(){
+		$(".final-confirm").on("click",function(){
 			// location.reload() is the easiest way to reset the page; as other methods would require resetting
 			// the mapbox map and the process for doing so is complicated
 			location.reload();
@@ -531,7 +531,7 @@ var app = {
         }
 
         // Animation for the navbar.
-        var currStep = $(".currStep");
+        var currStep = $(".curr-step");
 
         var transition = setInterval(function(){
             var currStepLeft = parseInt($(currStep).css("left"));

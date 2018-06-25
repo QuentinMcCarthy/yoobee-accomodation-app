@@ -22,6 +22,8 @@ $mainContentHeight:55vh;
 
 /* Bootstrap CSS */
 
+#accomodationMenu {}
+
 .container {
 	background-color:$primaryColor;
 }
@@ -53,7 +55,7 @@ body {
 	width:90%;
 }
 
-.locationInfo {
+.location-info {
 	list-style:none;
 
 	li {
@@ -61,7 +63,7 @@ body {
 	}
 }
 
-.resultsInfo {
+.results-info {
 	list-style:none;
 
 	li {
@@ -78,52 +80,57 @@ body {
 
 .step-3 {}
 
-.spaceNeededRangeLabel {}
-.spaceNeededRangeInput {}
-.spaceNeededRangeSlider {
+.space-range-input {}
+.space-range-slider {
 	width:72%;
 }
 
-.stayingFrom {}
+.staying-range {}
 
-.stayingTill {}
+.detail-submit {}
 
-.detailSubmit {}
-
-.currStep {
+.curr-step {
 	background-color:darken($primaryColor,2.5);
 }
 
-.formResults {
+.form-results {
 	top:5px;
 	left:5px;
 	width:105%;
 }
 
-.desiredAddress::before {
+.desired-space-val {}
+
+.desired-days-val {}
+
+.desired-location {}
+
+.desired-address::before {
 	@include desiredContent(-80px);
 	content:"Address:";
 }
 
-.desiredPhoneNum::before {
+.desired-phone-num::before {
 	@include desiredContent(-80px);
 	content:"Ph#:";
 }
 
-.desiredSpace::before {
+.desired-space::before {
 	@include desiredContent(-152px);
 	content:"How many people:";
 }
 
-.desiredDays::before {
+.desired-days::before {
 	@include desiredContent(-152px);
 	content:"Length of stay:"
 }
 
-.desiredCost::before {
+.desired-cost::before {
 	@include desiredContent(-152px);
 	content:"Cost:";
 }
+
+.final-confirm {}
 
 
 /* Mapbox */

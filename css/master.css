@@ -21,53 +21,53 @@ body {
 .content-container {
   width: 90%; }
 
-.locationInfo {
+.location-info {
   list-style: none; }
-  .locationInfo li {
+  .location-info li {
     margin-left: 2.5rem; }
 
-.resultsInfo {
+.results-info {
   list-style: none; }
-  .resultsInfo li {
+  .results-info li {
     margin-left: 7rem; }
 
 /* JavaScript CSS */
-.spaceNeededRangeSlider {
+.space-range-slider {
   width: 72%; }
 
-.currStep {
+.curr-step {
   background-color: #f29d00; }
 
-.formResults {
+.form-results {
   top: 5px;
   left: 5px;
   width: 105%; }
 
-.desiredAddress::before {
+.desired-address::before {
   position: absolute;
   left: -80px;
   font-weight: 500;
   content: "Address:"; }
 
-.desiredPhoneNum::before {
+.desired-phone-num::before {
   position: absolute;
   left: -80px;
   font-weight: 500;
   content: "Ph#:"; }
 
-.desiredSpace::before {
+.desired-space::before {
   position: absolute;
   left: -152px;
   font-weight: 500;
   content: "How many people:"; }
 
-.desiredDays::before {
+.desired-days::before {
   position: absolute;
   left: -152px;
   font-weight: 500;
   content: "Length of stay:"; }
 
-.desiredCost::before {
+.desired-cost::before {
   position: absolute;
   left: -152px;
   font-weight: 500;
