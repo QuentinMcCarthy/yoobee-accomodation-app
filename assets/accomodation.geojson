@@ -1,425 +1,425 @@
 {
-	"type":"FeatureCollection",
-    "features":[
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.779937,
-                    -41.280329
-                ]
-            },
-            "properties":{
-				"name":"Hotel Waterloo & Backpackers",
-                "phoneFormatted":"(04) 473-8482",
-                "phone":"044738482",
-                "address":"1 Bunny St, Pipitea",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"hotel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.778785,
-                    -41.280794
-                ]
-            },
-            "properties":{
-				"name":"Rydges",
-                "phoneFormatted":"(04) 499-8686",
-                "phone":"044998686",
-                "address":"75 Featherson St, Pipitea",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"hotel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.781430,
-                    -41.276015
-                ]
-            },
-            "properties":{
-				"name":"Quest On Thorndon",
-                "phoneFormatted":"(04) 333-0007",
-                "phone":"043330007",
-                "address":"61-63 Thorndon Quay, Pipitea",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"hotel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.769954,
-                    -41.278295
-                ]
-            },
-            "properties":{
-				"name":"The Shepherds Arms Hotel",
-                "phoneFormatted":"(04) 472-1320",
-                "phone":"044721320",
-                "address":"285 Tinakori Rd, Thorndon",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"hotel"
-            }
-        },
-        {
-			"type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.774993,
-                    -41.282322
-                ]
-            },
-            "properties":{
-				"name":"Park Hotel",
-                "phoneFormatted":"(04) 260-5000",
-                "phone":"042605000",
-                "address":"101 The Terrace",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"hotel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.777009,
-                    -41.289646
-                ]
-            },
-            "properties":{
-				"name":"Nomads Capital Hostel Wellington",
-                "phoneFormatted":"(04) 978-7800",
-                "phone":"049787800",
-                "address":"118/120 Wakefield St, Te Aro",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"hostel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.783089,
-                    -41.294607
-                ]
-            },
-            "properties":{
-				"name":"Base Backpackers Wellington",
-                "phoneFormatted":"(04) 801-5666",
-                "phone":"048015666",
-                "address":"21/23 Cambridge Terrace, Mount Victoria",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"hostel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.783913,
-                    -41.293101
-                ]
-            },
-            "properties":{
-				"name":"YHA Wellington Backpackers",
-                "phoneFormatted":"(04) 801-7280",
-                "phone":"048017280",
-                "address":"292 Wakefield St, Te Aro",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"hostel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.773577,
-                    -41.288959
-                ]
-            },
-            "properties":{
-				"name":"Trek Global Backpackers",
-                "phoneFormatted":"(04) 471-3480",
-                "phone":"044713480",
-                "address":"9 O'Reily Ave, Te Aro",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"hostel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.780528,
-                    -41.294188
-                ]
-            },
-            "properties":{
-				"name":"Wild Zebra Backpackers",
-                "phoneFormatted":"(04) 381-3899",
-                "phone":"043813899",
-                "address":"58 Tory St, Te Aro",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"hostel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.771609,
-                    -41.297501
-                ]
-            },
-            "properties":{
-				"name":"Capital View Motor Inn Motel",
-                "phoneFormatted":"(04) 385-0515",
-                "phone":"043850515",
-                "address":"12 Thompson St, Mount Cook",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"motel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.778397,
-                    -41.300296
-                ]
-            },
-            "properties":{
-				"name":"Marksman Motor Inn",
-                "phoneFormatted":"(04) 385-2499",
-                "phone":"043852499",
-                "address":"40/44 Sussex St, Mount Cook",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"motel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.786512,
-                    -41.294693
-                ]
-            },
-            "properties":{
-				"name":"Apollo Lodge Motel",
-                "phoneFormatted":"(04) 385-1819",
-                "phone":"043851819",
-                "address":"49 Majoribanks St, Mount Victoria",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"motel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.773604,
-                    -41.293609
-                ]
-            },
-            "properties":{
-				"name":"Victoria Court Motor Lodge",
-                "phoneFormatted":"(04) 385-7102",
-                "phone":"043857102",
-                "address":"201 Victoria St, Te Aro",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"motel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.774863,
-                    -41.304848
-                ]
-            },
-            "properties":{
-				"name":"88 Wallace Court Motel",
-                "phoneFormatted":"(04) 385-3935",
-                "phone":"043853935",
-                "address":"88 Wallace St, Mount Cook",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"motel"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.771133,
-                    -41.290130
-                ]
-            },
-            "properties":{
-				"name":"Victoria House",
-                "phoneFormatted":"(04) 463-9040",
-                "phone":"044639040",
-                "address":"282 The Terrace, Te Aro",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"house"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.778649,
-                    -41.307169
-                ]
-            },
-            "properties":{
-				"name":"Margaret Stewart House",
-                "phoneFormatted":"(04) 380-0300",
-                "phone":"043800300",
-                "address":"16 Hospital Rd, Newtown",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"house"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.770159,
-                    -41.284565
-                ]
-            },
-            "properties":{
-				"name":"Weir House",
-                "phoneFormatted":"(04) 472-1000",
-                "phone":"044721000",
-                "address":"1 Gladstone Terrace, Kelburn",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"house"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.771594,
-                    -41.312316
-                ]
-            },
-            "properties":{
-				"name":"Finnimore House",
-                "phoneFormatted":"(04) 389-9894",
-                "phone":"043899894",
-                "address":"2 Dransfield St, Vogeltown",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"house"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates":[
-                    174.796500,
-                    -41.294017
-                ]
-            },
-            "properties":{
-				"name":"Roseneath House",
-                "phoneFormatted":"(04) 384-5501",
-                "phone":"043845501",
-                "address":"58 Palliser Rd, Roseneath",
-                "city":"Wellington",
-                "country":"New Zealand",
-                "crossStreet":"undefined",
-                "postalCode":"6011",
-				"type":"house"
-            }
-        }
-	]
+  "type":"FeatureCollection",
+  "features":[
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.779937,
+          -41.280329
+        ]
+      },
+      "properties":{
+        "name":"Hotel Waterloo & Backpackers",
+        "phoneFormatted":"(04) 473-8482",
+        "phone":"044738482",
+        "address":"1 Bunny St, Pipitea",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"hotel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.778785,
+          -41.280794
+        ]
+      },
+      "properties":{
+        "name":"Rydges",
+        "phoneFormatted":"(04) 499-8686",
+        "phone":"044998686",
+        "address":"75 Featherson St, Pipitea",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"hotel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.781430,
+          -41.276015
+        ]
+      },
+      "properties":{
+        "name":"Quest On Thorndon",
+        "phoneFormatted":"(04) 333-0007",
+        "phone":"043330007",
+        "address":"61-63 Thorndon Quay, Pipitea",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"hotel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.769954,
+          -41.278295
+        ]
+      },
+      "properties":{
+        "name":"The Shepherds Arms Hotel",
+        "phoneFormatted":"(04) 472-1320",
+        "phone":"044721320",
+        "address":"285 Tinakori Rd, Thorndon",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"hotel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.774993,
+          -41.282322
+        ]
+      },
+      "properties":{
+        "name":"Park Hotel",
+        "phoneFormatted":"(04) 260-5000",
+        "phone":"042605000",
+        "address":"101 The Terrace",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"hotel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.777009,
+          -41.289646
+        ]
+      },
+      "properties":{
+        "name":"Nomads Capital Hostel Wellington",
+        "phoneFormatted":"(04) 978-7800",
+        "phone":"049787800",
+        "address":"118/120 Wakefield St, Te Aro",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"hostel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.783089,
+          -41.294607
+        ]
+      },
+      "properties":{
+        "name":"Base Backpackers Wellington",
+        "phoneFormatted":"(04) 801-5666",
+        "phone":"048015666",
+        "address":"21/23 Cambridge Terrace, Mount Victoria",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"hostel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.783913,
+          -41.293101
+        ]
+      },
+      "properties":{
+        "name":"YHA Wellington Backpackers",
+        "phoneFormatted":"(04) 801-7280",
+        "phone":"048017280",
+        "address":"292 Wakefield St, Te Aro",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"hostel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.773577,
+          -41.288959
+        ]
+      },
+      "properties":{
+        "name":"Trek Global Backpackers",
+        "phoneFormatted":"(04) 471-3480",
+        "phone":"044713480",
+        "address":"9 O'Reily Ave, Te Aro",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"hostel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.780528,
+          -41.294188
+        ]
+      },
+      "properties":{
+        "name":"Wild Zebra Backpackers",
+        "phoneFormatted":"(04) 381-3899",
+        "phone":"043813899",
+        "address":"58 Tory St, Te Aro",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"hostel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.771609,
+          -41.297501
+        ]
+      },
+      "properties":{
+        "name":"Capital View Motor Inn Motel",
+        "phoneFormatted":"(04) 385-0515",
+        "phone":"043850515",
+        "address":"12 Thompson St, Mount Cook",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"motel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.778397,
+          -41.300296
+        ]
+      },
+      "properties":{
+        "name":"Marksman Motor Inn",
+        "phoneFormatted":"(04) 385-2499",
+        "phone":"043852499",
+        "address":"40/44 Sussex St, Mount Cook",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"motel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.786512,
+          -41.294693
+        ]
+      },
+      "properties":{
+        "name":"Apollo Lodge Motel",
+        "phoneFormatted":"(04) 385-1819",
+        "phone":"043851819",
+        "address":"49 Majoribanks St, Mount Victoria",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"motel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.773604,
+          -41.293609
+        ]
+      },
+      "properties":{
+        "name":"Victoria Court Motor Lodge",
+        "phoneFormatted":"(04) 385-7102",
+        "phone":"043857102",
+        "address":"201 Victoria St, Te Aro",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"motel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.774863,
+          -41.304848
+        ]
+      },
+      "properties":{
+        "name":"88 Wallace Court Motel",
+        "phoneFormatted":"(04) 385-3935",
+        "phone":"043853935",
+        "address":"88 Wallace St, Mount Cook",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"motel"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.771133,
+          -41.290130
+        ]
+      },
+      "properties":{
+        "name":"Victoria House",
+        "phoneFormatted":"(04) 463-9040",
+        "phone":"044639040",
+        "address":"282 The Terrace, Te Aro",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"house"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.778649,
+          -41.307169
+        ]
+      },
+      "properties":{
+        "name":"Margaret Stewart House",
+        "phoneFormatted":"(04) 380-0300",
+        "phone":"043800300",
+        "address":"16 Hospital Rd, Newtown",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"house"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.770159,
+          -41.284565
+        ]
+      },
+      "properties":{
+        "name":"Weir House",
+        "phoneFormatted":"(04) 472-1000",
+        "phone":"044721000",
+        "address":"1 Gladstone Terrace, Kelburn",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"house"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.771594,
+          -41.312316
+        ]
+      },
+      "properties":{
+        "name":"Finnimore House",
+        "phoneFormatted":"(04) 389-9894",
+        "phone":"043899894",
+        "address":"2 Dransfield St, Vogeltown",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"house"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+          174.796500,
+          -41.294017
+        ]
+      },
+      "properties":{
+        "name":"Roseneath House",
+        "phoneFormatted":"(04) 384-5501",
+        "phone":"043845501",
+        "address":"58 Palliser Rd, Roseneath",
+        "city":"Wellington",
+        "country":"New Zealand",
+        "crossStreet":"undefined",
+        "postalCode":"6011",
+        "type":"house"
+      }
+    }
+  ]
 }

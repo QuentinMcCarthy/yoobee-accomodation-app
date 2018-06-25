@@ -1,34 +1,36 @@
 div(class="main-content py-3 step-2")
-	div(class="container h-100 border border-dark content-container")
-		div(class="row h-100")
-			div(class="col-2")
-				div(class="d-flex w-100 h-100 justify-content-center align-items-center")
-					i(class="fas fa-chevron-left fa-5x")
-						
-				div(class="position-absolute h-25 form-results")
-					div
-						h6
-							| How many people:
-						span(class="desired-space-val")
-							| 0
-						
-					div(class="mt-2")
-						h6
-							| Length of Stay:
-						span(class="desired-days-val")
-							| 0
-
-			div(class="col")
-				div(id="map", class="w-100 h-75")
-
-				div(class="dropdown")
-					button(class="btn btn-secondary dropdown-toggle w-100 rounded-0", type="button", id="accomodationMenu", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-						| Accomodation
-
-					div(class="dropdown-menu", id="listings", aria-labelledby="accomodationMenu")
-						
-				div(id="locationInfo", class="row no-gutters w-100")
-
-			div(class="col-2")
-				div(class="d-flex w-100 h-100 justify-content-center align-items-center")
-					i(class="fas fa-chevron-right fa-5x")
+  div(class="container h-100 border border-dark content-container")
+    div(class="row h-100")
+      div(class="col-2")
+        div(class="d-flex w-100 h-100 justify-content-center align-items-center")
+          i(class="fas fa-chevron-left fa-5x")
+            
+        div(class="position-absolute h-25 form-results")
+          div
+            h6
+              | How many people:
+              
+            span(class="desired-space-val")
+              | 0
+              
+          div(class="mt-2")
+            h6
+              | Length of Stay:
+              
+            span(class="desired-days-val")
+              | 0
+              
+      div(class="col")
+        div(id="map", class="w-100 h-75")
+          
+        div(class="dropdown")
+          button(class="btn btn-secondary dropdown-toggle w-100 rounded-0", type="button", id="accomodationMenu", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+            | Accomodation
+            
+          div(class="dropdown-menu", id="listings", aria-labelledby="accomodationMenu")
+            
+        div(id="locationInfo", class="row no-gutters w-100")
+          
+      div(class="col-2")
+        div(class="d-flex w-100 h-100 justify-content-center align-items-center")
+          i(class="fas fa-chevron-right fa-5x")
