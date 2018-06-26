@@ -13,6 +13,7 @@ $mainContentHeight: 55vh;
 
 // Mixins
 
+// Mixin for repeated styles in ::before of desired content
 @mixin desiredContent($left){
   position: absolute;
   left: $left;
@@ -60,7 +61,7 @@ body { background-color: black; }
 
 // - Mapbox
 
-#map { z-index: 1; }
+#map {}
 
 
 // Classes
@@ -73,6 +74,7 @@ body { background-color: black; }
 
 .main-navbar {
   min-height: $navbarMinHeight;
+  /* Overriding bootstrap container margins */
   margin-left: -15px;
   margin-right: -15px;
 }
@@ -85,6 +87,7 @@ body { background-color: black; }
 
 .content-container { width: 90%; }
 
+/* Left margins altered in these lists to account for ::before content in list items */
 .location-info { list-style: none; }
 .location-info > li { margin-left: 2.5rem; }
 
@@ -121,6 +124,7 @@ body { background-color: black; }
 
 .desired-location {}
 
+/* Using ::before to name list items, avoids having to position elements in HTML */
 .desired-address::before {
   @include desiredContent(-80px);
   content: "Address:";
@@ -162,6 +166,7 @@ body { background-color: black; }
 
 .mapboxgl-popup { padding-bottom: 50px; }
 
+/* Weird percentage to account for slight difference in width, unknown reason for difference */
 .mapboxgl-map { width: 99.95%; }
 
 
