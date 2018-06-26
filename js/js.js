@@ -63,7 +63,8 @@ var app = {
       app.animateNav(3);
     },
     writeLocationData:function(prop, index){
-      $(".location-info div.col-9 h4").text(prop.name);
+      $(".location-info div.col-9 h4").remove();
+      $(".location-info div.col-9").prepend($("<h4>").text(prop.name));
       $(".location-info div.col-9 span").html("<strong>Ph#:</strong> "+prop.phoneFormatted);
 
       switch(prop.type){
