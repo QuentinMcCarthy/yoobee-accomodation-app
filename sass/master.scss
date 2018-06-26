@@ -14,11 +14,8 @@ $mainContentHeight: 55vh;
 // Mixins
 
 @mixin desiredContent($left){
-  // Positioning
   position: absolute;
   left: $left;
-
-  // Typography
   font-weight: 500;
 }
 
@@ -30,10 +27,7 @@ $mainContentHeight: 55vh;
 
 // - Custom
 
-body {
-  // Visual
-  background-color: black;
-}
+body { background-color: black; }
 
 
 // - JavaScript
@@ -66,65 +60,42 @@ body {
 
 // - Mapbox
 
-#map {
-  // Positioning
-  z-index: 1;
-}
+#map { z-index: 1; }
 
 
 // Classes
 // - Bootstrap
 
-.container {
-  // Visual
-  background-color: $primaryColor;
-}
+.container { background-color: $primaryColor; }
 
 
 // - Custom
 
 .main-navbar {
-  // Box-model
   min-height: $navbarMinHeight;
-  /* Cancel .container padding */
   margin-left: -15px;
   margin-right: -15px;
 
-  .row {
-    // Box-model
-    min-height: $navbarMinHeight;
-  }
+  .row { min-height: $navbarMinHeight; }
 }
 
 .main-content {
-  // Box-model
   min-height: $mainContentMinHeight;
   height: $mainContentHeight;
 }
 
-.content-container {
-  // Box-model
-  width: 90%;
-}
+.content-container { width: 90%; }
 
 .location-info {
-  // Misc
   list-style: none;
 
-  li {
-    // Box-model
-    margin-left: 2.5rem;
-  }
+  li { margin-left: 2.5rem; }
 }
 
 .results-info {
-  // Misc
   list-style: none;
 
-  li {
-    // Box-model
-    margin-left: 7rem;
-  }
+  li { margin-left: 7rem; }
 }
 
 
@@ -137,26 +108,17 @@ body {
 .step-3 {}
 
 .space-range-input {}
-.space-range-slider {
-  // Box-model
-  width: 72%;
-}
+.space-range-slider { width: 72%; }
 
 .staying-range {}
 
 .detail-submit {}
 
-.curr-step {
-  // Visual
-  background-color: darken($primaryColor,2.5);
-}
+.curr-step { background-color: darken($primaryColor,2.5); }
 
 .form-results {
-  // Positioning
   top: 5px;
   left: 5px;
-
-  // Box-model
   width: 105%;
 }
 
@@ -168,36 +130,26 @@ body {
 
 .desired-address::before {
   @include desiredContent(-80px);
-
-  // Misc
   content: "Address:";
 }
 
 .desired-phone-num::before {
   @include desiredContent(-80px);
-
-  // Misc
   content: "Ph#:";
 }
 
 .desired-space::before {
   @include desiredContent(-152px);
-
-  // Misc
   content: "How many people:";
 }
 
 .desired-days::before {
   @include desiredContent(-152px);
-
-  // Misc
   content: "Length of stay:"
 }
 
 .desired-cost::before {
   @include desiredContent(-152px);
-
-  // Misc
   content: "Cost:";
 }
 
@@ -207,28 +159,17 @@ body {
 // - Mapbox
 
 .marker {
-  // Box-model
   height: 50px;
   width: 34px;
-
-  // Visual
   background-image: url("../img/marker_accomodation.svg");
   background-color: rgba(0,0,0,0);
   border: none;
-
-  // Misc
   cursor: pointer;
 }
 
-.mapboxgl-popup {
-  // Box-model
-  padding-bottom: 50px;
-}
+.mapboxgl-popup { padding-bottom: 50px; }
 
-.mapboxgl-map {
-  // Box-model
-  width: 99.95%;
-}
+.mapboxgl-map { width: 99.95%; }
 
 
 // Media queries
