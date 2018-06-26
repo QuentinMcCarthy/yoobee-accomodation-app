@@ -75,9 +75,8 @@ body { background-color: black; }
   min-height: $navbarMinHeight;
   margin-left: -15px;
   margin-right: -15px;
-
-  .row { min-height: $navbarMinHeight; }
 }
+.main-navbar > .row { min-height: $navbarMinHeight; }
 
 .main-content {
   min-height: $mainContentMinHeight;
@@ -86,17 +85,11 @@ body { background-color: black; }
 
 .content-container { width: 90%; }
 
-.location-info {
-  list-style: none;
+.location-info { list-style: none; }
+.location-info > li { margin-left: 2.5rem; }
 
-  li { margin-left: 2.5rem; }
-}
-
-.results-info {
-  list-style: none;
-
-  li { margin-left: 7rem; }
-}
+.results-info { list-style: none; }
+.results-info > li { margin-left: 7rem; }
 
 
 // - JavaScript

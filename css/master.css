@@ -11,8 +11,9 @@ body {
   min-height: 75px;
   margin-left: -15px;
   margin-right: -15px; }
-  .main-navbar .row {
-    min-height: 75px; }
+
+.main-navbar > .row {
+  min-height: 75px; }
 
 .main-content {
   min-height: 575px;
@@ -23,13 +24,15 @@ body {
 
 .location-info {
   list-style: none; }
-  .location-info li {
-    margin-left: 2.5rem; }
+
+.location-info > li {
+  margin-left: 2.5rem; }
 
 .results-info {
   list-style: none; }
-  .results-info li {
-    margin-left: 7rem; }
+
+.results-info > li {
+  margin-left: 7rem; }
 
 .space-range-slider {
   width: 72%; }
