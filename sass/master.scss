@@ -1,22 +1,22 @@
 // Variables
 
 // Global
-$primaryColor:#ffa500;
+$primaryColor: #ffa500;
 
 // Navbar
-$navbarMinHeight:75px;
+$navbarMinHeight: 75px;
 
 // Main Content
-$mainContentMinHeight:575px;
-$mainContentHeight:55vh;
+$mainContentMinHeight: 575px;
+$mainContentHeight: 55vh;
 
 
 // Mixins
 
 @mixin desiredContent($left){
-  position:absolute;
-  left:$left;
-  font-weight:500;
+  position: absolute;
+  left: $left;
+  font-weight: 500;
 }
 
 // Selectors
@@ -28,7 +28,7 @@ $mainContentHeight:55vh;
 // - Custom
 
 body {
-  background-color:black;
+  background-color: black;
 }
 
 
@@ -63,7 +63,7 @@ body {
 // - Mapbox
 
 #map {
-  z-index:1;
+  z-index: 1;
 }
 
 
@@ -71,7 +71,7 @@ body {
 // - Bootstrap
 
 .container {
-  background-color:$primaryColor;
+  background-color: $primaryColor;
 }
 
 
@@ -79,37 +79,37 @@ body {
 
 .main-navbar {
   /* Cancel .container padding */
-  margin-left:-15px;
-  margin-right:-15px;
-  min-height:$navbarMinHeight;
+  margin-left: -15px;
+  margin-right: -15px;
+  min-height: $navbarMinHeight;
 
   .row {
-    min-height:$navbarMinHeight;
+    min-height: $navbarMinHeight;
   }
 }
 
 .main-content {
-  min-height:$mainContentMinHeight;
-  height:$mainContentHeight;
+  min-height: $mainContentMinHeight;
+  height: $mainContentHeight;
 }
 
 .content-container {
-  width:90%;
+  width: 90%;
 }
 
 .location-info {
-  list-style:none;
+  list-style: none;
 
   li {
-    margin-left:2.5rem;
+    margin-left: 2.5rem;
   }
 }
 
 .results-info {
-  list-style:none;
+  list-style: none;
 
   li {
-    margin-left:7rem;
+    margin-left: 7rem;
   }
 }
 
@@ -124,7 +124,7 @@ body {
 
 .space-range-input {}
 .space-range-slider {
-  width:72%;
+  width: 72%;
 }
 
 .staying-range {}
@@ -132,13 +132,13 @@ body {
 .detail-submit {}
 
 .curr-step {
-  background-color:darken($primaryColor,2.5);
+  background-color: darken($primaryColor,2.5);
 }
 
 .form-results {
-  top:5px;
-  left:5px;
-  width:105%;
+  top: 5px;
+  left: 5px;
+  width: 105%;
 }
 
 .desired-space-val {}
@@ -149,27 +149,27 @@ body {
 
 .desired-address::before {
   @include desiredContent(-80px);
-  content:"Address:";
+  content: "Address:";
 }
 
 .desired-phone-num::before {
   @include desiredContent(-80px);
-  content:"Ph#:";
+  content: "Ph#:";
 }
 
 .desired-space::before {
   @include desiredContent(-152px);
-  content:"How many people:";
+  content: "How many people:";
 }
 
 .desired-days::before {
   @include desiredContent(-152px);
-  content:"Length of stay:"
+  content: "Length of stay:"
 }
 
 .desired-cost::before {
   @include desiredContent(-152px);
-  content:"Cost:";
+  content: "Cost:";
 }
 
 .final-confirm {}
@@ -178,20 +178,20 @@ body {
 // - Mapbox
 
 .marker {
-  border:none;
-  cursor:pointer;
-  height:50px;
-  width:34px;
-  background-image:url("../img/marker_accomodation.svg");
-  background-color:rgba(0,0,0,0);
+  border: none;
+  cursor: pointer;
+  height: 50px;
+  width: 34px;
+  background-image: url("../img/marker_accomodation.svg");
+  background-color: rgba(0,0,0,0);
 }
 
 .mapboxgl-popup {
-  padding-bottom:50px;
+  padding-bottom: 50px;
 }
 
 .mapboxgl-map {
-  width:99.95%;
+  width: 99.95%;
 }
 
 
