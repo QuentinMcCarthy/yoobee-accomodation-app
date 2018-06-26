@@ -62,6 +62,40 @@ var app = {
 
       app.animateNav(3);
     },
+    writeLocationData:function(prop, index){
+      $(".location-info div.col-9 h4").text(prop.name);
+      $(".location-info div.col-9 span").html("<strong>Ph#:</strong> "+prop.phoneFormatted);
+
+      switch(prop.type){
+        case "hotel":
+        $(".location-info div.col-9 div").html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[0].properties.costNightly);
+
+        break;
+        case "hostel":
+        $(".location-info div.col-9 div").html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[1].properties.costNightly);
+
+        break
+        case "motel":
+        $(".location-info div.col-9 div").html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[2].properties.costNightly);
+
+        break
+        case "house":
+        $(".location-info div.col-9 div").html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[3].properties.costNightly);
+
+        break
+      };
+
+      $(".location-info div.d-flex").html("")
+
+      $(".location-info div.d-flex").append(
+        $("<button>")
+        .addClass("btn btn-primary mapSubmit")
+        .attr("data-submit",index)
+        .attr("type","submit")
+        .text("Confirm")
+        .on("click",app.mapbox.mapSubmit)
+      );
+    },
     createMarkers:function(hotels,hostels,motels,houses){
       // Object to imitate geojson data structure
       var locations = {
@@ -123,54 +157,7 @@ var app = {
             }
           }
 
-          var prop = marker.properties;
-
-          $("#locationInfo").html("").append(
-            $("<div>")
-            .addClass("col-9")
-            .append($("<h4>").text(prop.name))
-            .append(
-              $("<span>").html("<strong>Ph#:</strong> "+prop.phoneFormatted)
-            )
-          ).append(
-            $("<div>")
-            .addClass("d-flex col align-items-end justify-content-end")
-            .append(
-              $("<button>")
-              .attr("type","submit")
-              .attr("data-submit",thisIndex)
-              .addClass("btn btn-primary mapSubmit")
-              .text("Confirm")
-              .on("click",app.mapbox.mapSubmit)
-            )
-          );
-
-          switch(prop.type){
-            case "hotel":
-            $("<div>")
-            .html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[0].properties.costNightly)
-            .appendTo("#locationInfo div.col-9");
-
-            break;
-            case "hostel":
-            $("<div>")
-            .html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[1].properties.costNightly)
-            .appendTo("#locationInfo div.col-9");
-
-            break
-            case "motel":
-            $("<div>")
-            .html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[2].properties.costNightly)
-            .appendTo("#locationInfo div.col-9");
-
-            break
-            case "house":
-            $("<div>")
-            .html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[3].properties.costNightly)
-            .appendTo("#locationInfo div.col-9");
-
-            break
-          };
+          app.mapbox.writeLocationData(marker.properties, thisIndex);
         });
       });
 
@@ -204,54 +191,7 @@ var app = {
 
           var thisIndex = $(this).attr("dataPosition");
 
-          var prop = data.features[thisIndex].properties;
-
-          $("#locationInfo").html("").append(
-            $("<div>")
-            .addClass("col-9")
-            .append($("<h4>").text(prop.name))
-            .append(
-              $("<span>").html("<strong>Ph#:</strong> "+prop.phoneFormatted)
-            )
-          ).append(
-            $("<div>")
-            .addClass("d-flex col align-items-end justify-content-end")
-            .append(
-              $("<button>")
-              .attr("type","submit")
-              .attr("data-submit",thisIndex)
-              .addClass("btn btn-primary mapSubmit")
-              .text("Confirm")
-              .on("click",app.mapbox.mapSubmit)
-            )
-          );
-
-          switch(prop.type){
-            case "hotel":
-            $("<div>")
-            .html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[0].properties.costNightly)
-            .appendTo("#locationInfo div.col-9");
-
-            break;
-            case "hostel":
-            $("<div>")
-            .html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[1].properties.costNightly)
-            .appendTo("#locationInfo div.col-9");
-
-            break
-            case "motel":
-            $("<div>")
-            .html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[2].properties.costNightly)
-            .appendTo("#locationInfo div.col-9");
-
-            break
-            case "house":
-            $("<div>")
-            .html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[3].properties.costNightly)
-            .appendTo("#locationInfo div.col-9");
-
-            break
-          };
+          app.mapbox.writeLocationData(data.features[thisIndex].properties, thisIndex);
         })
         // .append($("<div>").html(prop.city+" &middot; "+prop.phoneFormatted))
         .appendTo(listings);
