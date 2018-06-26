@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>App</title>
     <!-- Bootstrap-->
@@ -9,9 +10,9 @@
     <!-- FontAwesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"/>
     <!-- mapbox-->
-    <link href="https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css"/>
     <!-- Date Range Picker-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
     <!-- Custom CSS-->
     <link rel="stylesheet" href="css/master.css"/>
   </head>
@@ -21,102 +22,90 @@
         <div class="row no-gutters position-relative">
           <div class="position-absolute curr-step"></div>
           <div class="col-sm">
-            <div class="d-flex h-100 align-items-center justify-content-center">
-              <h2>Step 1</h2>
-            </div>
+            <div class="d-flex h-100 align-items-center justify-content-center h2">Step 1</div>
           </div>
           <div class="col-sm">
-            <div class="d-flex h-100 align-items-center justify-content-center">
-              <h2>Step 2</h2>
-            </div>
+            <div class="d-flex h-100 align-items-center justify-content-center h2">Step 2</div>
           </div>
           <div class="col-sm">
-            <div class="d-flex h-100 align-items-center justify-content-center">
-              <h2>Step 3</h2>
-            </div>
+            <div class="d-flex h-100 align-items-center justify-content-center h2">Step 3</div>
           </div>
         </div>
       </div>
       <div class="main-content py-3 step-1">
-        <div class="container h-100 border border-dark content-container">
-          <div class="row h-100">
-            <div class="col-2"></div>
-            <div class="col">
-              <div class="d-flex w-100 h-100 justify-content-center align-items-center">
-                <form class="w-75">
-                  <div class="form-group">
-                    <label class="d-block h4">How many people:</label>
-                    <input class="form-control w-25 d-inline-block space-range-input" type="number" value="1"/>
-                    <input class="form-control-range d-inline-block space-range-slider" type="range" value="1"/>
-                  </div>
-                  <div class="form-group">
-                    <label class="h4">Length of stay:</label>
-                    <input class="form-control staying-range"/>
-                  </div>
-                  <button class="btn btn-primary float-right detail-submit" type="submit">Continue</button>
-                </form>
-              </div>
+        <div class="container h-100 border border-dark content-container row mx-auto px-0">
+          <div class="col-2"></div>
+          <div class="col">
+            <div class="d-flex w-100 h-100 justify-content-center align-items-center">
+              <form class="w-75">
+                <div class="form-group">
+                  <label class="d-block h4">How many people:</label>
+                  <input class="form-control w-25 d-inline-block space-range-input" type="number" value="1"/>
+                  <input class="form-control-range d-inline-block space-range-slider" type="range" value="1"/>
+                </div>
+                <div class="form-group">
+                  <label class="h4">Length of stay:</label>
+                  <input class="form-control staying-range"/>
+                </div>
+                <button class="btn btn-primary float-right detail-submit" type="submit">Continue</button>
+              </form>
             </div>
-            <div class="col-2">
-              <div class="d-flex w-100 h-100 justify-content-center align-items-center"><i class="fas fa-chevron-right fa-5x"></i></div>
-            </div>
+          </div>
+          <div class="col-2">
+            <div class="d-flex w-100 h-100 justify-content-center align-items-center"><i class="fas fa-chevron-right fa-5x"></i></div>
           </div>
         </div>
       </div>
       <div class="main-content py-3 step-2">
-        <div class="container h-100 border border-dark content-container">
-          <div class="row h-100">
-            <div class="col-2">
-              <div class="d-flex w-100 h-100 justify-content-center align-items-center"><i class="fas fa-chevron-left fa-5x"></i></div>
-              <div class="position-absolute h-25 form-results">
-                <div>
-                  <h6>How many people:</h6><span class="desired-space-val">0</span>
-                </div>
-                <div class="mt-2">
-                  <h6>Length of Stay:</h6><span class="desired-days-val">0</span>
-                </div>
+        <div class="container h-100 border border-dark content-container row mx-auto px-0">
+          <div class="col-2">
+            <div class="d-flex w-100 h-100 justify-content-center align-items-center"><i class="fas fa-chevron-left fa-5x"></i></div>
+            <div class="position-absolute h-25 form-results">
+              <div>
+                <h6>How many people:</h6><span class="desired-space-val">0</span>
+              </div>
+              <div class="mt-2">
+                <h6>Length of Stay:</h6><span class="desired-days-val">0</span>
               </div>
             </div>
-            <div class="col">
-              <div class="w-100 h-75" id="map"></div>
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle w-100 rounded-0" type="button" id="accomodationMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Accomodation</button>
-                <div class="dropdown-menu" id="listings" aria-labelledby="accomodationMenu"></div>
-              </div>
-              <div class="row no-gutters w-100" id="locationInfo"></div>
+          </div>
+          <div class="col">
+            <div class="h-75" id="map"></div>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle w-100 rounded-0" id="accomodationMenu" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">Accomodation</button>
+              <div class="dropdown-menu" id="listings" aria-labelledby="accomodationMenu"></div>
             </div>
-            <div class="col-2">
-              <div class="d-flex w-100 h-100 justify-content-center align-items-center"><i class="fas fa-chevron-right fa-5x"></i></div>
-            </div>
+            <div class="row no-gutters w-100" id="locationInfo"></div>
+          </div>
+          <div class="col-2">
+            <div class="d-flex w-100 h-100 justify-content-center align-items-center"><i class="fas fa-chevron-right fa-5x"></i></div>
           </div>
         </div>
       </div>
       <div class="main-content py-3 step-3">
-        <div class="container h-100 border border-dark content-container">
-          <div class="row h-100">
-            <div class="col-2">
-              <div class="d-flex w-100 h-100 justify-content-center align-items-center"><i class="fas fa-chevron-left fa-5x"></i></div>
-            </div>
-            <div class="col">
-              <div class="d-flex w-100 h-100 justify-content-center align-items-center">
-                <div>
-                  <h2 class="desired-location">Name</h2>
-                  <ul class="location-info">
-                    <li class="position-relative desired-address">Lorem ipsum dolor sit amet.</li>
-                    <li class="position-relative desired-phone-num">(00) 000-0000</li>
-                  </ul>
-                  <hr/>
-                  <ul class="results-info">
-                    <li class="position-relative desired-space">0</li>
-                    <li class="position-relative desired-days">0</li>
-                    <li class="position-relative desired-cost">$0 / Night</li>
-                  </ul>
-                  <button class="btn btn-primary float-right final-confirm" type="submit">Confirm</button>
-                </div>
+        <div class="container h-100 border border-dark content-container row mx-auto px-0">
+          <div class="col-2">
+            <div class="d-flex w-100 h-100 justify-content-center align-items-center"><i class="fas fa-chevron-left fa-5x"></i></div>
+          </div>
+          <div class="col">
+            <div class="d-flex w-100 h-100 justify-content-center align-items-center">
+              <div>
+                <h2 class="desired-location">Name</h2>
+                <ul class="location-info">
+                  <li class="position-relative desired-address">Lorem ipsum dolor sit amet.</li>
+                  <li class="position-relative desired-phone-num">(00) 000-0000</li>
+                </ul>
+                <hr/>
+                <ul class="results-info">
+                  <li class="position-relative desired-space">0</li>
+                  <li class="position-relative desired-days">0</li>
+                  <li class="position-relative desired-cost">$0 / Night</li>
+                </ul>
+                <button class="btn btn-primary float-right final-confirm" type="submit">Confirm</button>
               </div>
             </div>
-            <div class="col-2"></div>
           </div>
+          <div class="col-2"></div>
         </div>
       </div>
     </div>

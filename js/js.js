@@ -27,6 +27,9 @@ var app = {
       }));
 
       $(window).resize(function(){
+        $(".curr-step").css("width",$(".main-navbar .col-sm div").css("width"));
+        $(".curr-step").css("height",$(".main-navbar .col-sm div").css("height"));
+
         map.resize();
       })
     },

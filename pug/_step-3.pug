@@ -1,36 +1,35 @@
 div(class="main-content py-3 step-3")
-  div(class="container h-100 border border-dark content-container")
-    div(class="row h-100")
-      div(class="col-2")
-        div(class="d-flex w-100 h-100 justify-content-center align-items-center")
-          i(class="fas fa-chevron-left fa-5x")
+  div(class="container h-100 border border-dark content-container row mx-auto px-0")
+    div(class="col-2")
+      div(class="d-flex w-100 h-100 justify-content-center align-items-center")
+        i(class="fas fa-chevron-left fa-5x")
+          
+    div(class="col")
+      div(class="d-flex w-100 h-100 justify-content-center align-items-center")
+        div
+          h2(class="desired-location")
+            | Name
             
-      div(class="col")
-        div(class="d-flex w-100 h-100 justify-content-center align-items-center")
-          div
-            h2(class="desired-location")
-              | Name
+          ul(class="location-info")
+            li(class="position-relative desired-address")
+              | Lorem ipsum dolor sit amet.
               
-            ul(class="location-info")
-              li(class="position-relative desired-address")
-                | Lorem ipsum dolor sit amet.
-                
-              li(class="position-relative desired-phone-num")
-                | (00) 000-0000
-                
-            hr
+            li(class="position-relative desired-phone-num")
+              | (00) 000-0000
               
-            ul(class="results-info")
-              li(class="position-relative desired-space")
-                | 0
-                
-              li(class="position-relative desired-days")
-                | 0
-                
-              li(class="position-relative desired-cost")
-                | $0 / Night
-                
-            button(class="btn btn-primary float-right final-confirm", type="submit")
-              | Confirm
+          hr
+            
+          ul(class="results-info")
+            li(class="position-relative desired-space")
+              | 0
               
-      div(class="col-2")
+            li(class="position-relative desired-days")
+              | 0
+              
+            li(class="position-relative desired-cost")
+              | $0 / Night
+              
+          button(class="btn btn-primary float-right final-confirm", type="submit")
+            | Confirm
+            
+    div(class="col-2")
