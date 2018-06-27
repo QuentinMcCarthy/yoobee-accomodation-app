@@ -274,6 +274,9 @@ var app = {
         startDate:currDate,
         maxSpan:{
           days:maxPossibleStay
+        },
+        locale:{
+          format: "DD/MM/YYYY"
         }
       }, function(start, end, label){
         app.formResults.stayingFrom = start.format("YYYY-MM-DD");
