@@ -1,9 +1,13 @@
+.form-control {
+  background-color: #50a882; }
+
 body {
   height: 100vh;
-  background-color: #142a21; }
+  background-color: #142a21;
+  color: #3c7e61; }
 
 .container {
-  background-color: #ffa500; }
+  background-color: #000; }
 
 .main-navbar {
   min-height: 75px;
@@ -38,7 +42,7 @@ body {
   width: 72%; }
 
 .curr-step {
-  background-color: #f29d00; }
+  background-color: black; }
 
 .form-results {
   top: 5px;

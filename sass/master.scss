@@ -1,7 +1,12 @@
 // Variables
 
 // Global
-$primaryColor: #ffa500;
+$mapWaterColor: #142a21;
+$mapLandColor: #000;
+$mapRoadColor: #3c7e61;
+$mapRailRoadColor: #50a882;
+
+$primaryColor: $mapLandColor;
 
 // Navbar
 $navbarMinHeight: 75px;
@@ -23,14 +28,17 @@ $mainContentHeight: 55vh;
 // Selectors
 // - Bootstrap
 
-
+.form-control {
+  background-color:$mapRailRoadColor;
+}
 
 
 // - Custom
 
 body {
   height:100vh;
-  background-color: #142a21;
+  background-color: $mapWaterColor;
+  color:$mapRoadColor;
 }
 
 
