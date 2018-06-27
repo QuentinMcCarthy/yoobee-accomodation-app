@@ -1,5 +1,6 @@
 body {
-  background-color: black; }
+  height: 100vh;
+  background-color: #142a21; }
 
 .container {
   background-color: #ffa500; }
