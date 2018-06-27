@@ -344,8 +344,8 @@ var app = {
           for(var i = 0; i < types.length; i++){
             var minSpace = (desiredSpace >= types[i].properties.minSpace);
             var maxSpace = (desiredSpace <= types[i].properties.maxSpace);
-            var minStay = (desiredSpace >= types[i].properties.minStay);
-            var maxStay = (desiredSpace <= types[i].properties.maxStay);
+            var minStay = (desiredDays >= types[i].properties.minStay);
+            var maxStay = (desiredDays <= types[i].properties.maxStay);
 
             switch(i){
               case 0:
