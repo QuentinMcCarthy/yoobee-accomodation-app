@@ -299,8 +299,8 @@ var app = {
           format:"DD/MM/YYYY"
         }
       }, function(start, end, label){
-        app.formResults.stayingFrom = start.format("DD/MM/YYYY");
-        app.formResults.stayingTill = end.format("DD/MMMM/YYYY");
+        app.formResults.stayingFrom = start.format("YYYY-MM-DD");
+        app.formResults.stayingTill = end.format("YYYY-MM-DD");
       });
 
       $(".detail-submit").click(function(e){
@@ -330,11 +330,23 @@ var app = {
 
         // If the values are defined
         if(stayingFrom && stayingTill){
-          // The values must be converted back into Date objects to get the days
-          var fromDays = (new Date(stayingFrom)).getDate(),
-              tillDays = (new Date(stayingTill)).getDate();
+          // Convert the string values into arrays
+          var fromSplit = stayingFrom.split("-"),
+              tillSplit = stayingTill.split("-");
 
-          var days = (tillDays - fromDays);
+          // The values must be converted back into Date objects to get the days and month
+          // the string values in each array are converted to numerical values as browsers
+          // parse strings into dates differently.
+          var fromDate = new Date(parseInt(fromSplit[0]),parseInt(fromSplit[1]),parseInt(fromSplit[2])),
+              tillDate = new Date(parseInt(tillSplit[0]),parseInt(tillSplit[1]),parseInt(tillSplit[2]));
+
+          // Get the difference between the two dates; this will return the difference in milliseconds
+          var dateDiff = (tillDate - fromDate);
+
+          // We want the days, so convert the milliseconds to days through division
+          // Val / Milliseconds / Seconds / Minutes / Hours = days
+          // The resulting value is inclusive, so -1 to make it non-inclusive
+          var days = (((((dateDiff / 1000) / 60) / 60) / 24) - 1);
 
           if((days >= minPossibleStay) && (days <= maxPossibleStay)){
             app.formResults.desiredDays = days;
