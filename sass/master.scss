@@ -57,24 +57,6 @@ $mainContentHeight: 55vh;
 
 
 // Selectors
-// - Bootstrap
-
-.form-control {
-  color: $mapLandColor;
-  background-color: $mapRailRoadColor;
-  border-color: $mapRoadColor;
-}
-
-.form-control-range {
-  @include customSlider(base);
-}
-.form-control-range::-webkit-slider-runnable-track {
-  @include customSlider(track);
-}
-.form-control-range::-webkit-slider-thumb {
-  @include customSlider(thumb);
-}
-
 // - Custom
 
 body {
@@ -89,25 +71,10 @@ body {
 }
 
 
-// - JavaScript
-
-
-
-
-// - Mapbox
-
-
-
-
 // IDs
 // - Bootstrap
 
 #accomodationMenu {}
-
-
-// - Custom
-
-
 
 
 // - JavaScript
@@ -126,6 +93,36 @@ body {
 // - Bootstrap
 
 .container { background-color: $primaryColor; }
+
+.form-control {
+  color: $mapLandColor;
+  background-color: $mapRailRoadColor;
+  border-color: $mapRoadColor;
+}
+.form-control:focus {
+  color: $mapLandColor;
+  background-color: $mapRailRoadColor;
+  border-color: $mapRoadColor;
+}
+.form-control::-webkit-inner-spin-button { -webkit-appearance:none; }
+
+.form-control-range { @include customSlider(base); }
+.form-control-range::-webkit-slider-runnable-track { @include customSlider(track); }
+.form-control-range::-webkit-slider-thumb { @include customSlider(thumb); }
+
+.btn-secondary, .btn-secondary:hover, .btn-secondary:active {
+  color: $mapLandColor !important;
+  background-color: $mapRoadColor !important;
+}
+.dropdown-menu {
+  background-color: $mapRoadColor;
+  text-shadow: initial;
+
+  .dropdown-item { color: $mapLandColor; }
+  .dropdown-item:hover {
+    background-color: $mapRailRoadColor;
+  }
+}
 
 
 // - Custom
@@ -222,10 +219,48 @@ body {
   cursor: pointer;
 }
 
-.mapboxgl-popup { padding-bottom: 50px; }
+.mapboxgl-popup {
+  padding-bottom: 50px;
+  color: initial;
+  text-shadow: initial;
+
+  .mapboxgl-popup-tip { border-top-color: $mapLandColor; }
+  .mapboxgl-popup-content {
+    background-color: $mapLandColor;
+    color: $mapRoadColor;
+
+    .mapboxgl-popup-close-button {
+      color:inherit;
+    }
+  }
+}
 
 /* Weird percentage to account for slight difference in width, unknown reason for difference */
 .mapboxgl-map { width: 99.95%; }
+
+
+// - Date Range Picker
+
+.daterangepicker {
+  color:$mapRailRoadColor;
+  text-shadow:initial;
+  background-color:$mapLandColor;
+  border-color:$mapWaterColor;
+
+  .calendar-table {
+    background-color:$mapLandColor;
+    border-color:$mapLandColor;
+
+    td.off {
+      color:$mapRoadColor;
+      background-color:$mapLandColor;
+    }
+  }
+
+  .drp-buttons {
+    border-color:$mapWaterColor;
+  }
+}
 
 
 // Media queries

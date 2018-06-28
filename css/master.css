@@ -1,7 +1,24 @@
+body {
+  height: 100vh;
+  color: #3c7e61;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  background-color: #142a21; }
+
+.container {
+  background-color: #000; }
+
 .form-control {
   color: #000;
   background-color: #50a882;
   border-color: #3c7e61; }
+
+.form-control:focus {
+  color: #000;
+  background-color: #50a882;
+  border-color: #3c7e61; }
+
+.form-control::-webkit-inner-spin-button {
+  -webkit-appearance: none; }
 
 .form-control-range {
   -webkit-appearance: none;
@@ -22,14 +39,17 @@
   height: 15px;
   background: #CCC; }
 
-body {
-  height: 100vh;
-  color: #3c7e61;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  background-color: #142a21; }
+.btn-secondary, .btn-secondary:hover, .btn-secondary:active {
+  color: #000 !important;
+  background-color: #3c7e61 !important; }
 
-.container {
-  background-color: #000; }
+.dropdown-menu {
+  background-color: #3c7e61;
+  text-shadow: initial; }
+  .dropdown-menu .dropdown-item {
+    color: #000; }
+  .dropdown-menu .dropdown-item:hover {
+    background-color: #50a882; }
 
 .main-navbar {
   min-height: 75px;
@@ -111,10 +131,33 @@ body {
   cursor: pointer; }
 
 .mapboxgl-popup {
-  padding-bottom: 50px; }
+  padding-bottom: 50px;
+  color: initial;
+  text-shadow: initial; }
+  .mapboxgl-popup .mapboxgl-popup-tip {
+    border-top-color: #000; }
+  .mapboxgl-popup .mapboxgl-popup-content {
+    background-color: #000;
+    color: #3c7e61; }
+    .mapboxgl-popup .mapboxgl-popup-content .mapboxgl-popup-close-button {
+      color: inherit; }
 
 /* Weird percentage to account for slight difference in width, unknown reason for difference */
 .mapboxgl-map {
   width: 99.95%; }
+
+.daterangepicker {
+  color: #50a882;
+  text-shadow: initial;
+  background-color: #000;
+  border-color: #142a21; }
+  .daterangepicker .calendar-table {
+    background-color: #000;
+    border-color: #000; }
+    .daterangepicker .calendar-table td.off {
+      color: #3c7e61;
+      background-color: #000; }
+  .daterangepicker .drp-buttons {
+    border-color: #142a21; }
 
 /*# sourceMappingURL=master.css.map */
