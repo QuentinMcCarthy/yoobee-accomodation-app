@@ -510,7 +510,7 @@ var app = {
           desiredLeft = app.navInitLeft + (adjWidth * (step-1));
 
       if(currStepLeft < desiredLeft){
-        $(currStep).css("left",currStepLeft+2+"px");
+        $(currStep).css("left",currStepLeft+6+"px");
       }
       else{
         $(currStep).css("left",desiredLeft);

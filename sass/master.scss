@@ -165,7 +165,7 @@ body {
 
 .detail-submit {}
 
-.curr-step { background-color: darken($primaryColor,2.5); }
+.curr-step { background-color: $mapWaterColor; }
 
 .form-results {
   top: 5px;
