@@ -285,10 +285,13 @@ var app = {
         $(".space-range-slider").val($(this).val());
       });
 
+      var todayDate = new Date();
+
       $(".staying-range").daterangepicker({
         drops:"up",
         opens:"center",
-        startDate:new Date(),
+        startDate:todayDate,
+        minDate:todayDate,
         maxSpan:{
           days:maxPossibleStay
         },

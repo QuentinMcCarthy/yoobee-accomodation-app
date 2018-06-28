@@ -229,9 +229,7 @@ body {
     background-color: $mapLandColor;
     color: $mapRoadColor;
 
-    .mapboxgl-popup-close-button {
-      color:inherit;
-    }
+    .mapboxgl-popup-close-button { color:inherit; }
   }
 }
 
@@ -251,15 +249,19 @@ body {
     background-color:$mapLandColor;
     border-color:$mapLandColor;
 
+    .table-condensed > thead > tr > th.available {
+      background-color:$mapRoadColor;
+
+      > span { border-color:$mapLandColor; }
+    }
+
     td.off {
       color:$mapRoadColor;
       background-color:$mapLandColor;
     }
   }
 
-  .drp-buttons {
-    border-color:$mapWaterColor;
-  }
+  .drp-buttons { border-color:$mapWaterColor; }
 }
 
 

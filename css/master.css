@@ -154,6 +154,10 @@ body {
   .daterangepicker .calendar-table {
     background-color: #000;
     border-color: #000; }
+    .daterangepicker .calendar-table .table-condensed > thead > tr > th.available {
+      background-color: #3c7e61; }
+      .daterangepicker .calendar-table .table-condensed > thead > tr > th.available > span {
+        border-color: #000; }
     .daterangepicker .calendar-table td.off {
       color: #3c7e61;
       background-color: #000; }
