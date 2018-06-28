@@ -241,10 +241,12 @@ var app = {
       var types = app.dataConfig.types;
 
       // Values here are manually set but may not be correct
-      var minPossibleSpace = types[0].properties.minSpace,
-          maxPossibleSpace = types[1].properties.maxSpace,
-          minPossibleStay = types[0].properties.maxStay,
-          maxPossibleStay = types[3].properties.maxStay;
+      var minMaxSpaceStay = {
+        minPossibleSpace:types[0].properties.minSpace,
+        maxPossibleSpace:types[1].properties.maxSpace,
+        minPossibleStay:types[0].properties.maxStay,
+        maxPossibleStay:types[3].properties.maxStay,
+      };
 
       // For loop ensures the variables above are correct
       for(var i = 0; i < types.length; i++){
@@ -253,33 +255,33 @@ var app = {
             currMinStay = types[i].properties.minStay,
             currMaxStay = types[i].properties.maxStay;
 
-        if(currMinSpace < minPossibleSpace){
-          minPossibleSpace = currMinSpace;
+        if(currMinSpace < minMaxSpaceStay.minPossibleSpace){
+          minMaxSpaceStay.minPossibleSpace = currMinSpace;
         }
-        if(currMaxSpace > maxPossibleSpace){
-          maxPossibleSpace = currMaxSpace;
+        if(currMaxSpace > minMaxSpaceStay.maxPossibleSpace){
+          minMaxSpaceStay.maxPossibleSpace = currMaxSpace;
         }
 
-        if(currMinStay < minPossibleStay){
-          minPossibleStay = currMinStay;
+        if(currMinStay < minMaxSpaceStay.minPossibleStay){
+          minMaxSpaceStay.minPossibleStay = currMinStay;
         }
-        if(currMaxStay > maxPossibleStay){
-          maxPossibleStay = currMaxStay;
+        if(currMaxStay > minMaxSpaceStay.maxPossibleStay){
+          minMaxSpaceStay.maxPossibleStay = currMaxStay;
         }
       }
 
       // Set the form's min and max values for validation
       $(".space-range-slider").attr({
-        "min":minPossibleSpace,
-        "max":maxPossibleSpace
+        "min":minMaxSpaceStay.minPossibleSpace,
+        "max":minMaxSpaceStay.maxPossibleSpace
       }).on("input",function(){
         // The slider and the input should always have the same value
         $(".space-range-input").val($(this).val());
       });
 
       $(".space-range-input").attr({
-        "min":minPossibleSpace,
-        "max":maxPossibleSpace
+        "min":minMaxSpaceStay.minPossibleSpace,
+        "max":minMaxSpaceStay.maxPossibleSpace
       }).on("input",function(){
         // The slider and the input should always have the same value
         $(".space-range-slider").val($(this).val());
@@ -293,7 +295,7 @@ var app = {
         startDate:todayDate,
         minDate:todayDate,
         maxSpan:{
-          days:maxPossibleStay
+          days:minMaxSpaceStay.maxPossibleStay
         },
         locale:{
           format:"DD/MM/YYYY"
@@ -303,143 +305,12 @@ var app = {
         app.formResults.stayingTill = end.format("YYYY-MM-DD");
       });
 
-      $(".detail-submit").click(function(e){
+      $(".detail-submit").on("click",function(e){
         // Prevent page reload
         e.preventDefault();
 
-        $(".flagForDel").remove();
-        $(".space-range-input").parent().css("border","0");
-        $(".staying-range").parent().css("border","0");
-
-        var spaceNeeded = parseInt($(".space-range-input").val());
-
-        if((spaceNeeded >= minPossibleSpace) && (spaceNeeded <= maxPossibleSpace)){
-          app.formResults.desiredSpace = spaceNeeded;
-        }
-        else{
-          $(".space-range-input").parent().append(
-            $("<span>", {
-              "class":"flagForDel",
-              "style":"color:darkred"
-            }).text("Must be between "+minPossibleSpace+" and "+maxPossibleSpace)
-          ).css("border","2px solid red");
-        }
-
-        var stayingFrom = app.formResults.stayingFrom,
-            stayingTill = app.formResults.stayingTill;
-
-        // If the values are defined
-        if(stayingFrom && stayingTill){
-          // Convert the string values into arrays
-          var fromSplit = stayingFrom.split("-"),
-              tillSplit = stayingTill.split("-");
-
-          // The values must be converted back into Date objects to get the days and month
-          // the string values in each array are converted to numerical values as browsers
-          // parse strings into dates differently.
-          var fromDate = new Date(parseInt(fromSplit[0]),parseInt(fromSplit[1]),parseInt(fromSplit[2])),
-              tillDate = new Date(parseInt(tillSplit[0]),parseInt(tillSplit[1]),parseInt(tillSplit[2]));
-
-          // Get the difference between the two dates; this will return the difference in milliseconds
-          var dateDiff = (tillDate - fromDate);
-
-          // We want the days, so convert the milliseconds to days through division
-          // Val / Milliseconds / Seconds / Minutes / Hours = days
-          // The resulting value is inclusive, so -1 to make it non-inclusive
-          var days = (((((dateDiff / 1000) / 60) / 60) / 24) - 1);
-
-          if((days >= minPossibleStay) && (days <= maxPossibleStay)){
-            app.formResults.desiredDays = days;
-          }
-          else{
-            $(".staying-range").parent().css("border","2px solid red").append(
-              $("<span>", {
-                "class":"flagForDel",
-                "style":"color:darkred"
-              }).text("Days must be between "+minPossibleStay+" and "+maxPossibleStay)
-            );
-          }
-        }
-        else{
-          $(".staying-range").parent().css("border","2px solid red");
-        }
-
-        var desiredSpace = app.formResults.desiredSpace,
-            desiredDays = app.formResults.desiredDays;
-
-        // Validation; the step shouldn't change if either of these values is undefined
-        if(desiredSpace && desiredDays){
-          // Variables to be used in a future function call
-          var hotels, hostels, motels, houses = false;
-
-          // The expressions in these variables return a boolean value
-          // This process has been broken down just to make it easier to read and work with
-          for(var i = 0; i < types.length; i++){
-            var prop = types[i].properties
-
-            var minSpace = (desiredSpace >= prop.minSpace),
-                maxSpace = (desiredSpace <= prop.maxSpace),
-                minStay = (desiredDays >= prop.minStay),
-                maxStay = (desiredDays <= prop.maxStay);
-
-            switch(i){
-              case 0:
-                var hotelSpace = (minSpace && maxSpace),
-                    hotelStay = (minStay && maxStay);
-
-                break;
-              case 1:
-                var hostelSpace = (minSpace && maxSpace),
-                    hostelStay = (minStay && maxStay);
-
-                break;
-              case 2:
-                var motelSpace = (minSpace && maxSpace),
-                    motelStay = (minStay && maxStay);
-
-                break;
-              case 3:
-                var houseSpace = (minSpace && maxSpace),
-                    houseStay = (minStay && maxStay);
-            };
-          }
-
-          if(hotelSpace && hotelStay){
-            hotels = true;
-          }
-          if(hostelSpace && hostelStay){
-            hostels = true;
-          }
-          if(motelSpace && motelStay){
-            motels = true;
-          }
-          if(houseSpace && houseStay){
-            houses = true;
-          }
-
-          app.mapbox.createMarkers(hotels,hostels,motels,houses);
-
-          $(".desired-space-val").text(desiredSpace);
-
-          var daysText = "days";
-
-          if(desiredDays == 1){
-            daysText = "day";
-          }
-
-          $(".desired-days-val").text(desiredDays+" "+daysText);
-
-          // Switch the steps. Bootstrap display class used.
-          $(".step-1").addClass("d-none");
-          $(".step-2").removeClass("d-none");
-
-          app.mapbox.map.resize();
-
-          app.navInitLeft = parseInt($(".curr-step").css("left"));
-
-          app.animateNav(2);
-        }
-      })
+        app.validateForm(minMaxSpaceStay);
+      });
     });
 
     $.getJSON("assets/accomodation.geojson", function(data){
@@ -468,6 +339,140 @@ var app = {
       // and the process for doing so is complicated
       location.reload();
     });
+  },
+  validateForm:function(minMaxSpaceStay){
+    $(".flagForDel").remove();
+    $(".space-range-input").parent().css("border","0");
+    $(".staying-range").parent().css("border","0");
+
+    var spaceNeeded = parseInt($(".space-range-input").val());
+
+    if((spaceNeeded >= minMaxSpaceStay.minPossibleSpace) && (spaceNeeded <= minMaxSpaceStay.maxPossibleSpace)){
+      app.formResults.desiredSpace = spaceNeeded;
+    }
+    else{
+      $(".space-range-input").parent().append(
+        $("<span>", {
+          "class":"flagForDel",
+          "style":"color:darkred"
+        }).text("Must be between "+minMaxSpaceStay.minPossibleSpace+" and "+minMaxSpaceStay.maxPossibleSpace)
+      ).css("border","2px solid red");
+    }
+
+    var stayingFrom = app.formResults.stayingFrom,
+        stayingTill = app.formResults.stayingTill;
+
+    // If the values are defined
+    if(stayingFrom && stayingTill){
+      // Convert the string values into arrays
+      var fromSplit = stayingFrom.split("-"),
+          tillSplit = stayingTill.split("-");
+
+      // The values must be converted back into Date objects to get the days and month
+      // the string values in each array are converted to numerical values as browsers
+      // parse strings into dates differently.
+      var fromDate = new Date(parseInt(fromSplit[0]),parseInt(fromSplit[1]),parseInt(fromSplit[2])),
+          tillDate = new Date(parseInt(tillSplit[0]),parseInt(tillSplit[1]),parseInt(tillSplit[2]));
+
+      // Get the difference between the two dates; this will return the difference in milliseconds
+      var dateDiff = (tillDate - fromDate);
+
+      // We want the days, so convert the milliseconds to days through division
+      // Val / Milliseconds / Seconds / Minutes / Hours = days
+      // The resulting value is inclusive, so -1 to make it non-inclusive
+      var days = (((((dateDiff / 1000) / 60) / 60) / 24) - 1);
+
+      if((days >= minMaxSpaceStay.minPossibleStay) && (days <= minMaxSpaceStay.maxPossibleStay)){
+        app.formResults.desiredDays = days;
+      }
+      else{
+        $(".staying-range").parent().css("border","2px solid red").append(
+          $("<span>", {
+            "class":"flagForDel",
+            "style":"color:darkred"
+          }).text("Days must be between "+minMaxSpaceStay.minPossibleStay+" and "+minMaxSpaceStay.maxPossibleStay)
+        );
+      }
+    }
+    else{
+      $(".staying-range").parent().css("border","2px solid red");
+    }
+
+    var desiredSpace = app.formResults.desiredSpace,
+        desiredDays = app.formResults.desiredDays;
+
+    // Validation; the step shouldn't change if either of these values is undefined
+    if(desiredSpace && desiredDays){
+      // Variables to be used in a future function call
+      var hotels, hostels, motels, houses = false;
+
+      // The expressions in these variables return a boolean value
+      // This process has been broken down just to make it easier to read and work with
+      for(var i = 0; i < app.dataConfig.types.length; i++){
+        var prop = app.dataConfig.types[i].properties
+
+        var minSpace = (desiredSpace >= prop.minSpace),
+            maxSpace = (desiredSpace <= prop.maxSpace),
+            minStay = (desiredDays >= prop.minStay),
+            maxStay = (desiredDays <= prop.maxStay);
+
+        switch(i){
+          case 0:
+            var hotelSpace = (minSpace && maxSpace),
+                hotelStay = (minStay && maxStay);
+
+            break;
+          case 1:
+            var hostelSpace = (minSpace && maxSpace),
+                hostelStay = (minStay && maxStay);
+
+            break;
+          case 2:
+            var motelSpace = (minSpace && maxSpace),
+                motelStay = (minStay && maxStay);
+
+            break;
+          case 3:
+            var houseSpace = (minSpace && maxSpace),
+                houseStay = (minStay && maxStay);
+        };
+      }
+
+      if(hotelSpace && hotelStay){
+        hotels = true;
+      }
+      if(hostelSpace && hostelStay){
+        hostels = true;
+      }
+      if(motelSpace && motelStay){
+        motels = true;
+      }
+      if(houseSpace && houseStay){
+        houses = true;
+      }
+
+      app.mapbox.createMarkers(hotels,hostels,motels,houses);
+
+      $(".desired-space-val").text(desiredSpace);
+
+      var daysText = "days";
+
+      if(desiredDays == 1){
+        daysText = "day";
+      }
+
+      $(".desired-days-val").text(desiredDays+" "+daysText);
+
+      // Switch the steps. Bootstrap display class used.
+      $(".step-1").addClass("d-none");
+      $(".step-2").removeClass("d-none");
+
+      app.mapbox.map.resize();
+
+      app.navInitLeft = parseInt($(".curr-step").css("left"));
+
+      app.animateNav(2);
+    }
   },
   sortData:function(data){
     var nameArray = [];
