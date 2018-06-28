@@ -19,26 +19,73 @@ $mainContentHeight: 55vh;
 // Mixins
 
 // Mixin for repeated styles in ::before of desired content
+
+@mixin customSlider($call){
+  $width: 20px;
+  $height: 15px;
+  $sliderColor: $mapRoadColor;
+  $thumbColor: #CCC; // #434343;
+  $sliderRadius: .25rem;
+
+  -webkit-appearance:none;
+
+  @if $call == base {
+    overflow: hidden;
+    background-color: $sliderColor;
+    border-radius: $sliderRadius;
+  }
+
+  @if $call == track {
+    height: $height;
+    color: $sliderColor;
+    margin-top: -1px;
+    border-radius: $sliderRadius;
+  }
+
+  @if $call == thumb {
+    width: $width;
+    height: $height;
+    background: $thumbColor;
+  }
+}
+
 @mixin desiredContent($left){
   position: absolute;
   left: $left;
   font-weight: 500;
 }
 
+
 // Selectors
 // - Bootstrap
 
 .form-control {
-  background-color:$mapRailRoadColor;
+  color: $mapLandColor;
+  background-color: $mapRailRoadColor;
+  border-color: $mapRoadColor;
 }
 
+.form-control-range {
+  @include customSlider(base);
+}
+.form-control-range::-webkit-slider-runnable-track {
+  @include customSlider(track);
+}
+.form-control-range::-webkit-slider-thumb {
+  @include customSlider(thumb);
+}
 
 // - Custom
 
 body {
-  height:100vh;
+  height: 100vh;
+  color: $mapRoadColor;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
   background-color: $mapWaterColor;
-  color:$mapRoadColor;
 }
 
 
@@ -191,5 +238,4 @@ body {
 
 @media (min-width:1200px){}
 
-// https://stackoverflow.com/questions/4919076/outline-effect-to-text
 // http://charlie.matina.yoobee.net.nz/BestRoute/index.html

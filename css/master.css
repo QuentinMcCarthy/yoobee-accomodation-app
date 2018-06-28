@@ -1,10 +1,32 @@
 .form-control {
-  background-color: #50a882; }
+  color: #000;
+  background-color: #50a882;
+  border-color: #3c7e61; }
+
+.form-control-range {
+  -webkit-appearance: none;
+  overflow: hidden;
+  background-color: #3c7e61;
+  border-radius: 0.25rem; }
+
+.form-control-range::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 15px;
+  color: #3c7e61;
+  margin-top: -1px;
+  border-radius: 0.25rem; }
+
+.form-control-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 15px;
+  background: #CCC; }
 
 body {
   height: 100vh;
-  background-color: #142a21;
-  color: #3c7e61; }
+  color: #3c7e61;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  background-color: #142a21; }
 
 .container {
   background-color: #000; }
