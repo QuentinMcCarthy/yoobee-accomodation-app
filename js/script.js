@@ -501,6 +501,23 @@ var app = {
 
     return sortedArray;
   },
+  navigateToStep:function(step){
+    switch(step){
+      case 1:
+        $(".step-1").removeClass("d-none");
+        $(".step-2").addClass("d-none");
+        $(".step-3").addClass("d-none");
+
+        app.animateNav(1);
+
+        break;
+      case 2:
+        // If form is valid / submitted, then yes, otherwise no.
+
+
+        break;
+    };
+  },
   animateNav:function(step){
     if(step < 0){
       step = 0;
