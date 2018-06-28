@@ -163,7 +163,9 @@ body {
 
 .staying-range {}
 
-.detail-submit {}
+.detail-submit {
+  cursor:pointer;
+}
 
 .curr-step { background-color: $mapWaterColor; }
 

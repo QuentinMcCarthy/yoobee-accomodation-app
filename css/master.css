@@ -83,6 +83,9 @@ body {
 .space-range-slider {
   width: 72%; }
 
+.detail-submit {
+  cursor: pointer; }
+
 .curr-step {
   background-color: #142a21; }
 
