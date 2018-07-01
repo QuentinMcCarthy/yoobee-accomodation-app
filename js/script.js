@@ -3,6 +3,7 @@ var app = {
   dataConfig:{},
   formResults:{},
   navInitLeft:undefined,
+  navCurrStep:0,
   mapbox:{
     map:null,
     initMapbox:function(){
@@ -72,11 +73,7 @@ var app = {
           break;
       };
 
-      // Switch the steps. Bootstrap display class used.
-      $(".step-2").addClass("d-none");
-      $(".step-3").removeClass("d-none");
-
-      app.animateNav(3);
+      app.navigateToStep(2,3);
     },
     writeLocationData:function(prop, index){
       $(".location-info div.col-9 h4").remove();
@@ -108,7 +105,7 @@ var app = {
 
       $(".location-info div.d-flex").html("").append(
         $("<button>", {
-          "class":"btn btn-primary mapSubmit",
+          "class":"btn btn-primary map-submit",
           "data-submit":index,
           "type":"submit"
         }).text("Confirm")
@@ -311,6 +308,8 @@ var app = {
 
         app.validateForm(minMaxSpaceStay);
       });
+
+      app.navCurrStep = 1;
     });
 
     $.getJSON("assets/accomodation.geojson", function(data){
@@ -324,14 +323,17 @@ var app = {
 
       // All steps are visible initially to allow proper loading of elements such as mapbox
       // If the steps were hidden initially, certain elements would not stlye themselves properly.
-      $(".step-2").addClass("d-none");
-      $(".step-3").addClass("d-none");
+      $(".step-2, .step-3").addClass("d-none");
     });
 
     $(".curr-step").css({
       "width":$(".main-navbar .col-sm div").css("width"),
       "height":$(".main-navbar .col-sm div").css("height")
     });
+
+    $(".nav-step-1").on("click",function(){ app.navigateToStep(app.navCurrStep,1) });
+    $(".nav-step-2").on("click",function(){ app.navigateToStep(app.navCurrStep,2) });
+    $(".nav-step-3").on("click",function(){ app.navigateToStep(app.navCurrStep,3) });
 
     $(".final-confirm").click(function(){
       // location.reload() is the easiest way to reset the page;
@@ -463,15 +465,11 @@ var app = {
 
       $(".desired-days-val").text(desiredDays+" "+daysText);
 
-      // Switch the steps. Bootstrap display class used.
-      $(".step-1").addClass("d-none");
-      $(".step-2").removeClass("d-none");
-
-      app.mapbox.map.resize();
-
       app.navInitLeft = parseInt($(".curr-step").css("left"));
 
-      app.animateNav(2);
+      app.navigateToStep(1,2);
+
+      app.mapbox.map.resize();
     }
   },
   sortData:function(data){
@@ -501,44 +499,130 @@ var app = {
 
     return sortedArray;
   },
-  navigateToStep:function(step){
-    switch(step){
-      case 1:
-        $(".step-1").removeClass("d-none");
-        $(".step-2").addClass("d-none");
-        $(".step-3").addClass("d-none");
+  navigateToStep:function(fromStep, toStep){
+    function stepTo(step){
+      switch(step){
+        case 1:
+          $(".step-1").removeClass("d-none");
+          $(".step-2, .step-3").addClass("d-none");
 
-        app.animateNav(1);
+          app.navCurrStep = 1;
+
+          break;
+        case 2:
+          $(".step-1, .step-3").addClass("d-none");
+          $(".step-2").removeClass("d-none");
+
+          app.navCurrStep = 2;
+
+          break;
+        case 3:
+          $(".step-1, .step-2").addClass("d-none");
+          $(".step-3").removeClass("d-none");
+
+          app.navCurrStep = 3;
+
+          break;
+      };
+    }
+
+    switch(fromStep){
+      case 3:
+        // Any navigation from step 3 will be lower; so no need for validation
+        stepTo(toStep);
+
+        app.animateNav(toStep,false);
 
         break;
       case 2:
-        // If form is valid / submitted, then yes, otherwise no.
+        // Steps 1 or 3 can be navigated to from step 2
+        // Only step 3 needs validation from step 2
+        switch(toStep){
+          case 1:
+            // If the step to switch to is 1 from 2, then no need for validation
+            stepTo(1);
 
+            app.animateNav(1,false);
+
+            break;
+          case 3:
+            // From step 2 to step 3, validate that a value exists. If not, do nothing.
+            if(app.formResults.desiredLocation){
+              stepTo(3);
+
+              app.animateNav(3,true);
+            }
+
+            break;
+        };
 
         break;
+      case 1:
+        // Steps 2 or 3 can be navigated to from step 1
+        // Both steps need validation, though step 3 will need validation of both 1 & 2
+        switch(toStep){
+          case 2:
+            // From step 1 to step 2; validate that a value exists. If not, do nothing.
+            if(app.formResults.desiredDays){
+              stepTo(2);
+
+              app.animateNav(2,true);
+            }
+
+            break;
+          case 3:
+            // From step 1 to step 3; both values need to exist. If not, do nothing.
+            if(app.formResults.desiredDays){
+              if(app.formResults.desiredLocation){
+                stepTo(3);
+
+                app.animateNav(3,true);
+              }
+            }
+
+            break;
+        };
     };
   },
-  animateNav:function(step){
+  animateNav:function(step,up){
     if(step < 0){
       step = 0;
     }
 
     // Animation for the navbar
-    var currStep = $(".curr-step");
+    var currStep = $(".curr-step"),
+        animSpeed = 6;
 
-    var transition = setInterval(function(){
-      var currStepLeft = parseInt($(currStep).css("left")),
-          adjWidth = parseInt($(".main-navbar .col-sm div").css("width")),
-          desiredLeft = app.navInitLeft + (adjWidth * (step-1));
+    if(up){
+      var transition = setInterval(function(){
+        var currStepLeft = parseInt($(currStep).css("left")),
+            adjWidth = parseInt($(".main-navbar .col-sm div").css("width")),
+            desiredLeft = app.navInitLeft + (adjWidth * (step-1));
 
-      if(currStepLeft < desiredLeft){
-        $(currStep).css("left",currStepLeft+6+"px");
-      }
-      else{
-        $(currStep).css("left",desiredLeft);
-        clearInterval(transition);
-      }
-    }, 1);
+        if(currStepLeft < desiredLeft){
+          $(currStep).css("left",currStepLeft+animSpeed+"px");
+        }
+        else{
+          $(currStep).css("left",desiredLeft);
+          clearInterval(transition);
+        }
+      }, 1);
+    }
+    else{
+      var transition = setInterval(function(){
+        var currStepLeft = parseInt($(currStep).css("left")),
+            adjWidth = parseInt($(".main-navbar .col-sm div").css("width")),
+            desiredLeft = app.navInitLeft + (adjWidth *  (step-1));
+
+        if(currStepLeft >  desiredLeft){
+          $(currStep).css("left",currStepLeft-animSpeed+"px");
+        }
+        else{
+          $(currStep).css("left",desiredLeft);
+          clearInterval(transition);
+        }
+      }, 1);
+    }
   }
 }
 

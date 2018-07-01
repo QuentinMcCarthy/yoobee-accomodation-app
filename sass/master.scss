@@ -134,6 +134,7 @@ body {
   margin-right: -15px;
 }
 .main-navbar > .row { min-height: $navbarMinHeight; }
+.main-navbar > .row .col-sm > .d-flex { cursor: pointer; }
 
 .main-content {
   min-height: $mainContentMinHeight;

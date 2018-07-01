@@ -60,6 +60,9 @@ body {
 .main-navbar > .row {
   min-height: 75px; }
 
+.main-navbar > .row .col-sm > .d-flex {
+  cursor: pointer; }
+
 .main-content {
   min-height: 575px;
   height: 55vh; }
