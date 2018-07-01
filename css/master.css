@@ -86,9 +86,6 @@ body {
 .space-range-slider {
   width: 72%; }
 
-.detail-submit {
-  cursor: pointer; }
-
 .curr-step {
   background-color: #142a21; }
 
@@ -96,6 +93,9 @@ body {
   top: 5px;
   left: 5px;
   width: 105%; }
+
+.arrow-r1, .arrow-l2, .arrow-r2, .arrow-l3 {
+  cursor: pointer; }
 
 /* Using ::before to name list items, avoids having to position elements in HTML */
 .desired-address::before {

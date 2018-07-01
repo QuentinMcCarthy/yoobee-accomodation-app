@@ -309,6 +309,11 @@ var app = {
         app.validateForm(minMaxSpaceStay);
       });
 
+      $(".arrow-r1").on("click",function(){ app.navigateToStep(1,2) });
+      $(".arrow-l2").on("click",function(){ app.navigateToStep(2,1) });
+      $(".arrow-r2").on("click",function(){ app.navigateToStep(2,3) });
+      $(".arrow-l3").on("click",function(){ app.navigateToStep(3,2) });
+
       app.navCurrStep = 1;
     });
 
@@ -381,8 +386,7 @@ var app = {
 
       // We want the days, so convert the milliseconds to days through division
       // Val / Milliseconds / Seconds / Minutes / Hours = days
-      // The resulting value is inclusive, so -1 to make it non-inclusive
-      var days = (((((dateDiff / 1000) / 60) / 60) / 24) - 1);
+      var days = (((((dateDiff / 1000) / 60) / 60) / 24));
 
       if((days >= minMaxSpaceStay.minPossibleStay) && (days <= minMaxSpaceStay.maxPossibleStay)){
         app.formResults.desiredDays = days;

@@ -71,24 +71,6 @@ body {
 }
 
 
-// IDs
-// - Bootstrap
-
-#accomodationMenu {}
-
-
-// - JavaScript
-
-#listings {}
-
-#locationInfo {}
-
-
-// - Mapbox
-
-#map {}
-
-
 // Classes
 // - Bootstrap
 
@@ -153,20 +135,7 @@ body {
 
 // - JavaScript
 
-.step-1 {}
-
-.step-2 {}
-
-.step-3 {}
-
-.space-range-input {}
 .space-range-slider { width: 72%; }
-
-.staying-range {}
-
-.detail-submit {
-  cursor:pointer;
-}
 
 .curr-step { background-color: $mapWaterColor; }
 
@@ -176,11 +145,7 @@ body {
   width: 105%;
 }
 
-.desired-space-val {}
-
-.desired-days-val {}
-
-.desired-location {}
+.arrow-r1, .arrow-l2, .arrow-r2, .arrow-l3 { cursor:pointer; }
 
 /* Using ::before to name list items, avoids having to position elements in HTML */
 .desired-address::before {
@@ -207,8 +172,6 @@ body {
   @include desiredContent(-152px);
   content: "Cost:";
 }
-
-.final-confirm {}
 
 
 // - Mapbox
