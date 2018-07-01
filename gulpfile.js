@@ -22,11 +22,11 @@ gulp.task('serve', function(event) {
 //Styles Task
 gulp.task('styles', function() {
     gulp.src(['scss/custom.scss', 'scss/tron.scss'])
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(minifyCss())
+        // .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        // .pipe(rename({suffix: '.min'}))
+        // .pipe(minifyCss())
         // Piping to 2 dirs - root and the html-solution
-        .pipe(gulp.dest('./css/'))
+        // .pipe(gulp.dest('./css/'))
         .pipe(connect.reload());
 });
 
@@ -57,7 +57,7 @@ gulp.task('html', function() {
 
 //Watch task to watch for file changes
 gulp.task('watch', function(){
-	gulp.watch('scss/**/*.scss', ['styles']);
+	gulp.watch('sass/*.scss', ['styles']);
 	gulp.watch('./*.html', ['html']);
 	gulp.watch('js/*.js', ['lint']);
     gulp.watch(['*.pug', '**/*.pug'], ['pug']);
