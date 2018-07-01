@@ -6,6 +6,7 @@ var app = {
   navCurrStep:0,
   mapbox:{
     map:null,
+    markers:[],
     initMapbox:function(){
       // Mapbox methods for initial setup of mapbox
       mapboxgl.accessToken = 'pk.eyJ1IjoibWNjYXJ0aHlxIiwiYSI6ImNqaTNucHpsMzAwaGczcXF2eDJhbGxwNGwifQ.Qn-qvcjlEmkiLq4lqV435A';
@@ -136,6 +137,22 @@ var app = {
         }
       }
 
+      // First we need to delete any existing markers and their source
+      app.mapbox.markers.forEach(function(currentValue,index){
+        app.mapbox.markers[index].remove();
+      });
+
+      // Empty the array after deleting all the markers
+      app.mapbox.markers = [];
+
+      // Try to delete the source, if it doesn't exist, don't print an error.
+      try {
+        app.mapbox.map.removeSource("places");
+      }
+      catch(err){
+        // console.log("The source does not exist; continuing as normal");
+      }
+
       // Add the data to the map as a layer
       app.mapbox.map.addSource("places", {
         type:"geojson",
@@ -151,7 +168,7 @@ var app = {
           .attr("dataPosition",index)
           .addClass("marker");
 
-        new mapboxgl.Marker(el, {offset:[0,-23]})
+        var newMarker = new mapboxgl.Marker(el, {offset:[0,-23]})
           .setLngLat(marker.geometry.coordinates)
           .addTo(app.mapbox.map);
 
@@ -178,11 +195,16 @@ var app = {
 
           app.mapbox.writeLocationData(marker.properties, thisIndex);
         });
+
+        app.mapbox.markers.push(newMarker);
       });
 
       app.mapbox.buildLocationList(locations);
     },
     buildLocationList:function(data){
+      // Clear any pre-existing listings
+      $("#listings").html("");
+
       // Iterate through the list of locations
       for(var i = 0; i < data.features.length; i++){
         var currentFeature = data.features[i],
