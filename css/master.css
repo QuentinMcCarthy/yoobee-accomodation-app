@@ -152,6 +152,10 @@ body {
 .mapboxgl-map {
   width: 99.95%; }
 
+.mapboxgl-ctrl-bottom-right {
+  color: inherit;
+  text-shadow: initial; }
+
 .daterangepicker {
   color: #50a882;
   text-shadow: initial;

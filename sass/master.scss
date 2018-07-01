@@ -201,6 +201,10 @@ body {
 
 /* Weird percentage to account for slight difference in width, unknown reason for difference */
 .mapboxgl-map { width: 99.95%; }
+.mapboxgl-ctrl-bottom-right {
+  color:inherit;
+  text-shadow:initial;
+}
 
 
 // - Date Range Picker
