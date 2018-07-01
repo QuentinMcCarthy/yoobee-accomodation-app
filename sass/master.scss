@@ -70,6 +70,8 @@ body {
   background-color: $mapWaterColor;
 }
 
+hr {background-color: $mapRoadColor; }
+
 
 // Classes
 // - Bootstrap
@@ -86,7 +88,7 @@ body {
   background-color: $mapRailRoadColor;
   border-color: $mapRoadColor;
 }
-.form-control::-webkit-inner-spin-button { -webkit-appearance:none; }
+.form-control::-webkit-inner-spin-button { -webkit-appearance: none; }
 
 .form-control-range { @include customSlider(base); }
 .form-control-range::-webkit-slider-runnable-track { @include customSlider(track); }
@@ -101,9 +103,7 @@ body {
   text-shadow: initial;
 
   .dropdown-item { color: $mapLandColor; }
-  .dropdown-item:hover {
-    background-color: $mapRailRoadColor;
-  }
+  .dropdown-item:hover { background-color: $mapRailRoadColor; }
 }
 
 
@@ -122,8 +122,6 @@ body {
   min-height: $mainContentMinHeight;
   height: $mainContentHeight;
 }
-
-.content-container { width: 90%; }
 
 /* Left margins altered in these lists to account for ::before content in list items */
 .location-info { list-style: none; }
@@ -145,7 +143,7 @@ body {
   width: 105%;
 }
 
-.arrow-r1, .arrow-l2, .arrow-r2, .arrow-l3 { cursor:pointer; }
+.arrow-r1, .arrow-l2, .arrow-r2, .arrow-l3 { cursor: pointer; }
 
 /* Using ::before to name list items, avoids having to position elements in HTML */
 .desired-address::before {
@@ -195,43 +193,43 @@ body {
     background-color: $mapLandColor;
     color: $mapRoadColor;
 
-    .mapboxgl-popup-close-button { color:inherit; }
+    .mapboxgl-popup-close-button { color: inherit; }
   }
 }
 
 /* Weird percentage to account for slight difference in width, unknown reason for difference */
 .mapboxgl-map { width: 99.95%; }
 .mapboxgl-ctrl-bottom-right {
-  color:inherit;
-  text-shadow:initial;
+  color: inherit;
+  text-shadow: initial;
 }
 
 
 // - Date Range Picker
 
 .daterangepicker {
-  color:$mapRailRoadColor;
-  text-shadow:initial;
-  background-color:$mapLandColor;
-  border-color:$mapWaterColor;
+  color: $mapRailRoadColor;
+  text-shadow: initial;
+  background-color: $mapLandColor;
+  border-color: $mapWaterColor;
 
   .calendar-table {
-    background-color:$mapLandColor;
-    border-color:$mapLandColor;
+    background-color: $mapLandColor;
+    border-color: $mapLandColor;
 
     .table-condensed > thead > tr > th.available {
-      background-color:$mapRoadColor;
+      background-color: $mapRoadColor;
 
-      > span { border-color:$mapLandColor; }
+      > span { border-color: $mapLandColor; }
     }
 
     td.off {
-      color:$mapRoadColor;
-      background-color:$mapLandColor;
+      color: $mapRoadColor;
+      background-color: $mapLandColor;
     }
   }
 
-  .drp-buttons { border-color:$mapWaterColor; }
+  .drp-buttons { border-color: $mapWaterColor; }
 }
 
 

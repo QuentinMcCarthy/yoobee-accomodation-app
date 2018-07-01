@@ -4,6 +4,9 @@ body {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   background-color: #142a21; }
 
+hr {
+  background-color: #3c7e61; }
+
 .container {
   background-color: #000; }
 
@@ -66,9 +69,6 @@ body {
 .main-content {
   min-height: 575px;
   height: 55vh; }
-
-.content-container {
-  width: 90%; }
 
 /* Left margins altered in these lists to account for ::before content in list items */
 .location-info {
