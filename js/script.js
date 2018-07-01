@@ -213,7 +213,7 @@ var app = {
             listing = $("<a>", {
               "class":"dropdown-item",
               "href":"#",
-              "id":"listing"-i,
+              "id":"listing-"+i,
               "dataPosition":i
             }).html(prop.name)
               .on("click",function(){
