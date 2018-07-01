@@ -6,14 +6,8 @@ $mapLandColor: #000;
 $mapRoadColor: #3c7e61;
 $mapRailRoadColor: #50a882;
 
-$primaryColor: $mapLandColor;
-
 // Navbar
 $navbarMinHeight: 75px;
-
-// Main Content
-$mainContentMinHeight: 575px;
-$mainContentHeight: 55vh;
 
 
 // Mixins
@@ -27,7 +21,7 @@ $mainContentHeight: 55vh;
   $thumbColor: #CCC; // #434343;
   $sliderRadius: .25rem;
 
-  -webkit-appearance:none;
+  -webkit-appearance: none;
 
   @if $call == base {
     overflow: hidden;
@@ -62,6 +56,7 @@ $mainContentHeight: 55vh;
 body {
   height: 100vh;
   color: $mapRoadColor;
+  /* Text shadow to create a text outline */
   text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
@@ -70,13 +65,13 @@ body {
   background-color: $mapWaterColor;
 }
 
-hr {background-color: $mapRoadColor; }
+hr { background-color: $mapRoadColor; }
 
 
 // Classes
 // - Bootstrap
 
-.container { background-color: $primaryColor; }
+.container { background-color: $mapLandColor; }
 
 .form-control {
   color: $mapLandColor;
@@ -111,16 +106,16 @@ hr {background-color: $mapRoadColor; }
 
 .main-navbar {
   min-height: $navbarMinHeight;
-  /* Overriding bootstrap container margins */
+  /* Override bootstrap container margins */
   margin-left: -15px;
   margin-right: -15px;
 }
-.main-navbar > .row { min-height: $navbarMinHeight; }
+.main-navbar > .row { min-height: inherit; }
 .main-navbar > .row .col-sm > .d-flex { cursor: pointer; }
 
 .main-content {
-  min-height: $mainContentMinHeight;
-  height: $mainContentHeight;
+  min-height: 575px;
+  height: 55vh;
 }
 
 /* Left margins altered in these lists to account for ::before content in list items */
@@ -214,22 +209,22 @@ hr {background-color: $mapRoadColor; }
   border-color: $mapWaterColor;
 
   .calendar-table {
-    background-color: $mapLandColor;
-    border-color: $mapLandColor;
+    background-color: inherit;
+    border-color: transparent;
 
-    .table-condensed > thead > tr > th.available {
+    th.available {
       background-color: $mapRoadColor;
 
-      > span { border-color: $mapLandColor; }
+      span { border-color: $mapLandColor; }
     }
 
     td.off {
       color: $mapRoadColor;
-      background-color: $mapLandColor;
+      background-color: transparent;
     }
   }
 
-  .drp-buttons { border-color: $mapWaterColor; }
+  .drp-buttons { border-color: inherit; }
 }
 
 

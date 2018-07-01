@@ -1,6 +1,7 @@
 body {
   height: 100vh;
   color: #3c7e61;
+  /* Text shadow to create a text outline */
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   background-color: #142a21; }
 
@@ -56,12 +57,12 @@ hr {
 
 .main-navbar {
   min-height: 75px;
-  /* Overriding bootstrap container margins */
+  /* Override bootstrap container margins */
   margin-left: -15px;
   margin-right: -15px; }
 
 .main-navbar > .row {
-  min-height: 75px; }
+  min-height: inherit; }
 
 .main-navbar > .row .col-sm > .d-flex {
   cursor: pointer; }
@@ -162,16 +163,16 @@ hr {
   background-color: #000;
   border-color: #142a21; }
   .daterangepicker .calendar-table {
-    background-color: #000;
-    border-color: #000; }
-    .daterangepicker .calendar-table .table-condensed > thead > tr > th.available {
+    background-color: inherit;
+    border-color: transparent; }
+    .daterangepicker .calendar-table th.available {
       background-color: #3c7e61; }
-      .daterangepicker .calendar-table .table-condensed > thead > tr > th.available > span {
+      .daterangepicker .calendar-table th.available span {
         border-color: #000; }
     .daterangepicker .calendar-table td.off {
       color: #3c7e61;
-      background-color: #000; }
+      background-color: transparent; }
   .daterangepicker .drp-buttons {
-    border-color: #142a21; }
+    border-color: inherit; }
 
 /*# sourceMappingURL=master.css.map */
