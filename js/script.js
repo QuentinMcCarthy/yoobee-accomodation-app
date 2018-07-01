@@ -9,7 +9,7 @@ var app = {
     markers:[],
     initMapbox:function(){
       // Mapbox methods for initial setup of mapbox
-      mapboxgl.accessToken = 'pk.eyJ1IjoibWNjYXJ0aHlxIiwiYSI6ImNqaTNucHpsMzAwaGczcXF2eDJhbGxwNGwifQ.Qn-qvcjlEmkiLq4lqV435A';
+      mapboxgl.accessToken = "pk.eyJ1IjoibWNjYXJ0aHlxIiwiYSI6ImNqaTNucHpsMzAwaGczcXF2eDJhbGxwNGwifQ.Qn-qvcjlEmkiLq4lqV435A";
       var map = new mapboxgl.Map({
         container:"map",
         style:"mapbox://styles/mccarthyq/cji9h1jw0124i2sqitzoczzsh",
