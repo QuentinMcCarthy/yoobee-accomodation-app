@@ -26,15 +26,15 @@ hr {
 
 .form-control-range {
   -webkit-appearance: none;
-  overflow: hidden;
   background-color: #3c7e61;
-  border-radius: 0.25rem; }
+  border-radius: 0.25rem;
+  overflow: hidden; }
 
 .form-control-range::-webkit-slider-runnable-track {
   -webkit-appearance: none;
   height: 15px;
-  color: #3c7e61;
   margin-top: -1px;
+  color: #3c7e61;
   border-radius: 0.25rem; }
 
 .form-control-range::-webkit-slider-thumb {
@@ -43,13 +43,15 @@ hr {
   height: 15px;
   background: #CCC; }
 
-.btn-secondary, .btn-secondary:hover, .btn-secondary:active {
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:active {
   color: #000 !important;
   background-color: #3c7e61 !important; }
 
 .dropdown-menu {
-  background-color: #3c7e61;
-  text-shadow: initial; }
+  text-shadow: initial;
+  background-color: #3c7e61; }
   .dropdown-menu .dropdown-item {
     color: #000; }
   .dropdown-menu .dropdown-item:hover {
@@ -64,7 +66,7 @@ hr {
 .main-navbar > .row {
   min-height: inherit; }
 
-.main-navbar > .row .col-sm > .d-flex {
+.nav-step {
   cursor: pointer; }
 
 .main-content {
@@ -75,13 +77,13 @@ hr {
 .location-info {
   list-style: none; }
 
-.location-info > li {
+.location-info li {
   margin-left: 2.5rem; }
 
 .results-info {
   list-style: none; }
 
-.results-info > li {
+.results-info li {
   margin-left: 7rem; }
 
 .space-range-slider {
@@ -95,7 +97,10 @@ hr {
   left: 5px;
   width: 105%; }
 
-.arrow-r1, .arrow-l2, .arrow-r2, .arrow-l3 {
+.arrow-r1,
+.arrow-l2,
+.arrow-r2,
+.arrow-l3 {
   cursor: pointer; }
 
 /* Using ::before to name list items, avoids having to position elements in HTML */
@@ -143,11 +148,13 @@ hr {
   text-shadow: initial; }
   .mapboxgl-popup .mapboxgl-popup-tip {
     border-top-color: #000; }
-  .mapboxgl-popup .mapboxgl-popup-content {
-    background-color: #000;
-    color: #3c7e61; }
-    .mapboxgl-popup .mapboxgl-popup-content .mapboxgl-popup-close-button {
-      color: inherit; }
+
+.mapboxgl-popup-content {
+  color: #3c7e61;
+  background-color: #000; }
+
+.mapboxgl-popup-close-button {
+  color: inherit; }
 
 /* Weird percentage to account for slight difference in width, unknown reason for difference */
 .mapboxgl-map {

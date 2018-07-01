@@ -24,15 +24,15 @@ $navbarMinHeight: 75px;
   -webkit-appearance: none;
 
   @if $call == base {
-    overflow: hidden;
     background-color: $sliderColor;
     border-radius: $sliderRadius;
+    overflow: hidden;
   }
 
   @if $call == track {
     height: $height;
-    color: $sliderColor;
     margin-top: -1px;
+    color: $sliderColor;
     border-radius: $sliderRadius;
   }
 
@@ -89,13 +89,16 @@ hr { background-color: $mapRoadColor; }
 .form-control-range::-webkit-slider-runnable-track { @include customSlider(track); }
 .form-control-range::-webkit-slider-thumb { @include customSlider(thumb); }
 
-.btn-secondary, .btn-secondary:hover, .btn-secondary:active {
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:active {
   color: $mapLandColor !important;
   background-color: $mapRoadColor !important;
 }
+
 .dropdown-menu {
-  background-color: $mapRoadColor;
   text-shadow: initial;
+  background-color: $mapRoadColor;
 
   .dropdown-item { color: $mapLandColor; }
   .dropdown-item:hover { background-color: $mapRailRoadColor; }
@@ -111,7 +114,8 @@ hr { background-color: $mapRoadColor; }
   margin-right: -15px;
 }
 .main-navbar > .row { min-height: inherit; }
-.main-navbar > .row .col-sm > .d-flex { cursor: pointer; }
+
+.nav-step { cursor: pointer; }
 
 .main-content {
   min-height: 575px;
@@ -120,10 +124,10 @@ hr { background-color: $mapRoadColor; }
 
 /* Left margins altered in these lists to account for ::before content in list items */
 .location-info { list-style: none; }
-.location-info > li { margin-left: 2.5rem; }
+.location-info li { margin-left: 2.5rem; }
 
 .results-info { list-style: none; }
-.results-info > li { margin-left: 7rem; }
+.results-info li { margin-left: 7rem; }
 
 
 // - JavaScript
@@ -138,7 +142,10 @@ hr { background-color: $mapRoadColor; }
   width: 105%;
 }
 
-.arrow-r1, .arrow-l2, .arrow-r2, .arrow-l3 { cursor: pointer; }
+.arrow-r1,
+.arrow-l2,
+.arrow-r2,
+.arrow-l3 { cursor: pointer; }
 
 /* Using ::before to name list items, avoids having to position elements in HTML */
 .desired-address::before {
@@ -184,16 +191,18 @@ hr { background-color: $mapRoadColor; }
   text-shadow: initial;
 
   .mapboxgl-popup-tip { border-top-color: $mapLandColor; }
-  .mapboxgl-popup-content {
-    background-color: $mapLandColor;
-    color: $mapRoadColor;
-
-    .mapboxgl-popup-close-button { color: inherit; }
-  }
 }
+
+.mapboxgl-popup-content {
+  color: $mapRoadColor;
+  background-color: $mapLandColor;
+}
+
+.mapboxgl-popup-close-button { color: inherit; }
 
 /* Weird percentage to account for slight difference in width, unknown reason for difference */
 .mapboxgl-map { width: 99.95%; }
+
 .mapboxgl-ctrl-bottom-right {
   color: inherit;
   text-shadow: initial;
@@ -226,16 +235,3 @@ hr { background-color: $mapRoadColor; }
 
   .drp-buttons { border-color: inherit; }
 }
-
-
-// Media queries
-
-@media (min-width:576px){}
-
-@media (min-width:768px){}
-
-@media (min-width:992px){}
-
-@media (min-width:1200px){}
-
-// http://charlie.matina.yoobee.net.nz/BestRoute/index.html
