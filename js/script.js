@@ -383,7 +383,7 @@ var app = {
       $(".space-range-input").parent().append(
         $("<span>", {
           "class":"flagForDel",
-          "style":"color:darkred"
+          "style":"color:red"
         }).text("Must be between "+minMaxSpaceStay.minPossibleSpace+" and "+minMaxSpaceStay.maxPossibleSpace)
       ).css("border","2px solid red");
     }
@@ -414,16 +414,22 @@ var app = {
         app.formResults.desiredDays = days;
       }
       else{
+        console.log("Validate");
         $(".staying-range").parent().css("border","2px solid red").append(
           $("<span>", {
             "class":"flagForDel",
-            "style":"color:darkred"
+            "style":"color:red"
           }).text("Days must be between "+minMaxSpaceStay.minPossibleStay+" and "+minMaxSpaceStay.maxPossibleStay)
         );
       }
     }
     else{
-      $(".staying-range").parent().css("border","2px solid red");
+      $(".staying-range").parent().css("border","2px solid red").append(
+        $("<span>",  {
+          "class":"flagForDel",
+          "style":"color:red"
+        }).text("Days must be between "+minMaxSpaceStay.minPossibleStay+" and "+minMaxSpaceStay.maxPossibleStay)
+      );
     }
 
     var desiredSpace = app.formResults.desiredSpace,
