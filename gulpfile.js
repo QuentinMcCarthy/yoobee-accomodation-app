@@ -21,7 +21,7 @@ gulp.task('serve', function(event) {
 
 //Styles Task
 gulp.task('styles', function() {
-  gulp.src(['scss/custom.scss', 'scss/tron.scss'])
+  gulp.src(['sass/master.scss'])
     // .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     // .pipe(rename({suffix: '.min'}))
     // .pipe(minifyCss())
@@ -43,7 +43,7 @@ gulp.task('pug', function(){
 
 //JS Lint Task for correcting and monitoring your custom.js
 gulp.task('lint', function(){
-  gulp.src('js/custom.js')
+  gulp.src('js/script.js')
     .pipe(jshint())
   	.pipe(jshint.reporter('default'))
   	.pipe(connect.reload());
