@@ -123,10 +123,10 @@ var app = {
         features:[]
       };
 
-      var features = app.locationData.features;
+      var dataFeatures = app.locationData.features;
 
-      for(var i = 0; i < features.length; i++){
-        var currType = features[i].properties.type;
+      for(var i = 0; i < dataFeatures.length; i++){
+        var currType = dataFeatures[i].properties.type;
 
         // The expressions in these variables return a boolean value
         // This process has been broken down just to make it easier to read and work with
@@ -136,7 +136,7 @@ var app = {
             houseType = (houses && (currType == "house"));
 
         if(hotelType || hostelType || motelType || houseType){
-          locations.features.push(features[i])
+          locations.features.push(dataFeatures[i],)
         }
       }
 
@@ -209,19 +209,31 @@ var app = {
       $("#listings").html("");
 
       // Iterate through the list of locations
-      for(var i = 0; i < data.features.length; i++){
-        var currentFeature = data.features[i],
+      data.features.forEach(function(currentValue,index){
+        var thisIndex;
+
+        // Find the index for the current item in the array
+        for(var i = 0; i < app.locationData.features.length; i++){
+          if(app.locationData.features[i] == currentValue){
+            thisIndex = i;
+            break;
+          }
+        }
+
+        var currentFeature = data.features[index],
             prop = currentFeature.properties,
             listings = $("#listings"),
             listing = $("<a>", {
               "class":"dropdown-item",
               "href":"#",
-              "id":"listing-"+i,
-              "dataPosition":i
+              "id":"listing-"+thisIndex,
+              "dataPosition":thisIndex
             }).html(prop.name)
               .on("click",function(){
+                var thisIndex = $(this).attr("dataPosition");
+
                 // Update the currentFeature to the location associated with the clicked link
-                var clickedListing = data.features[$(this).attr("dataPosition")];
+                var clickedListing = app.locationData.features[thisIndex];
 
                 // 1. Fly to the point associated with the clicked link
                 app.mapbox.flyToStore(clickedListing);
@@ -229,12 +241,10 @@ var app = {
                 // 2. Close all other popups and display popup for clicked store
                 app.mapbox.createPopUp(clickedListing);
 
-                var thisIndex = $(this).attr("dataPosition");
-
-                app.mapbox.writeLocationData(data.features[thisIndex].properties, thisIndex);
+                app.mapbox.writeLocationData(app.locationData.features[thisIndex].properties, thisIndex);
               })
               .appendTo(listings);
-      }
+      });
     },
     flyToStore:function(currentFeature){
       app.mapbox.map.flyTo({
@@ -363,10 +373,35 @@ var app = {
     $(".nav-step-3").on("click",function(){ app.navigateToStep(app.navCurrStep,3) });
 
     $(".final-confirm").on("click",function(){
-      // location.reload() is the easiest way to reset the page;
-      // as other methods would require resetting the mapbox map
-      // and the process for doing so is complicated
-      location.reload();
+      app.formResults = {};
+
+      $(".space-range-input").val(1);
+      $(".space-range-slider").val(1);
+
+      var currDate = new Date();
+      var currDay = currDate.getDate();
+      var currMonth = (currDate.getMonth() + 1);
+      var currYear = currDate.getFullYear();
+
+      if(currDay < 10){
+        currDay = "0"+currDay;
+      }
+
+      if(currMonth < 10){
+        currMonth = "0"+currMonth;
+      }
+
+      var formattedDate = currDay+"/"+currMonth+"/"+currYear;
+
+      $(".staying-range")
+        .data("daterangepicker")
+        .setStartDate(formattedDate);
+
+      $(".staying-range")
+        .data("daterangepicker")
+        .setEndDate(formattedDate);
+
+      app.navigateToStep(3,1);
     });
   },
   validateForm:function(minMaxSpaceStay){
