@@ -362,7 +362,7 @@ var app = {
     $(".nav-step-2").on("click",function(){ app.navigateToStep(app.navCurrStep,2) });
     $(".nav-step-3").on("click",function(){ app.navigateToStep(app.navCurrStep,3) });
 
-    $(".final-confirm").click(function(){
+    $(".final-confirm").on("click",function(){
       // location.reload() is the easiest way to reset the page;
       // as other methods would require resetting the mapbox map
       // and the process for doing so is complicated
