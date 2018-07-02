@@ -4,6 +4,7 @@ var app = {
   formResults:{},
   navInitLeft:undefined,
   navCurrStep:0,
+  navTransition:null,
   mapbox:{
     map:null,
     markers:[],
@@ -664,6 +665,8 @@ var app = {
     };
   },
   animateNav:function(step,up){
+    clearInterval(app.navTransition)
+
     if(step < 0){
       step = 0;
     }
@@ -673,7 +676,7 @@ var app = {
         animSpeed = 6;
 
     if(up){
-      var transition = setInterval(function(){
+      app.navTransition = setInterval(function(){
         var currStepLeft = parseInt($(currStep).css("left")),
             adjWidth = parseInt($(".main-navbar .col-sm div").css("width")),
             desiredLeft = app.navInitLeft + (adjWidth * (step-1));
@@ -683,12 +686,12 @@ var app = {
         }
         else{
           $(currStep).css("left",desiredLeft);
-          clearInterval(transition);
+          clearInterval(app.navTransition);
         }
       }, 1);
     }
     else{
-      var transition = setInterval(function(){
+      app.navTransition = setInterval(function(){
         var currStepLeft = parseInt($(currStep).css("left")),
             adjWidth = parseInt($(".main-navbar .col-sm div").css("width")),
             desiredLeft = app.navInitLeft + (adjWidth *  (step-1));
@@ -698,7 +701,7 @@ var app = {
         }
         else{
           $(currStep).css("left",desiredLeft);
-          clearInterval(transition);
+          clearInterval(app.navTransition);
         }
       }, 1);
     }
