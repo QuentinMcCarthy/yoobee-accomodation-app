@@ -301,12 +301,13 @@ var app = {
       }
 
       // Set the form's min and max values for validation
+      // The slider's values are multiplied by 100 to ensure smooth movement
       $(".space-range-slider").attr({
-        "min":minMaxSpaceStay.minPossibleSpace,
-        "max":minMaxSpaceStay.maxPossibleSpace
+        "min":(minMaxSpaceStay.minPossibleSpace * 100),
+        "max":(minMaxSpaceStay.maxPossibleSpace * 100)
       }).on("input",function(){
         // The slider and the input should always have the same value
-        $(".space-range-input").val($(this).val());
+        $(".space-range-input").val(Math.round($(this).val() / 100));
       });
 
       $(".space-range-input").attr({
@@ -314,7 +315,7 @@ var app = {
         "max":minMaxSpaceStay.maxPossibleSpace
       }).on("input",function(){
         // The slider and the input should always have the same value
-        $(".space-range-slider").val($(this).val());
+        $(".space-range-slider").val(($(this).val() * 100));
       });
 
       var todayDate = new Date();
