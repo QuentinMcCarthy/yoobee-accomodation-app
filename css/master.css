@@ -67,8 +67,8 @@ hr {
   min-height: inherit; }
 
 .nav-step {
-  border-top: 0px solid transparent;
-  border-bottom: 0px solid #3c7e61;
+  border-top: 0 solid transparent;
+  border-bottom: 0 solid #3c7e61;
   cursor: pointer;
   transition: border-top-width .1s linear, border-bottom-width .1s linear; }
 
@@ -93,6 +93,11 @@ hr {
 .results-info li {
   margin-left: 7rem; }
 
+.fa-chevron-left,
+.fa-chevron-right {
+  color: inherit;
+  transition: color .25s linear; }
+
 .space-range-slider {
   width: 72%; }
 
@@ -104,11 +109,36 @@ hr {
   left: 5px;
   width: 105%; }
 
+/* Keyframes for chevron CSS animation */
+@keyframes chevronHoverLeft {
+  0% {
+    transform: translateX(0px); }
+  50% {
+    transform: translateX(-5px); }
+  100% {
+    transform: translateX(0px); } }
+@keyframes chevronHoverRight {
+  0% {
+    transform: translateX(0px); }
+  50% {
+    transform: translateX(5px); }
+  100% {
+    transform: translateX(0px); } }
 .arrow-r1,
 .arrow-l2,
 .arrow-r2,
 .arrow-l3 {
   cursor: pointer; }
+
+.arrow-l2:hover > .fa-chevron-left,
+.arrow-l3:hover > .fa-chevron-left {
+  color: #50a882;
+  animation: chevronHoverLeft 2.5s ease-in-out infinite; }
+
+.arrow-r1:hover > .fa-chevron-right,
+.arrow-r2:hover > .fa-chevron-right {
+  color: #50a882;
+  animation: chevronHoverRight 2.5s ease-in-out infinite; }
 
 /* Using ::before to name list items, avoids having to position elements in HTML */
 .desired-address::before {
