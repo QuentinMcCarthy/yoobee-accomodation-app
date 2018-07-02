@@ -7,14 +7,18 @@ var app = {
   mapbox:{
     map:null,
     markers:[],
+    config:{
+      initCenter:[174.777623,-41.289632],
+      initZoom:12
+    },
     initMapbox:function(){
       // Mapbox methods for initial setup of mapbox
       mapboxgl.accessToken = "pk.eyJ1IjoibWNjYXJ0aHlxIiwiYSI6ImNqaTNucHpsMzAwaGczcXF2eDJhbGxwNGwifQ.Qn-qvcjlEmkiLq4lqV435A";
       var map = new mapboxgl.Map({
         container:"map",
         style:"mapbox://styles/mccarthyq/cji9h1jw0124i2sqitzoczzsh",
-        center:[174.777623,-41.289632],
-        zoom:12
+        center:app.mapbox.config.initCenter,
+        zoom:app.mapbox.config.initZoom
       });
 
       // Keep track of the map as a variable in the app for use later on
@@ -77,8 +81,7 @@ var app = {
       app.navigateToStep(2,3);
     },
     writeLocationData:function(prop, index){
-      $(".location-info div.col-9 h4").remove();
-      $(".location-info div.col-9").prepend($("<h4>").text(prop.name));
+      $(".location-info div.col-9 h4").text(prop.name);
       $(".location-info div.col-9 span").html("<strong>Ph#:</strong> "+prop.phoneFormatted);
 
       function writeToDiv(i){
@@ -240,14 +243,11 @@ var app = {
       });
     },
     createPopUp:function(currentFeature){
-      var popUps = $(".mapboxgl-popup");
+      // If there's any popups on the map, remove them.
+      // There should not be more than one popup on the map at any time.
+      $(".mapboxgl-popup").remove();
 
-      // Check if there's already a popup on the map and if so, remove it
-      if(popUps[0]){
-        popUps[0].remove();
-      }
-
-      var popup = new mapboxgl.Popup({closeOnClick:true})
+      new mapboxgl.Popup({closeOnClick:true})
         .setLngLat(currentFeature.geometry.coordinates)
         .setHTML("<h5>"+currentFeature.properties.name+"</h5>"+"<h6>"+currentFeature.properties.address+"</h6>")
         .addTo(app.mapbox.map);
@@ -414,7 +414,6 @@ var app = {
         app.formResults.desiredDays = days;
       }
       else{
-        console.log("Validate");
         $(".staying-range").parent().css("border","2px solid red").append(
           $("<span>", {
             "class":"flagForDel",
@@ -484,6 +483,19 @@ var app = {
       if(houseSpace && houseStay){
         houses = true;
       }
+
+      // If there's any popups on the map, remove them.
+      // There should not be more than one popup on the map at any time.
+      $(".mapboxgl-popup").remove();
+
+      // Reset the view window of the map back to initial.
+      // This shouldn't change anything if the map hasn't been touched yet.
+      app.mapbox.map.setCenter(app.mapbox.config.initCenter);
+      app.mapbox.map.setZoom(app.mapbox.config.initZoom);
+
+      // Clear the HTML below the map
+      $(".location-info > .col-9").children().html("");
+      $(".location-info > .d-flex").html("");
 
       app.mapbox.createMarkers(hotels,hostels,motels,houses);
 
