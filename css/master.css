@@ -183,12 +183,6 @@ hr {
   padding-bottom: 50px;
   color: initial;
   text-shadow: initial; }
-  .mapboxgl-popup .mapboxgl-popup-tip {
-    border-top-color: #000; }
-
-.mapboxgl-popup-content {
-  color: #3c7e61;
-  background-color: #000; }
 
 .mapboxgl-popup-close-button {
   color: inherit; }

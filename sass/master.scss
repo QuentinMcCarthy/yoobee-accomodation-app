@@ -235,12 +235,12 @@ hr { background-color: $mapRoadColor; }
   color: initial;
   text-shadow: initial;
 
-  .mapboxgl-popup-tip { border-top-color: $mapLandColor; }
+  // .mapboxgl-popup-tip { border-color: $mapLandColor; }
 }
 
 .mapboxgl-popup-content {
-  color: $mapRoadColor;
-  background-color: $mapLandColor;
+  // color: $mapRoadColor;
+  // background-color: $mapLandColor;
 }
 
 .mapboxgl-popup-close-button { color: inherit; }
