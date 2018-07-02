@@ -77,7 +77,7 @@ var app = {
           writeToCost(3);
 
           break;
-      };
+      }
 
       app.navigateToStep(2,3);
     },
@@ -106,7 +106,7 @@ var app = {
           writeToDiv(3);
 
           break;
-      };
+      }
 
       $(".location-info div.d-flex").html("").append(
         $("<button>", {
@@ -137,7 +137,7 @@ var app = {
             houseType = (houses && (currType == "house"));
 
         if(hotelType || hostelType || motelType || houseType){
-          locations.features.push(dataFeatures[i],)
+          locations.features.push(dataFeatures[i]);
         }
       }
 
@@ -343,10 +343,10 @@ var app = {
         app.validateForm(minMaxSpaceStay);
       });
 
-      $(".arrow-r1").on("click",function(){ app.navigateToStep(1,2) });
-      $(".arrow-l2").on("click",function(){ app.navigateToStep(2,1) });
-      $(".arrow-r2").on("click",function(){ app.navigateToStep(2,3) });
-      $(".arrow-l3").on("click",function(){ app.navigateToStep(3,2) });
+      $(".arrow-r1").on("click",function(){ app.navigateToStep(1,2); });
+      $(".arrow-l2").on("click",function(){ app.navigateToStep(2,1); });
+      $(".arrow-r2").on("click",function(){ app.navigateToStep(2,3); });
+      $(".arrow-l3").on("click",function(){ app.navigateToStep(3,2); });
 
       app.navCurrStep = 1;
     });
@@ -370,9 +370,9 @@ var app = {
       "height":$(".main-navbar .col-sm div").css("height")
     });
 
-    $(".nav-step-1").on("click",function(){ app.navigateToStep(app.navCurrStep,1) });
-    $(".nav-step-2").on("click",function(){ app.navigateToStep(app.navCurrStep,2) });
-    $(".nav-step-3").on("click",function(){ app.navigateToStep(app.navCurrStep,3) });
+    $(".nav-step-1").on("click",function(){ app.navigateToStep(app.navCurrStep,1); });
+    $(".nav-step-2").on("click",function(){ app.navigateToStep(app.navCurrStep,2); });
+    $(".nav-step-3").on("click",function(){ app.navigateToStep(app.navCurrStep,3); });
 
     $(".final-confirm").on("click",function(){
       app.formResults = {};
@@ -479,7 +479,7 @@ var app = {
       // The expressions in these variables return a boolean value
       // This process has been broken down just to make it easier to read and work with
       for(var i = 0; i < app.dataConfig.types.length; i++){
-        var prop = app.dataConfig.types[i].properties
+        var prop = app.dataConfig.types[i].properties;
 
         var minSpace = (desiredSpace >= prop.minSpace),
             maxSpace = (desiredSpace <= prop.maxSpace),
@@ -505,7 +505,7 @@ var app = {
           case 3:
             var houseSpace = (minSpace && maxSpace),
                 houseStay = (minStay && maxStay);
-        };
+        }
       }
 
       if(hotelSpace && hotelStay){
