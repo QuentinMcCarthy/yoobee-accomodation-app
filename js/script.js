@@ -83,7 +83,7 @@ var app = {
           break;
       }
 
-      app.navigateToStep(2,3);
+      app.navigateToStep(2, 3);
     },
     writeLocationData:function(prop, index){
       $(".location-info div.col-9 .h4").text(prop.name);
@@ -121,7 +121,7 @@ var app = {
           .on("click",app.mapbox.mapSubmit)
       );
     },
-    createMarkers:function(hotels,hostels,motels,houses){
+    createMarkers:function(hotels, hostels, motels, houses){
       // Object imitates geojson data structure
       var locations = {
         type:"FeatureCollection",
@@ -146,7 +146,7 @@ var app = {
       }
 
       // First we need to delete any existing markers and their source
-      app.mapbox.markers.forEach(function(currentValue,index){
+      app.mapbox.markers.forEach(function(currentValue, index){
         app.mapbox.markers[index].remove();
       });
 
@@ -168,7 +168,7 @@ var app = {
       });
 
       // Create a marker for every location
-      locations.features.forEach(function(marker,index){
+      locations.features.forEach(function(marker, index){
         // Create a div element for the marker
         // Non-jQuery creation as mapbox code is not very supportive
         var el = document.createElement("div");
@@ -214,13 +214,14 @@ var app = {
       $("#listings").html("");
 
       // Iterate through the list of locations
-      data.features.forEach(function(currentValue,index){
+      data.features.forEach(function(currentValue, index){
         var thisIndex;
 
         // Find the index for the current item in the array
         for(var i = 0; i < app.locationData.features.length; i++){
           if(app.locationData.features[i] == currentValue){
             thisIndex = i;
+
             break;
           }
         }
@@ -358,10 +359,10 @@ var app = {
       app.mapbox.initMapbox();
     });
 
-    $(".arrow-r1").on("click",function(){ app.navigateToStep(1,2); });
-    $(".arrow-l2").on("click",function(){ app.navigateToStep(2,1); });
-    $(".arrow-r2").on("click",function(){ app.navigateToStep(2,3); });
-    $(".arrow-l3").on("click",function(){ app.navigateToStep(3,2); });
+    $(".arrow-r1").on("click",function(){ app.navigateToStep(1, 2); });
+    $(".arrow-l2").on("click",function(){ app.navigateToStep(2, 1); });
+    $(".arrow-r2").on("click",function(){ app.navigateToStep(2, 3); });
+    $(".arrow-l3").on("click",function(){ app.navigateToStep(3, 2); });
 
     app.navCurrStep = 1;
 
@@ -382,9 +383,9 @@ var app = {
       $(".step-1, .main-navbar").removeClass("d-none");
     });
 
-    $(".nav-step-1").on("click",function(){ app.navigateToStep(app.navCurrStep,1); });
-    $(".nav-step-2").on("click",function(){ app.navigateToStep(app.navCurrStep,2); });
-    $(".nav-step-3").on("click",function(){ app.navigateToStep(app.navCurrStep,3); });
+    $(".nav-step-1").on("click",function(){ app.navigateToStep(app.navCurrStep, 1); });
+    $(".nav-step-2").on("click",function(){ app.navigateToStep(app.navCurrStep, 2); });
+    $(".nav-step-3").on("click",function(){ app.navigateToStep(app.navCurrStep, 3); });
     $(".final-confirm").on("click",function(){
       app.formResults = {};
 
@@ -414,7 +415,7 @@ var app = {
         .data("daterangepicker")
         .setEndDate(formattedDate);
 
-      app.navigateToStep(3,1);
+      app.navigateToStep(3, 1);
     });
   },
   validateForm:function(minMaxSpaceStay){
@@ -445,7 +446,7 @@ var app = {
       var fromSplit = stayingFrom.split("-"),
           tillSplit = stayingTill.split("-");
 
-      // The values must be converted back into Date objects to get the days and month
+      // The values must be converted back into Date objects to get the days and the month
       // the string values in each array are converted to numerical values as browsers
       // parse strings into dates differently.
       var fromDate = new Date(parseInt(fromSplit[0]),parseInt(fromSplit[1]),parseInt(fromSplit[2])),
@@ -472,7 +473,7 @@ var app = {
     }
     else{
       $(".staying-range").parent().css("border","2px solid red").append(
-        $("<span>",  {
+        $("<span>", {
           "class":"flagForDel",
           "style":"color:red"
         }).text("Days must be between "+minMaxSpaceStay.minPossibleStay+" and "+minMaxSpaceStay.maxPossibleStay)
@@ -549,7 +550,7 @@ var app = {
       $(".location-info > .col-9").children().html("");
       $(".location-info > .d-flex").html("");
 
-      app.mapbox.createMarkers(hotels,hostels,motels,houses);
+      app.mapbox.createMarkers(hotels, hostels, motels, houses);
 
       $(".desired-space-val").text(desiredSpace);
 
@@ -563,7 +564,7 @@ var app = {
 
       app.navInitLeft = parseInt($(".curr-step").css("left"));
 
-      app.navigateToStep(1,2);
+      app.navigateToStep(1, 2);
 
       app.mapbox.map.resize();
     }
@@ -627,7 +628,7 @@ var app = {
         // Any navigation from step 3 will be lower; so no need for validation
         stepTo(toStep);
 
-        app.animateNav(toStep,false);
+        app.animateNav(toStep, false);
 
         break;
       case 2:
@@ -638,7 +639,7 @@ var app = {
             // If the step to switch to is 1 from 2, then no need for validation
             stepTo(1);
 
-            app.animateNav(1,false);
+            app.animateNav(1, false);
 
             break;
           case 3:
@@ -646,7 +647,7 @@ var app = {
             if(app.formResults.desiredLocation){
               stepTo(3);
 
-              app.animateNav(3,true);
+              app.animateNav(3, true);
             }
 
             break;
@@ -662,7 +663,7 @@ var app = {
             if(app.formResults.desiredDays){
               stepTo(2);
 
-              app.animateNav(2,true);
+              app.animateNav(2, true);
             }
 
             break;
@@ -672,7 +673,7 @@ var app = {
               if(app.formResults.desiredLocation){
                 stepTo(3);
 
-                app.animateNav(3,true);
+                app.animateNav(3, true);
               }
             }
 
@@ -680,7 +681,7 @@ var app = {
         }
     }
   },
-  animateNav:function(step,up){
+  animateNav:function(step, up){
     clearInterval(app.navTransition);
 
     if(step < 0){
