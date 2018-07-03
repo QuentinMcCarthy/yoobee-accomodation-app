@@ -98,6 +98,10 @@ hr {
   color: inherit;
   transition: color .25s linear; }
 
+.logo-container {
+  top: 10%;
+  font-family: Gugi, cursive; }
+
 .space-range-slider {
   width: 72%; }
 
