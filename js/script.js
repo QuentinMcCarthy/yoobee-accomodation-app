@@ -82,8 +82,8 @@ var app = {
       app.navigateToStep(2,3);
     },
     writeLocationData:function(prop, index){
-      $(".location-info div.col-9 h4").text(prop.name);
-      $(".location-info div.col-9 span").html("<strong>Ph#:</strong> "+prop.phoneFormatted);
+      $(".location-info div.col-9 .h4").text(prop.name);
+      $(".location-info div.col-9 .phone-num").html("<strong>Ph#:</strong> "+prop.phoneFormatted);
 
       function writeToDiv(i){
         $(".location-info div.col-9 div").html("<strong>Nightly Cost:</strong> $"+app.dataConfig.types[i].properties.costNightly);
