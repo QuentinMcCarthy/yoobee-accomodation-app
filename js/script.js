@@ -476,6 +476,8 @@ var app = {
       // Variables to be used in a future function call
       var hotels, hostels, motels, houses = false;
 
+      var hotelSpace, hotelStay, hostelSpace, hostelStay, motelSpace, motelStay, houseSpace, houseStay;
+
       // The expressions in these variables return a boolean value
       // This process has been broken down just to make it easier to read and work with
       for(var i = 0; i < app.dataConfig.types.length; i++){
@@ -488,23 +490,25 @@ var app = {
 
         switch(i){
           case 0:
-            var hotelSpace = (minSpace && maxSpace),
-                hotelStay = (minStay && maxStay);
+            hotelSpace = (minSpace && maxSpace);
+            hotelStay = (minStay && maxStay);
 
             break;
           case 1:
-            var hostelSpace = (minSpace && maxSpace),
-                hostelStay = (minStay && maxStay);
+            hostelSpace = (minSpace && maxSpace);
+            hostelStay = (minStay && maxStay);
 
             break;
           case 2:
-            var motelSpace = (minSpace && maxSpace),
-                motelStay = (minStay && maxStay);
+            motelSpace = (minSpace && maxSpace);
+            motelStay = (minStay && maxStay);
 
             break;
           case 3:
-            var houseSpace = (minSpace && maxSpace),
-                houseStay = (minStay && maxStay);
+            houseSpace = (minSpace && maxSpace);
+            houseStay = (minStay && maxStay);
+
+            break;
         }
       }
 
@@ -604,7 +608,7 @@ var app = {
           app.navCurrStep = 3;
 
           break;
-      };
+      }
     }
 
     switch(fromStep){
@@ -635,7 +639,7 @@ var app = {
             }
 
             break;
-        };
+        }
 
         break;
       case 1:
@@ -662,11 +666,11 @@ var app = {
             }
 
             break;
-        };
-    };
+        }
+    }
   },
   animateNav:function(step,up){
-    clearInterval(app.navTransition)
+    clearInterval(app.navTransition);
 
     if(step < 0){
       step = 0;
@@ -707,7 +711,7 @@ var app = {
       }, 1);
     }
   }
-}
+};
 
 $(document).ready(function(){
   app.init();
