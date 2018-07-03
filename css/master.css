@@ -99,7 +99,7 @@ hr {
   transition: color .25s linear; }
 
 .logo-container {
-  height: fit-content;
+  width: fit-content;
   font-family: Gugi, cursive; }
 
 .space-range-slider {
