@@ -342,13 +342,6 @@ var app = {
 
         app.validateForm(minMaxSpaceStay);
       });
-
-      $(".arrow-r1").on("click",function(){ app.navigateToStep(1,2); });
-      $(".arrow-l2").on("click",function(){ app.navigateToStep(2,1); });
-      $(".arrow-r2").on("click",function(){ app.navigateToStep(2,3); });
-      $(".arrow-l3").on("click",function(){ app.navigateToStep(3,2); });
-
-      app.navCurrStep = 1;
     });
 
     $.getJSON("assets/accomodation.geojson", function(data){
@@ -359,21 +352,35 @@ var app = {
       app.locationData = locations;
 
       app.mapbox.initMapbox();
-
-      // All steps are visible initially to allow proper loading of elements such as mapbox
-      // If the steps were hidden initially, certain elements would not stlye themselves properly.
-      $(".step-2, .step-3").addClass("d-none");
     });
+
+    $(".arrow-r1").on("click",function(){ app.navigateToStep(1,2); });
+    $(".arrow-l2").on("click",function(){ app.navigateToStep(2,1); });
+    $(".arrow-r2").on("click",function(){ app.navigateToStep(2,3); });
+    $(".arrow-l3").on("click",function(){ app.navigateToStep(3,2); });
+
+    app.navCurrStep = 1;
+
+    // All steps are visible initially to allow proper loading of elements such as mapbox
+    // If the steps were hidden initially, certain elements would not style themselves properly.
+    $(".step-1, .step-2, .step-3").addClass("d-none");
 
     $(".curr-step").css({
       "width":$(".main-navbar .col-sm div").css("width"),
       "height":$(".main-navbar .col-sm div").css("height")
     });
 
+    // Navigation is initially hidden
+    $(".main-navbar").addClass("d-none");
+
+    $(".get-started").on("click",function(){
+      $(".step-0").addClass("d-none");
+      $(".step-1, .main-navbar").removeClass("d-none");
+    });
+
     $(".nav-step-1").on("click",function(){ app.navigateToStep(app.navCurrStep,1); });
     $(".nav-step-2").on("click",function(){ app.navigateToStep(app.navCurrStep,2); });
     $(".nav-step-3").on("click",function(){ app.navigateToStep(app.navCurrStep,3); });
-
     $(".final-confirm").on("click",function(){
       app.formResults = {};
 
