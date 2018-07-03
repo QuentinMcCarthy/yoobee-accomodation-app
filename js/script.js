@@ -33,14 +33,18 @@ var app = {
         trackUserLocation:true
       }));
 
-      // Update the map's size as well as the curr-step el every time the window is resized
-      // This prevents the map and curr-step el from being sized weirdly
+      // When the window is resized
       $(window).resize(function(){
+        // Resize the step marker to ensure it's the correct size.
         $(".curr-step").css({
           "width":$(".main-navbar .col-sm div").css("width"),
           "height":$(".main-navbar .col-sm div").css("height")
         });
 
+        // Ensure the step marker is in the correct position
+        app.animateNav(app.navCurrStep);
+
+        // Resize the map to ensure it's the correct size.
         map.resize();
       });
     },
